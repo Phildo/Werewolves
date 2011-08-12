@@ -1,0 +1,603 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4A2879B213F36241007416D5 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2879B113F36241007416D5 /* PlayerView.m */; };
+		4AD8149B13F098E80040D194 /* PlayerNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8149913F098E80040D194 /* PlayerNameViewController.m */; };
+		4AD8149C13F098E80040D194 /* PlayerNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AD8149A13F098E80040D194 /* PlayerNameViewController.xib */; };
+		4AE0A43413EDD57500B5482A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE0A43313EDD57500B5482A /* UIKit.framework */; };
+		4AE0A43613EDD57500B5482A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE0A43513EDD57500B5482A /* Foundation.framework */; };
+		4AE0A43813EDD57500B5482A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE0A43713EDD57500B5482A /* CoreGraphics.framework */; };
+		4AE0A43E13EDD57500B5482A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4AE0A43C13EDD57500B5482A /* InfoPlist.strings */; };
+		4AE0A44113EDD57500B5482A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0A44013EDD57500B5482A /* main.m */; };
+		4AE0A44413EDD57500B5482A /* WerewolvesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0A44313EDD57500B5482A /* WerewolvesAppDelegate.m */; };
+		4AE0A44813EDD57500B5482A /* WerewolvesAppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0A44713EDD57500B5482A /* WerewolvesAppDelegate_iPhone.m */; };
+		4AE0A44B13EDD57500B5482A /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AE0A44913EDD57500B5482A /* MainWindow_iPhone.xib */; };
+		4AE0A44F13EDD57500B5482A /* WerewolvesAppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0A44E13EDD57500B5482A /* WerewolvesAppDelegate_iPad.m */; };
+		4AE0A45213EDD57500B5482A /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AE0A45013EDD57500B5482A /* MainWindow_iPad.xib */; };
+		4AE0A45913EDD57500B5482A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE0A43313EDD57500B5482A /* UIKit.framework */; };
+		4AE0A45A13EDD57500B5482A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE0A43513EDD57500B5482A /* Foundation.framework */; };
+		4AE0A45B13EDD57500B5482A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE0A43713EDD57500B5482A /* CoreGraphics.framework */; };
+		4AE0A46313EDD57500B5482A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4AE0A46113EDD57500B5482A /* InfoPlist.strings */; };
+		4AE0A46613EDD57500B5482A /* WerewolvesTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 4AE0A46513EDD57500B5482A /* WerewolvesTests.h */; };
+		4AE0A46813EDD57500B5482A /* WerewolvesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0A46713EDD57500B5482A /* WerewolvesTests.m */; };
+		4AE0A47A13EDD5BD00B5482A /* IntroScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AE0A47513EDD5BD00B5482A /* IntroScreenViewController.xib */; };
+		4AE0A47B13EDD5BD00B5482A /* AppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0A47613EDD5BD00B5482A /* AppConstants.m */; };
+		4AE0A47C13EDD5BD00B5482A /* IntroScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0A47713EDD5BD00B5482A /* IntroScreenViewController.m */; };
+		4AE0A47D13EDD5BD00B5482A /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0A47813EDD5BD00B5482A /* Player.m */; };
+		4AE0A48E13EDDEB600B5482A /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0A48D13EDDEB600B5482A /* Game.m */; };
+		4AE0A49213EDE1E700B5482A /* GameSettingsPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0A49013EDE1E700B5482A /* GameSettingsPickerViewController.m */; };
+		4AE0A49313EDE1E700B5482A /* GameSettingsPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AE0A49113EDE1E700B5482A /* GameSettingsPickerViewController.xib */; };
+		4AE0A49613EDE63C00B5482A /* CirclePositionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0A49513EDE63C00B5482A /* CirclePositionView.m */; };
+		4AF1EB4813F3762000C3F9AD /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AF1EB4613F3762000C3F9AD /* ball.png */; };
+		4AF1EB4F13F3A42100C3F9AD /* personIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AF1EB4E13F3A42100C3F9AD /* personIcon.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4AE0A45C13EDD57500B5482A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4AE0A42613EDD57500B5482A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4AE0A42E13EDD57500B5482A;
+			remoteInfo = Werewolves;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4A2879B013F36241007416D5 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
+		4A2879B113F36241007416D5 /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
+		4AD8149813F098E80040D194 /* PlayerNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerNameViewController.h; sourceTree = "<group>"; };
+		4AD8149913F098E80040D194 /* PlayerNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerNameViewController.m; sourceTree = "<group>"; };
+		4AD8149A13F098E80040D194 /* PlayerNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerNameViewController.xib; sourceTree = "<group>"; };
+		4AE0A42F13EDD57500B5482A /* Werewolves.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Werewolves.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AE0A43313EDD57500B5482A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4AE0A43513EDD57500B5482A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4AE0A43713EDD57500B5482A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4AE0A43B13EDD57500B5482A /* Werewolves-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Werewolves-Info.plist"; sourceTree = "<group>"; };
+		4AE0A43D13EDD57500B5482A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4AE0A43F13EDD57500B5482A /* Werewolves-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Werewolves-Prefix.pch"; sourceTree = "<group>"; };
+		4AE0A44013EDD57500B5482A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4AE0A44213EDD57500B5482A /* WerewolvesAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WerewolvesAppDelegate.h; sourceTree = "<group>"; };
+		4AE0A44313EDD57500B5482A /* WerewolvesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WerewolvesAppDelegate.m; sourceTree = "<group>"; };
+		4AE0A44613EDD57500B5482A /* WerewolvesAppDelegate_iPhone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WerewolvesAppDelegate_iPhone.h; path = iPhone/WerewolvesAppDelegate_iPhone.h; sourceTree = "<group>"; };
+		4AE0A44713EDD57500B5482A /* WerewolvesAppDelegate_iPhone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WerewolvesAppDelegate_iPhone.m; path = iPhone/WerewolvesAppDelegate_iPhone.m; sourceTree = "<group>"; };
+		4AE0A44A13EDD57500B5482A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/MainWindow_iPhone.xib; sourceTree = "<group>"; };
+		4AE0A44D13EDD57500B5482A /* WerewolvesAppDelegate_iPad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WerewolvesAppDelegate_iPad.h; path = iPad/WerewolvesAppDelegate_iPad.h; sourceTree = "<group>"; };
+		4AE0A44E13EDD57500B5482A /* WerewolvesAppDelegate_iPad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WerewolvesAppDelegate_iPad.m; path = iPad/WerewolvesAppDelegate_iPad.m; sourceTree = "<group>"; };
+		4AE0A45113EDD57500B5482A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/MainWindow_iPad.xib; sourceTree = "<group>"; };
+		4AE0A45813EDD57500B5482A /* WerewolvesTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WerewolvesTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AE0A46013EDD57500B5482A /* WerewolvesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WerewolvesTests-Info.plist"; sourceTree = "<group>"; };
+		4AE0A46213EDD57500B5482A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4AE0A46413EDD57500B5482A /* WerewolvesTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WerewolvesTests-Prefix.pch"; sourceTree = "<group>"; };
+		4AE0A46513EDD57500B5482A /* WerewolvesTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WerewolvesTests.h; sourceTree = "<group>"; };
+		4AE0A46713EDD57500B5482A /* WerewolvesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WerewolvesTests.m; sourceTree = "<group>"; };
+		4AE0A47113EDD5BD00B5482A /* AppConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
+		4AE0A47213EDD5BD00B5482A /* IntroScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroScreenViewController.h; sourceTree = "<group>"; };
+		4AE0A47313EDD5BD00B5482A /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		4AE0A47513EDD5BD00B5482A /* IntroScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroScreenViewController.xib; sourceTree = "<group>"; };
+		4AE0A47613EDD5BD00B5482A /* AppConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConstants.m; sourceTree = "<group>"; };
+		4AE0A47713EDD5BD00B5482A /* IntroScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroScreenViewController.m; sourceTree = "<group>"; };
+		4AE0A47813EDD5BD00B5482A /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		4AE0A48C13EDDEB600B5482A /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		4AE0A48D13EDDEB600B5482A /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		4AE0A48F13EDE1E700B5482A /* GameSettingsPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSettingsPickerViewController.h; sourceTree = "<group>"; };
+		4AE0A49013EDE1E700B5482A /* GameSettingsPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSettingsPickerViewController.m; sourceTree = "<group>"; };
+		4AE0A49113EDE1E700B5482A /* GameSettingsPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameSettingsPickerViewController.xib; sourceTree = "<group>"; };
+		4AE0A49413EDE63C00B5482A /* CirclePositionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CirclePositionView.h; sourceTree = "<group>"; };
+		4AE0A49513EDE63C00B5482A /* CirclePositionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CirclePositionView.m; sourceTree = "<group>"; };
+		4AF1EB4613F3762000C3F9AD /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
+		4AF1EB4E13F3A42100C3F9AD /* personIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personIcon.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4AE0A42C13EDD57500B5482A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AE0A43413EDD57500B5482A /* UIKit.framework in Frameworks */,
+				4AE0A43613EDD57500B5482A /* Foundation.framework in Frameworks */,
+				4AE0A43813EDD57500B5482A /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4AE0A45413EDD57500B5482A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AE0A45913EDD57500B5482A /* UIKit.framework in Frameworks */,
+				4AE0A45A13EDD57500B5482A /* Foundation.framework in Frameworks */,
+				4AE0A45B13EDD57500B5482A /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4AE0A42413EDD57500B5482A = {
+			isa = PBXGroup;
+			children = (
+				4AE0A43913EDD57500B5482A /* Werewolves */,
+				4AE0A45E13EDD57500B5482A /* WerewolvesTests */,
+				4AE0A43213EDD57500B5482A /* Frameworks */,
+				4AE0A43013EDD57500B5482A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4AE0A43013EDD57500B5482A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4AE0A42F13EDD57500B5482A /* Werewolves.app */,
+				4AE0A45813EDD57500B5482A /* WerewolvesTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4AE0A43213EDD57500B5482A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4AE0A43313EDD57500B5482A /* UIKit.framework */,
+				4AE0A43513EDD57500B5482A /* Foundation.framework */,
+				4AE0A43713EDD57500B5482A /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4AE0A43913EDD57500B5482A /* Werewolves */ = {
+			isa = PBXGroup;
+			children = (
+				4AF1EB4B13F3762500C3F9AD /* Images */,
+				4AE0A48113EDD5D800B5482A /* States */,
+				4AE0A48013EDD5D500B5482A /* Views */,
+				4AE0A48313EDD60500B5482A /* Data */,
+				4AE0A48213EDD5F200B5482A /* Universal */,
+				4AE0A47F13EDD5CE00B5482A /* Core */,
+			);
+			path = Werewolves;
+			sourceTree = "<group>";
+		};
+		4AE0A43A13EDD57500B5482A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4AE0A43B13EDD57500B5482A /* Werewolves-Info.plist */,
+				4AE0A43C13EDD57500B5482A /* InfoPlist.strings */,
+				4AE0A43F13EDD57500B5482A /* Werewolves-Prefix.pch */,
+				4AE0A44013EDD57500B5482A /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4AE0A44513EDD57500B5482A /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				4AE0A44613EDD57500B5482A /* WerewolvesAppDelegate_iPhone.h */,
+				4AE0A44713EDD57500B5482A /* WerewolvesAppDelegate_iPhone.m */,
+				4AE0A44913EDD57500B5482A /* MainWindow_iPhone.xib */,
+			);
+			name = iPhone;
+			sourceTree = "<group>";
+		};
+		4AE0A44C13EDD57500B5482A /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				4AE0A44D13EDD57500B5482A /* WerewolvesAppDelegate_iPad.h */,
+				4AE0A44E13EDD57500B5482A /* WerewolvesAppDelegate_iPad.m */,
+				4AE0A45013EDD57500B5482A /* MainWindow_iPad.xib */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		4AE0A45E13EDD57500B5482A /* WerewolvesTests */ = {
+			isa = PBXGroup;
+			children = (
+				4AE0A46513EDD57500B5482A /* WerewolvesTests.h */,
+				4AE0A46713EDD57500B5482A /* WerewolvesTests.m */,
+				4AE0A45F13EDD57500B5482A /* Supporting Files */,
+			);
+			path = WerewolvesTests;
+			sourceTree = "<group>";
+		};
+		4AE0A45F13EDD57500B5482A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4AE0A46013EDD57500B5482A /* WerewolvesTests-Info.plist */,
+				4AE0A46113EDD57500B5482A /* InfoPlist.strings */,
+				4AE0A46413EDD57500B5482A /* WerewolvesTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4AE0A47F13EDD5CE00B5482A /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4AE0A44213EDD57500B5482A /* WerewolvesAppDelegate.h */,
+				4AE0A44313EDD57500B5482A /* WerewolvesAppDelegate.m */,
+				4AE0A44513EDD57500B5482A /* iPhone */,
+				4AE0A44C13EDD57500B5482A /* iPad */,
+				4AE0A43A13EDD57500B5482A /* Supporting Files */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		4AE0A48013EDD5D500B5482A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4AE0A49413EDE63C00B5482A /* CirclePositionView.h */,
+				4AE0A49513EDE63C00B5482A /* CirclePositionView.m */,
+				4A2879B013F36241007416D5 /* PlayerView.h */,
+				4A2879B113F36241007416D5 /* PlayerView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		4AE0A48113EDD5D800B5482A /* States */ = {
+			isa = PBXGroup;
+			children = (
+				4AE0A47213EDD5BD00B5482A /* IntroScreenViewController.h */,
+				4AE0A47713EDD5BD00B5482A /* IntroScreenViewController.m */,
+				4AE0A47513EDD5BD00B5482A /* IntroScreenViewController.xib */,
+				4AE0A48F13EDE1E700B5482A /* GameSettingsPickerViewController.h */,
+				4AE0A49013EDE1E700B5482A /* GameSettingsPickerViewController.m */,
+				4AE0A49113EDE1E700B5482A /* GameSettingsPickerViewController.xib */,
+				4AD8149813F098E80040D194 /* PlayerNameViewController.h */,
+				4AD8149913F098E80040D194 /* PlayerNameViewController.m */,
+				4AD8149A13F098E80040D194 /* PlayerNameViewController.xib */,
+			);
+			name = States;
+			sourceTree = "<group>";
+		};
+		4AE0A48213EDD5F200B5482A /* Universal */ = {
+			isa = PBXGroup;
+			children = (
+				4AE0A47113EDD5BD00B5482A /* AppConstants.h */,
+				4AE0A47613EDD5BD00B5482A /* AppConstants.m */,
+			);
+			name = Universal;
+			sourceTree = "<group>";
+		};
+		4AE0A48313EDD60500B5482A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4AE0A47313EDD5BD00B5482A /* Player.h */,
+				4AE0A47813EDD5BD00B5482A /* Player.m */,
+				4AE0A48C13EDDEB600B5482A /* Game.h */,
+				4AE0A48D13EDDEB600B5482A /* Game.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		4AF1EB4B13F3762500C3F9AD /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				4AF1EB4E13F3A42100C3F9AD /* personIcon.png */,
+				4AF1EB4613F3762000C3F9AD /* ball.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4AE0A42E13EDD57500B5482A /* Werewolves */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4AE0A46B13EDD57500B5482A /* Build configuration list for PBXNativeTarget "Werewolves" */;
+			buildPhases = (
+				4AE0A42B13EDD57500B5482A /* Sources */,
+				4AE0A42C13EDD57500B5482A /* Frameworks */,
+				4AE0A42D13EDD57500B5482A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Werewolves;
+			productName = Werewolves;
+			productReference = 4AE0A42F13EDD57500B5482A /* Werewolves.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4AE0A45713EDD57500B5482A /* WerewolvesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4AE0A46E13EDD57500B5482A /* Build configuration list for PBXNativeTarget "WerewolvesTests" */;
+			buildPhases = (
+				4AE0A45313EDD57500B5482A /* Sources */,
+				4AE0A45413EDD57500B5482A /* Frameworks */,
+				4AE0A45513EDD57500B5482A /* Resources */,
+				4AE0A45613EDD57500B5482A /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4AE0A45D13EDD57500B5482A /* PBXTargetDependency */,
+			);
+			name = WerewolvesTests;
+			productName = WerewolvesTests;
+			productReference = 4AE0A45813EDD57500B5482A /* WerewolvesTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4AE0A42613EDD57500B5482A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "UW Madison";
+			};
+			buildConfigurationList = 4AE0A42913EDD57500B5482A /* Build configuration list for PBXProject "Werewolves" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4AE0A42413EDD57500B5482A;
+			productRefGroup = 4AE0A43013EDD57500B5482A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4AE0A42E13EDD57500B5482A /* Werewolves */,
+				4AE0A45713EDD57500B5482A /* WerewolvesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4AE0A42D13EDD57500B5482A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AE0A43E13EDD57500B5482A /* InfoPlist.strings in Resources */,
+				4AE0A44B13EDD57500B5482A /* MainWindow_iPhone.xib in Resources */,
+				4AE0A45213EDD57500B5482A /* MainWindow_iPad.xib in Resources */,
+				4AE0A47A13EDD5BD00B5482A /* IntroScreenViewController.xib in Resources */,
+				4AE0A49313EDE1E700B5482A /* GameSettingsPickerViewController.xib in Resources */,
+				4AD8149C13F098E80040D194 /* PlayerNameViewController.xib in Resources */,
+				4AF1EB4813F3762000C3F9AD /* ball.png in Resources */,
+				4AF1EB4F13F3A42100C3F9AD /* personIcon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4AE0A45513EDD57500B5482A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AE0A46313EDD57500B5482A /* InfoPlist.strings in Resources */,
+				4AE0A46613EDD57500B5482A /* WerewolvesTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4AE0A45613EDD57500B5482A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4AE0A42B13EDD57500B5482A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AE0A44113EDD57500B5482A /* main.m in Sources */,
+				4AE0A44413EDD57500B5482A /* WerewolvesAppDelegate.m in Sources */,
+				4AE0A44813EDD57500B5482A /* WerewolvesAppDelegate_iPhone.m in Sources */,
+				4AE0A44F13EDD57500B5482A /* WerewolvesAppDelegate_iPad.m in Sources */,
+				4AE0A47B13EDD5BD00B5482A /* AppConstants.m in Sources */,
+				4AE0A47C13EDD5BD00B5482A /* IntroScreenViewController.m in Sources */,
+				4AE0A47D13EDD5BD00B5482A /* Player.m in Sources */,
+				4AE0A48E13EDDEB600B5482A /* Game.m in Sources */,
+				4AE0A49213EDE1E700B5482A /* GameSettingsPickerViewController.m in Sources */,
+				4AE0A49613EDE63C00B5482A /* CirclePositionView.m in Sources */,
+				4AD8149B13F098E80040D194 /* PlayerNameViewController.m in Sources */,
+				4A2879B213F36241007416D5 /* PlayerView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4AE0A45313EDD57500B5482A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AE0A46813EDD57500B5482A /* WerewolvesTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4AE0A45D13EDD57500B5482A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4AE0A42E13EDD57500B5482A /* Werewolves */;
+			targetProxy = 4AE0A45C13EDD57500B5482A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4AE0A43C13EDD57500B5482A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4AE0A43D13EDD57500B5482A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4AE0A44913EDD57500B5482A /* MainWindow_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4AE0A44A13EDD57500B5482A /* en */,
+			);
+			name = MainWindow_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		4AE0A45013EDD57500B5482A /* MainWindow_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4AE0A45113EDD57500B5482A /* en */,
+			);
+			name = MainWindow_iPad.xib;
+			sourceTree = "<group>";
+		};
+		4AE0A46113EDD57500B5482A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4AE0A46213EDD57500B5482A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4AE0A46913EDD57500B5482A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4AE0A46A13EDD57500B5482A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4AE0A46C13EDD57500B5482A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Werewolves/Werewolves-Prefix.pch";
+				INFOPLIST_FILE = "Werewolves/Werewolves-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4AE0A46D13EDD57500B5482A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Werewolves/Werewolves-Prefix.pch";
+				INFOPLIST_FILE = "Werewolves/Werewolves-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		4AE0A46F13EDD57500B5482A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Werewolves.app/Werewolves";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WerewolvesTests/WerewolvesTests-Prefix.pch";
+				INFOPLIST_FILE = "WerewolvesTests/WerewolvesTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		4AE0A47013EDD57500B5482A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Werewolves.app/Werewolves";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WerewolvesTests/WerewolvesTests-Prefix.pch";
+				INFOPLIST_FILE = "WerewolvesTests/WerewolvesTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4AE0A42913EDD57500B5482A /* Build configuration list for PBXProject "Werewolves" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4AE0A46913EDD57500B5482A /* Debug */,
+				4AE0A46A13EDD57500B5482A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4AE0A46B13EDD57500B5482A /* Build configuration list for PBXNativeTarget "Werewolves" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4AE0A46C13EDD57500B5482A /* Debug */,
+				4AE0A46D13EDD57500B5482A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4AE0A46E13EDD57500B5482A /* Build configuration list for PBXNativeTarget "WerewolvesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4AE0A46F13EDD57500B5482A /* Debug */,
+				4AE0A47013EDD57500B5482A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4AE0A42613EDD57500B5482A /* Project object */;
+}
