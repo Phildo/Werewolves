@@ -53,14 +53,24 @@
     self.scrollyPants.contentSize = CGSizeMake(320, 20+51*[[Game instance].players count]);
     for(int x = 0; x < [[Game instance].players count]; x++)
     {
-        UITextField *temp = [[UITextField alloc] initWithFrame:CGRectMake(60, yPos, 200, 31)];
-        temp.delegate = self;
-        temp.borderStyle = UITextBorderStyleRoundedRect;
-        temp.tag = x;
-        temp.clearsOnBeginEditing = YES;
-        temp.text = ((Player *)[[Game instance].players objectAtIndex:x]).name;
-        [self.scrollyPants addSubview:temp];
-        [temp release];
+        UITextField *tempText = [[UITextField alloc] initWithFrame:CGRectMake(60, yPos, 200, 31)];
+        tempText.delegate = self;
+        tempText.borderStyle = UITextBorderStyleRoundedRect;
+        tempText.tag = x;
+        tempText.clearsOnBeginEditing = YES;
+        tempText.text = ((Player *)[[Game instance].players objectAtIndex:x]).name;
+        [self.scrollyPants addSubview:tempText];
+        [tempText release];
+        
+        CirclePositionView *tempCV = [[CirclePositionView alloc] initWithFrame:CGRectMake(265, yPos-8, 50, 50)];
+        tempCV.backgroundColor = [UIColor clearColor];
+        tempCV.delegate = self;
+        tempCV.location = x;
+        tempCV.count = [Game instance].numPlayers;
+        [tempCV setup];
+        [self.scrollyPants addSubview:tempCV];
+        [tempCV release];
+        
         yPos+=51;
     }
     [super viewDidLoad];

@@ -17,6 +17,10 @@
     int HUNTER;
     int HEALER;
     
+    int AWAKE;
+    int SLEEP;
+    int DEAD;
+    
     int DOT;
     int PLAYER;
 }
@@ -27,6 +31,10 @@
 @property (readonly) int WEREWOLF;
 @property (readonly) int HUNTER;
 @property (readonly) int HEALER;
+
+@property (readonly) int AWAKE;
+@property (readonly) int SLEEP;
+@property (readonly) int DEAD;
 
 @property (readonly) int DOT;
 @property (readonly) int PLAYER;

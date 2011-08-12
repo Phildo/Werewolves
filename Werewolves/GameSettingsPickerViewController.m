@@ -106,21 +106,19 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
+- (void) viewWillAppear:(BOOL)animated
 {
-    
-    [super viewDidLoad];
-    self.layout.location = 4;
+    self.layout.location = -1;
     self.layout.delegate = self;
     self.layout.count = [Game instance].numPlayers;
     self.werewolf.delegate = self;
     self.villager.delegate = self;
     self.hunter.delegate = self;
     self.healer.delegate = self;
-    [self.werewolf setAppearanceToType:[AppConstants instance].WEREWOLF asleep:NO faded:NO];
-    [self.villager setAppearanceToType:[AppConstants instance].VILLAGER asleep:NO faded:NO];
-    [self.hunter setAppearanceToType:[AppConstants instance].HUNTER asleep:NO faded:YES];
-    [self.healer setAppearanceToType:[AppConstants instance].HEALER asleep:NO faded:YES];
+    [self.werewolf setAppearanceToType:[AppConstants instance].WEREWOLF state:[AppConstants instance].AWAKE faded:NO];
+    [self.villager setAppearanceToType:[AppConstants instance].VILLAGER state:[AppConstants instance].AWAKE faded:NO];
+    [self.hunter setAppearanceToType:[AppConstants instance].HUNTER state:[AppConstants instance].AWAKE faded:YES];
+    [self.healer setAppearanceToType:[AppConstants instance].HEALER state:[AppConstants instance].AWAKE faded:YES];
     UIGestureRecognizer *tapHunter = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hunterTapped)];
     UIGestureRecognizer *tapHealer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(healerTapped)];
     [self.hunter addGestureRecognizer:tapHunter];
@@ -129,8 +127,14 @@
     [tapHealer release];
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+}
+
 - (void)hunterTapped
 {
+    NSLog(@"Hunter Tapped");
     if([Game instance].hunter)
     {
         [Game instance].hunter = NO;

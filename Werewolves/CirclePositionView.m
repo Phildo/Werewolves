@@ -25,7 +25,7 @@
     return self;
 }
 
-- (void)awakeFromNib
+- (void)setup
 {
     self.radius = self.bounds.size.width/2;
     CGPoint tempMid;
@@ -33,6 +33,11 @@
     tempMid.y = self.bounds.origin.y + self.radius;
     self.midPoint = tempMid;
     [self setNeedsDisplay];
+}
+
+- (void)awakeFromNib
+{
+    [self setup];
 }
 
 - (void)setCount:(int)newCount

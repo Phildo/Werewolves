@@ -15,6 +15,10 @@
 #define C_HUNTER 2
 #define C_HEALER 3
 
+#define C_AWAKE 0
+#define C_SLEEP 1
+#define C_DEAD 2
+
 #define C_DOT 0
 #define C_PLAYER 1
 
@@ -26,6 +30,10 @@
 @synthesize WEREWOLF;
 @synthesize HUNTER;
 @synthesize HEALER;
+
+@synthesize AWAKE;
+@synthesize SLEEP;
+@synthesize DEAD;
 
 @synthesize DOT;
 @synthesize PLAYER;
@@ -49,6 +57,10 @@ static AppConstants* singletonInstance = nil;
         WEREWOLF = C_WEREWOLF;
         HUNTER = C_HUNTER;
         HEALER = C_HEALER;
+        
+        AWAKE = C_AWAKE;
+        SLEEP = C_SLEEP;
+        DEAD = C_DEAD;
         
         DOT = C_DOT;
         PLAYER = C_PLAYER;

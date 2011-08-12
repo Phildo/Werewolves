@@ -7,15 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AppConstants.h"
 
 @interface PlayerView : UIImageView
 {
     id delegate;
+    int type;
+    int state;
+    BOOL faded;
 }
 
 @property (assign) id delegate;
+@property int type;
+@property int state;
+@property BOOL faded;
 
-- (void)setAppearanceToType:(int)type asleep:(BOOL)sleep faded:(BOOL)faded;
+- (void)setAppearanceToType:(int)type state:(int)state faded:(BOOL)faded;
 - (void)dim:(BOOL)dim;
 - (void)incrementType;
 @end

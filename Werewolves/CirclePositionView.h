@@ -25,4 +25,6 @@
 @property CGPoint midPoint;
 @property CGFloat radius;
 
+- (void)setup;
+
 @end

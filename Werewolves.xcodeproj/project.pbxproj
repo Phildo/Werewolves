@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		4A2879B213F36241007416D5 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2879B113F36241007416D5 /* PlayerView.m */; };
+		4AA1164513F4EEF900364F9F /* healer_sleep.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1163913F4EEF900364F9F /* healer_sleep.png */; };
+		4AA1164613F4EEF900364F9F /* hunter_sleep.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1163A13F4EEF900364F9F /* hunter_sleep.png */; };
+		4AA1164713F4EEF900364F9F /* healer_dead.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1163B13F4EEF900364F9F /* healer_dead.png */; };
+		4AA1164813F4EEF900364F9F /* hunter_dead.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1163C13F4EEF900364F9F /* hunter_dead.png */; };
+		4AA1164913F4EEF900364F9F /* villager_dead.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1163D13F4EEF900364F9F /* villager_dead.png */; };
+		4AA1164A13F4EEF900364F9F /* healer.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1163E13F4EEF900364F9F /* healer.png */; };
+		4AA1164B13F4EEF900364F9F /* hunter.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1163F13F4EEF900364F9F /* hunter.png */; };
+		4AA1164C13F4EEF900364F9F /* villager_sleep.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1164013F4EEF900364F9F /* villager_sleep.png */; };
+		4AA1164D13F4EEF900364F9F /* villager.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1164113F4EEF900364F9F /* villager.png */; };
+		4AA1164E13F4EEF900364F9F /* werewolf_dead.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1164213F4EEF900364F9F /* werewolf_dead.png */; };
+		4AA1164F13F4EEF900364F9F /* werewolf_sleep.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1164313F4EEF900364F9F /* werewolf_sleep.png */; };
+		4AA1165013F4EEF900364F9F /* werewolf.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1164413F4EEF900364F9F /* werewolf.png */; };
 		4AD8149B13F098E80040D194 /* PlayerNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8149913F098E80040D194 /* PlayerNameViewController.m */; };
 		4AD8149C13F098E80040D194 /* PlayerNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AD8149A13F098E80040D194 /* PlayerNameViewController.xib */; };
 		4AE0A43413EDD57500B5482A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE0A43313EDD57500B5482A /* UIKit.framework */; };
@@ -51,6 +63,18 @@
 /* Begin PBXFileReference section */
 		4A2879B013F36241007416D5 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
 		4A2879B113F36241007416D5 /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
+		4AA1163913F4EEF900364F9F /* healer_sleep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = healer_sleep.png; sourceTree = "<group>"; };
+		4AA1163A13F4EEF900364F9F /* hunter_sleep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hunter_sleep.png; sourceTree = "<group>"; };
+		4AA1163B13F4EEF900364F9F /* healer_dead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = healer_dead.png; sourceTree = "<group>"; };
+		4AA1163C13F4EEF900364F9F /* hunter_dead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hunter_dead.png; sourceTree = "<group>"; };
+		4AA1163D13F4EEF900364F9F /* villager_dead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = villager_dead.png; sourceTree = "<group>"; };
+		4AA1163E13F4EEF900364F9F /* healer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = healer.png; sourceTree = "<group>"; };
+		4AA1163F13F4EEF900364F9F /* hunter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hunter.png; sourceTree = "<group>"; };
+		4AA1164013F4EEF900364F9F /* villager_sleep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = villager_sleep.png; sourceTree = "<group>"; };
+		4AA1164113F4EEF900364F9F /* villager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = villager.png; sourceTree = "<group>"; };
+		4AA1164213F4EEF900364F9F /* werewolf_dead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = werewolf_dead.png; sourceTree = "<group>"; };
+		4AA1164313F4EEF900364F9F /* werewolf_sleep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = werewolf_sleep.png; sourceTree = "<group>"; };
+		4AA1164413F4EEF900364F9F /* werewolf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = werewolf.png; sourceTree = "<group>"; };
 		4AD8149813F098E80040D194 /* PlayerNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerNameViewController.h; sourceTree = "<group>"; };
 		4AD8149913F098E80040D194 /* PlayerNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerNameViewController.m; sourceTree = "<group>"; };
 		4AD8149A13F098E80040D194 /* PlayerNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerNameViewController.xib; sourceTree = "<group>"; };
@@ -118,6 +142,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4AA1163713F4EEED00364F9F /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				4AA1163913F4EEF900364F9F /* healer_sleep.png */,
+				4AA1163A13F4EEF900364F9F /* hunter_sleep.png */,
+				4AA1163B13F4EEF900364F9F /* healer_dead.png */,
+				4AA1163C13F4EEF900364F9F /* hunter_dead.png */,
+				4AA1163D13F4EEF900364F9F /* villager_dead.png */,
+				4AA1163E13F4EEF900364F9F /* healer.png */,
+				4AA1163F13F4EEF900364F9F /* hunter.png */,
+				4AA1164013F4EEF900364F9F /* villager_sleep.png */,
+				4AA1164113F4EEF900364F9F /* villager.png */,
+				4AA1164213F4EEF900364F9F /* werewolf_dead.png */,
+				4AA1164313F4EEF900364F9F /* werewolf_sleep.png */,
+				4AA1164413F4EEF900364F9F /* werewolf.png */,
+			);
+			name = Characters;
+			sourceTree = "<group>";
+		};
 		4AE0A42413EDD57500B5482A = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +316,7 @@
 		4AF1EB4B13F3762500C3F9AD /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4AA1163713F4EEED00364F9F /* Characters */,
 				4AF1EB4E13F3A42100C3F9AD /* personIcon.png */,
 				4AF1EB4613F3762000C3F9AD /* ball.png */,
 			);
@@ -357,6 +401,18 @@
 				4AD8149C13F098E80040D194 /* PlayerNameViewController.xib in Resources */,
 				4AF1EB4813F3762000C3F9AD /* ball.png in Resources */,
 				4AF1EB4F13F3A42100C3F9AD /* personIcon.png in Resources */,
+				4AA1164513F4EEF900364F9F /* healer_sleep.png in Resources */,
+				4AA1164613F4EEF900364F9F /* hunter_sleep.png in Resources */,
+				4AA1164713F4EEF900364F9F /* healer_dead.png in Resources */,
+				4AA1164813F4EEF900364F9F /* hunter_dead.png in Resources */,
+				4AA1164913F4EEF900364F9F /* villager_dead.png in Resources */,
+				4AA1164A13F4EEF900364F9F /* healer.png in Resources */,
+				4AA1164B13F4EEF900364F9F /* hunter.png in Resources */,
+				4AA1164C13F4EEF900364F9F /* villager_sleep.png in Resources */,
+				4AA1164D13F4EEF900364F9F /* villager.png in Resources */,
+				4AA1164E13F4EEF900364F9F /* werewolf_dead.png in Resources */,
+				4AA1164F13F4EEF900364F9F /* werewolf_sleep.png in Resources */,
+				4AA1165013F4EEF900364F9F /* werewolf.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

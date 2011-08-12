@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Game.h"
 #import "Player.h"
+#import "PlayerView.h"
+#import "CirclePositionView.h"
 
 @interface PlayerNameViewController : UIViewController <UIScrollViewDelegate,UITextFieldDelegate>{
     IBOutlet UIScrollView *scrollyPants;
