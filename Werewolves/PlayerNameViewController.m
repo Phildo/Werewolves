@@ -47,12 +47,17 @@
     self.scrollyPants = nil;
 }
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
     int yPos = 20;
     self.scrollyPants.contentSize = CGSizeMake(320, 20+51*[[Game instance].players count]);
     for(int x = 0; x < [[Game instance].players count]; x++)
     {
+        PlayerView *tempPlayer = [[PlayerView alloc] initWithFrame:CGRectMake(15, yPos-10, 32, 48)];
+        [tempPlayer setAppearanceToType:[AppConstants instance].VILLAGER state:[AppConstants instance].AWAKE faded:NO];
+        [self.scrollyPants addSubview:tempPlayer];
+        [tempPlayer release];
+        
         UITextField *tempText = [[UITextField alloc] initWithFrame:CGRectMake(60, yPos, 200, 31)];
         tempText.delegate = self;
         tempText.borderStyle = UITextBorderStyleRoundedRect;
@@ -73,6 +78,10 @@
         
         yPos+=51;
     }
+}
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
 }

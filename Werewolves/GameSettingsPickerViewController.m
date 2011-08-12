@@ -119,8 +119,14 @@
     [self.villager setAppearanceToType:[AppConstants instance].VILLAGER state:[AppConstants instance].AWAKE faded:NO];
     [self.hunter setAppearanceToType:[AppConstants instance].HUNTER state:[AppConstants instance].AWAKE faded:YES];
     [self.healer setAppearanceToType:[AppConstants instance].HEALER state:[AppConstants instance].AWAKE faded:YES];
-    UIGestureRecognizer *tapHunter = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hunterTapped)];
-    UIGestureRecognizer *tapHealer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(healerTapped)];
+    UITapGestureRecognizer *tapHunter = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hunterTapped)];
+    UITapGestureRecognizer *tapHealer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(healerTapped)];
+    [self.hunter setUserInteractionEnabled:YES];
+    [self.healer setUserInteractionEnabled:YES];
+    [tapHunter setNumberOfTapsRequired:1];
+    [tapHealer setNumberOfTapsRequired:1];
+    [tapHunter setNumberOfTouchesRequired:1];
+    [tapHealer setNumberOfTouchesRequired:1];
     [self.hunter addGestureRecognizer:tapHunter];
     [self.healer addGestureRecognizer:tapHealer];
 	[tapHunter release];
@@ -134,7 +140,6 @@
 
 - (void)hunterTapped
 {
-    NSLog(@"Hunter Tapped");
     if([Game instance].hunter)
     {
         [Game instance].hunter = NO;
