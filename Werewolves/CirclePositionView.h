@@ -14,6 +14,9 @@
     id delegate;
     int location;
     int count;
+    int wolves;
+    BOOL hunter;
+    BOOL healer;
     
     CGPoint midPoint;
     CGFloat radius;
@@ -22,6 +25,9 @@
 @property (assign) id delegate;
 @property int location;
 @property int count;
+@property int wolves;
+@property BOOL hunter;
+@property BOOL healer;
 @property CGPoint midPoint;
 @property CGFloat radius;
 

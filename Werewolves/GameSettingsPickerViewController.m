@@ -64,6 +64,7 @@
     self.numPlayers.text = [NSString stringWithFormat:@"%d People", (int) sender.value];
     [Game instance].numPlayers = (int) sender.value;
     self.layout.count = [Game instance].numPlayers;
+    self.layout.wolves = [Game instance].numWerewolves;
 }
 
 - (IBAction)splitChanged:(UISlider *)sender
@@ -72,6 +73,7 @@
     self.numWerewolves.text = [NSString stringWithFormat:@"%d", (int) sender.value];
     self.numVillagers.text = [NSString stringWithFormat:@"%d", ((int) self.playersSlider.value) - ((int) sender.value)];
     [Game instance].numWerewolves = (int) sender.value;
+    self.layout.wolves = [Game instance].numWerewolves;
 }
 
 - (IBAction)startButtonPressed
@@ -109,6 +111,7 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     self.layout.location = -1;
+    self.layout.wolves = 3;
     self.layout.delegate = self;
     self.layout.count = [Game instance].numPlayers;
     self.werewolf.delegate = self;
@@ -150,6 +153,7 @@
         [Game instance].hunter = YES;
         [self.hunter dim:NO];
     }
+    self.layout.hunter = [Game instance].hunter;
 }
 
 - (void)healerTapped
@@ -164,6 +168,7 @@
         [Game instance].healer = YES;
         [self.healer dim:NO];
     }
+    self.layout.healer = [Game instance].healer;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

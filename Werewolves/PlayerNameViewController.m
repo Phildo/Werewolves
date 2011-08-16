@@ -29,7 +29,9 @@
 
 - (IBAction) nextButtonPressed
 {
-    
+    WerewolfPickerViewController *wolfPicker = [[WerewolfPickerViewController alloc] init];
+    [self.navigationController pushViewController:wolfPicker animated:YES];
+    [wolfPicker release];
 }
 
 - (void)didReceiveMemoryWarning

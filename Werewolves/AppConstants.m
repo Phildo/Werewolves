@@ -20,7 +20,11 @@
 #define C_DEAD 2
 
 #define C_DOT 0
-#define C_PLAYER 1
+#define C_PLAYER_GREEN 1
+#define C_PLAYER_RED 2
+#define C_PLAYER_BROWN 3
+#define C_PLAYER_BLUE 4
+
 
 @implementation AppConstants
 
@@ -36,7 +40,10 @@
 @synthesize DEAD;
 
 @synthesize DOT;
-@synthesize PLAYER;
+@synthesize PLAYER_GREEN;
+@synthesize PLAYER_RED;
+@synthesize PLAYER_BROWN;
+@synthesize PLAYER_BLUE;
 
 static AppConstants* singletonInstance = nil;
 
@@ -63,7 +70,10 @@ static AppConstants* singletonInstance = nil;
         DEAD = C_DEAD;
         
         DOT = C_DOT;
-        PLAYER = C_PLAYER;
+        PLAYER_GREEN = C_PLAYER_GREEN;
+        PLAYER_RED = C_PLAYER_RED;
+        PLAYER_BROWN = C_PLAYER_BROWN;
+        PLAYER_BLUE = C_PLAYER_BLUE;
     }
     return self;
 }

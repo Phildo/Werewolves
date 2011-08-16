@@ -22,7 +22,10 @@
     int DEAD;
     
     int DOT;
-    int PLAYER;
+    int PLAYER_GREEN;
+    int PLAYER_RED;
+    int PLAYER_BROWN;
+    int PLAYER_BLUE;
 }
 
 @property (readonly) int MAX_NUM_PLAYERS;
@@ -37,7 +40,10 @@
 @property (readonly) int DEAD;
 
 @property (readonly) int DOT;
-@property (readonly) int PLAYER;
+@property (readonly) int PLAYER_GREEN;
+@property (readonly) int PLAYER_RED;
+@property (readonly) int PLAYER_BROWN;
+@property (readonly) int PLAYER_BLUE;
 
 + (AppConstants *) instance;
 

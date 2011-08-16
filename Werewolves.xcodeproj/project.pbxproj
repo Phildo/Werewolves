@@ -20,6 +20,12 @@
 		4AA1164E13F4EEF900364F9F /* werewolf_dead.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1164213F4EEF900364F9F /* werewolf_dead.png */; };
 		4AA1164F13F4EEF900364F9F /* werewolf_sleep.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1164313F4EEF900364F9F /* werewolf_sleep.png */; };
 		4AA1165013F4EEF900364F9F /* werewolf.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1164413F4EEF900364F9F /* werewolf.png */; };
+		4AC3E15913FA365300083CC4 /* WerewolfPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC3E15713FA365300083CC4 /* WerewolfPickerViewController.m */; };
+		4AC3E15A13FA365300083CC4 /* WerewolfPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC3E15813FA365300083CC4 /* WerewolfPickerViewController.xib */; };
+		4AC3E15D13FA373D00083CC4 /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC3E15C13FA373D00083CC4 /* fire.png */; };
+		4AC3E15F13FA39A700083CC4 /* personIcon_brown.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC3E15E13FA39A600083CC4 /* personIcon_brown.png */; };
+		4AC3E16113FA39D300083CC4 /* personIcon_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC3E16013FA39D300083CC4 /* personIcon_red.png */; };
+		4AC3E16313FA39DA00083CC4 /* personIcon_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC3E16213FA39DA00083CC4 /* personIcon_blue.png */; };
 		4AD8149B13F098E80040D194 /* PlayerNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8149913F098E80040D194 /* PlayerNameViewController.m */; };
 		4AD8149C13F098E80040D194 /* PlayerNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AD8149A13F098E80040D194 /* PlayerNameViewController.xib */; };
 		4AE0A43413EDD57500B5482A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE0A43313EDD57500B5482A /* UIKit.framework */; };
@@ -47,7 +53,7 @@
 		4AE0A49313EDE1E700B5482A /* GameSettingsPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AE0A49113EDE1E700B5482A /* GameSettingsPickerViewController.xib */; };
 		4AE0A49613EDE63C00B5482A /* CirclePositionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0A49513EDE63C00B5482A /* CirclePositionView.m */; };
 		4AF1EB4813F3762000C3F9AD /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AF1EB4613F3762000C3F9AD /* ball.png */; };
-		4AF1EB4F13F3A42100C3F9AD /* personIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AF1EB4E13F3A42100C3F9AD /* personIcon.png */; };
+		4AF1EB4F13F3A42100C3F9AD /* personIcon_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AF1EB4E13F3A42100C3F9AD /* personIcon_green.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +81,13 @@
 		4AA1164213F4EEF900364F9F /* werewolf_dead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = werewolf_dead.png; sourceTree = "<group>"; };
 		4AA1164313F4EEF900364F9F /* werewolf_sleep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = werewolf_sleep.png; sourceTree = "<group>"; };
 		4AA1164413F4EEF900364F9F /* werewolf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = werewolf.png; sourceTree = "<group>"; };
+		4AC3E15613FA365300083CC4 /* WerewolfPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WerewolfPickerViewController.h; sourceTree = "<group>"; };
+		4AC3E15713FA365300083CC4 /* WerewolfPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WerewolfPickerViewController.m; sourceTree = "<group>"; };
+		4AC3E15813FA365300083CC4 /* WerewolfPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WerewolfPickerViewController.xib; sourceTree = "<group>"; };
+		4AC3E15C13FA373D00083CC4 /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
+		4AC3E15E13FA39A600083CC4 /* personIcon_brown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personIcon_brown.png; sourceTree = "<group>"; };
+		4AC3E16013FA39D300083CC4 /* personIcon_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personIcon_red.png; sourceTree = "<group>"; };
+		4AC3E16213FA39DA00083CC4 /* personIcon_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personIcon_blue.png; sourceTree = "<group>"; };
 		4AD8149813F098E80040D194 /* PlayerNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerNameViewController.h; sourceTree = "<group>"; };
 		4AD8149913F098E80040D194 /* PlayerNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerNameViewController.m; sourceTree = "<group>"; };
 		4AD8149A13F098E80040D194 /* PlayerNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerNameViewController.xib; sourceTree = "<group>"; };
@@ -115,7 +128,7 @@
 		4AE0A49413EDE63C00B5482A /* CirclePositionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CirclePositionView.h; sourceTree = "<group>"; };
 		4AE0A49513EDE63C00B5482A /* CirclePositionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CirclePositionView.m; sourceTree = "<group>"; };
 		4AF1EB4613F3762000C3F9AD /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
-		4AF1EB4E13F3A42100C3F9AD /* personIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personIcon.png; sourceTree = "<group>"; };
+		4AF1EB4E13F3A42100C3F9AD /* personIcon_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personIcon_green.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +302,9 @@
 				4AD8149813F098E80040D194 /* PlayerNameViewController.h */,
 				4AD8149913F098E80040D194 /* PlayerNameViewController.m */,
 				4AD8149A13F098E80040D194 /* PlayerNameViewController.xib */,
+				4AC3E15613FA365300083CC4 /* WerewolfPickerViewController.h */,
+				4AC3E15713FA365300083CC4 /* WerewolfPickerViewController.m */,
+				4AC3E15813FA365300083CC4 /* WerewolfPickerViewController.xib */,
 			);
 			name = States;
 			sourceTree = "<group>";
@@ -317,8 +333,12 @@
 			isa = PBXGroup;
 			children = (
 				4AA1163713F4EEED00364F9F /* Characters */,
-				4AF1EB4E13F3A42100C3F9AD /* personIcon.png */,
+				4AF1EB4E13F3A42100C3F9AD /* personIcon_green.png */,
+				4AC3E16213FA39DA00083CC4 /* personIcon_blue.png */,
+				4AC3E16013FA39D300083CC4 /* personIcon_red.png */,
+				4AC3E15E13FA39A600083CC4 /* personIcon_brown.png */,
 				4AF1EB4613F3762000C3F9AD /* ball.png */,
+				4AC3E15C13FA373D00083CC4 /* fire.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -400,7 +420,7 @@
 				4AE0A49313EDE1E700B5482A /* GameSettingsPickerViewController.xib in Resources */,
 				4AD8149C13F098E80040D194 /* PlayerNameViewController.xib in Resources */,
 				4AF1EB4813F3762000C3F9AD /* ball.png in Resources */,
-				4AF1EB4F13F3A42100C3F9AD /* personIcon.png in Resources */,
+				4AF1EB4F13F3A42100C3F9AD /* personIcon_green.png in Resources */,
 				4AA1164513F4EEF900364F9F /* healer_sleep.png in Resources */,
 				4AA1164613F4EEF900364F9F /* hunter_sleep.png in Resources */,
 				4AA1164713F4EEF900364F9F /* healer_dead.png in Resources */,
@@ -413,6 +433,11 @@
 				4AA1164E13F4EEF900364F9F /* werewolf_dead.png in Resources */,
 				4AA1164F13F4EEF900364F9F /* werewolf_sleep.png in Resources */,
 				4AA1165013F4EEF900364F9F /* werewolf.png in Resources */,
+				4AC3E15A13FA365300083CC4 /* WerewolfPickerViewController.xib in Resources */,
+				4AC3E15D13FA373D00083CC4 /* fire.png in Resources */,
+				4AC3E15F13FA39A700083CC4 /* personIcon_brown.png in Resources */,
+				4AC3E16113FA39D300083CC4 /* personIcon_red.png in Resources */,
+				4AC3E16313FA39DA00083CC4 /* personIcon_blue.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +485,7 @@
 				4AE0A49613EDE63C00B5482A /* CirclePositionView.m in Sources */,
 				4AD8149B13F098E80040D194 /* PlayerNameViewController.m in Sources */,
 				4A2879B213F36241007416D5 /* PlayerView.m in Sources */,
+				4AC3E15913FA365300083CC4 /* WerewolfPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
