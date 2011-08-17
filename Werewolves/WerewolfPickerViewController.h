@@ -7,17 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Game.h"
+#import "Player.h"
+#import "CampfireCircleView.h"
 
 
 @interface WerewolfPickerViewController : UIViewController {
     int numLeft;
     IBOutlet UILabel *numLeftLabel;
     IBOutlet UIButton *done;
+    IBOutlet CampfireCircleView *campFireCircle;
 }
 
 @property int numLeft;
 @property (retain) IBOutlet UILabel *numLeftLabel;
 @property (retain) IBOutlet UIButton *done;
+@property (retain) IBOutlet CampfireCircleView *campFireCircle;
+
 
 - (IBAction)backButtonPressed;
 - (IBAction)diceButtonPressed;

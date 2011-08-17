@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4A2879B213F36241007416D5 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2879B113F36241007416D5 /* PlayerView.m */; };
+		4A55AF3013FAD5840069190A /* CampfireCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A55AF2F13FAD5840069190A /* CampfireCircleView.m */; };
+		4A55AF5013FB59AA0069190A /* img_not_found.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A55AF4F13FB59AA0069190A /* img_not_found.png */; };
 		4AA1164513F4EEF900364F9F /* healer_sleep.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1163913F4EEF900364F9F /* healer_sleep.png */; };
 		4AA1164613F4EEF900364F9F /* hunter_sleep.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1163A13F4EEF900364F9F /* hunter_sleep.png */; };
 		4AA1164713F4EEF900364F9F /* healer_dead.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1163B13F4EEF900364F9F /* healer_dead.png */; };
@@ -69,6 +71,9 @@
 /* Begin PBXFileReference section */
 		4A2879B013F36241007416D5 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
 		4A2879B113F36241007416D5 /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
+		4A55AF2E13FAD5840069190A /* CampfireCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampfireCircleView.h; sourceTree = "<group>"; };
+		4A55AF2F13FAD5840069190A /* CampfireCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampfireCircleView.m; sourceTree = "<group>"; };
+		4A55AF4F13FB59AA0069190A /* img_not_found.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_not_found.png; sourceTree = "<group>"; };
 		4AA1163913F4EEF900364F9F /* healer_sleep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = healer_sleep.png; sourceTree = "<group>"; };
 		4AA1163A13F4EEF900364F9F /* hunter_sleep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hunter_sleep.png; sourceTree = "<group>"; };
 		4AA1163B13F4EEF900364F9F /* healer_dead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = healer_dead.png; sourceTree = "<group>"; };
@@ -286,6 +291,8 @@
 				4AE0A49513EDE63C00B5482A /* CirclePositionView.m */,
 				4A2879B013F36241007416D5 /* PlayerView.h */,
 				4A2879B113F36241007416D5 /* PlayerView.m */,
+				4A55AF2E13FAD5840069190A /* CampfireCircleView.h */,
+				4A55AF2F13FAD5840069190A /* CampfireCircleView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -339,6 +346,7 @@
 				4AC3E15E13FA39A600083CC4 /* personIcon_brown.png */,
 				4AF1EB4613F3762000C3F9AD /* ball.png */,
 				4AC3E15C13FA373D00083CC4 /* fire.png */,
+				4A55AF4F13FB59AA0069190A /* img_not_found.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -438,6 +446,7 @@
 				4AC3E15F13FA39A700083CC4 /* personIcon_brown.png in Resources */,
 				4AC3E16113FA39D300083CC4 /* personIcon_red.png in Resources */,
 				4AC3E16313FA39DA00083CC4 /* personIcon_blue.png in Resources */,
+				4A55AF5013FB59AA0069190A /* img_not_found.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +495,7 @@
 				4AD8149B13F098E80040D194 /* PlayerNameViewController.m in Sources */,
 				4A2879B213F36241007416D5 /* PlayerView.m in Sources */,
 				4AC3E15913FA365300083CC4 /* WerewolfPickerViewController.m in Sources */,
+				4A55AF3013FAD5840069190A /* CampfireCircleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

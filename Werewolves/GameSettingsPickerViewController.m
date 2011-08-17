@@ -111,17 +111,19 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     self.layout.location = -1;
-    self.layout.wolves = 3;
-    self.layout.delegate = self;
+    self.layout.wolves = [Game instance].numWerewolves;
+    self.layout.hunter = [Game instance].hunter;
+    self.layout.healer = [Game instance].healer;
     self.layout.count = [Game instance].numPlayers;
+    self.layout.delegate = self;
     self.werewolf.delegate = self;
     self.villager.delegate = self;
     self.hunter.delegate = self;
     self.healer.delegate = self;
     [self.werewolf setAppearanceToType:[AppConstants instance].WEREWOLF state:[AppConstants instance].AWAKE faded:NO];
     [self.villager setAppearanceToType:[AppConstants instance].VILLAGER state:[AppConstants instance].AWAKE faded:NO];
-    [self.hunter setAppearanceToType:[AppConstants instance].HUNTER state:[AppConstants instance].AWAKE faded:YES];
-    [self.healer setAppearanceToType:[AppConstants instance].HEALER state:[AppConstants instance].AWAKE faded:YES];
+    [self.hunter setAppearanceToType:[AppConstants instance].HUNTER state:[AppConstants instance].AWAKE faded:![Game instance].hunter];
+    [self.healer setAppearanceToType:[AppConstants instance].HEALER state:[AppConstants instance].AWAKE faded:![Game instance].healer];
     UITapGestureRecognizer *tapHunter = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hunterTapped)];
     UITapGestureRecognizer *tapHealer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(healerTapped)];
     [self.hunter setUserInteractionEnabled:YES];
@@ -138,6 +140,10 @@
 
 - (void)viewDidLoad
 {
+    [Game instance].numPlayers = 10;
+    [Game instance].numWerewolves = 3;
+    [Game instance].hunter = false;
+    [Game instance].healer = false;
     [super viewDidLoad];
 }
 

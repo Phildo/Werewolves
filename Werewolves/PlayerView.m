@@ -39,7 +39,7 @@
         else if(newState == [AppConstants instance].DEAD)
             [self setImage:[UIImage imageNamed:@"villager_dead.png"]];
         else
-            [self setImage:[UIImage imageNamed:@"imagenotfound.png"]];
+            [self setImage:[UIImage imageNamed:@"img_not_found.png"]];
     }
     else if(newType == [AppConstants instance].WEREWOLF)
     {
@@ -50,7 +50,7 @@
         else if(newState == [AppConstants instance].DEAD)
             [self setImage:[UIImage imageNamed:@"werewolf_dead.png"]];
         else
-            [self setImage:[UIImage imageNamed:@"imagenotfound.png"]];
+            [self setImage:[UIImage imageNamed:@"img_not_found.png"]];
     }
     else if(newType == [AppConstants instance].HUNTER)
     {
@@ -61,7 +61,7 @@
         else if(newState == [AppConstants instance].DEAD)
             [self setImage:[UIImage imageNamed:@"hunter_dead.png"]];
         else
-            [self setImage:[UIImage imageNamed:@"imagenotfound.png"]];
+            [self setImage:[UIImage imageNamed:@"img_not_found.png"]];
     }
     else if(newType == [AppConstants instance].HEALER)
     {
@@ -72,10 +72,10 @@
         else if(newState == [AppConstants instance].DEAD)
             [self setImage:[UIImage imageNamed:@"healer_dead.png"]];
         else
-            [self setImage:[UIImage imageNamed:@"imagenotfound.png"]];
+            [self setImage:[UIImage imageNamed:@"img_not_found.png"]];
     }
     else
-        [self setImage:[UIImage imageNamed:@"imagenotfound.png"]];
+        [self setImage:[UIImage imageNamed:@"img_not_found.png"]];
     
     if(newFaded)
         [self setAlpha:.5];

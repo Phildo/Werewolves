@@ -25,4 +25,5 @@
 - (void)setAppearanceToType:(int)type state:(int)state faded:(BOOL)faded;
 - (void)dim:(BOOL)dim;
 - (void)incrementType;
+
 @end

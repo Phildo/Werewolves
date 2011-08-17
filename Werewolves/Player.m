@@ -13,17 +13,15 @@
 @synthesize name;
 @synthesize playerId;
 @synthesize type;
+@synthesize state;
 @synthesize dayKilled;
-@synthesize isAlive;
-@synthesize isAwake;
 
 - (id) init {
     if((self = [super init])){
         self.name = @"Player";
-        self.type = [AppConstants instance].WEREWOLF;
+        self.type = [AppConstants instance].VILLAGER;
+        self.state = [AppConstants instance].AWAKE;
         self.dayKilled = 0;
-        self.isAlive = YES;
-        self.isAwake = YES;
     }
     return self;
 }

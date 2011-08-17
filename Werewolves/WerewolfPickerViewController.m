@@ -14,12 +14,13 @@
 @synthesize numLeft;
 @synthesize numLeftLabel;
 @synthesize done;
+@synthesize campFireCircle;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.numLeft = [Game instance].numWerewolves;
     }
     return self;
 }
@@ -58,6 +59,11 @@
 }
 
 #pragma mark - View lifecycle
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    numLeftLabel.text = [NSString stringWithFormat:@"%d Left", self.numLeft];
+}
 
 - (void)viewDidLoad
 {

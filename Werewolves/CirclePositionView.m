@@ -133,6 +133,7 @@
     }
     else
         iconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"notFound.png"]];
+    
     iconView.frame = CGRectMake(mid.x-(size/2), mid.y-(size/2), width, height);
     [self addSubview:iconView];
     [iconView release];
