@@ -12,21 +12,29 @@
 #import "Game.h"
 #import "PlayerView.h"
 
+@class CampfireCircleView;
 
-@interface CampfireCircleView : UIView {
-    id delegate;
-    
+@protocol CampfireCircleViewDelegate
+    - (void)personWasTouched:(int)person;
+@end
+
+@interface CampfireCircleView : UIView <PlayerViewDelegate>
+{
+    id <CampfireCircleViewDelegate> delegate;
+        
     NSMutableArray *playerViews;
     
     CGPoint midPoint;
     CGFloat radius;
 }
 
-@property (assign) id delegate;
+@property (assign) id <CampfireCircleViewDelegate> delegate;
 @property (retain) NSMutableArray *playerViews;
 @property CGPoint midPoint;
 @property CGFloat radius;
 
 - (void)setup;
+- (void)turnPerson:(int)location into:(int)type animated:(BOOL)animated;
+- (void)playerWasTouched:(PlayerView *)player;
 
 @end

@@ -124,8 +124,8 @@
     [self.villager setAppearanceToType:[AppConstants instance].VILLAGER state:[AppConstants instance].AWAKE faded:NO];
     [self.hunter setAppearanceToType:[AppConstants instance].HUNTER state:[AppConstants instance].AWAKE faded:![Game instance].hunter];
     [self.healer setAppearanceToType:[AppConstants instance].HEALER state:[AppConstants instance].AWAKE faded:![Game instance].healer];
-    UITapGestureRecognizer *tapHunter = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hunterTapped)];
-    UITapGestureRecognizer *tapHealer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(healerTapped)];
+    UITapGestureRecognizer *tapHunter = [[UITapGestureRecognizer alloc] initWithTarget:hunter action:@selector(iWasTouched)];
+    UITapGestureRecognizer *tapHealer = [[UITapGestureRecognizer alloc] initWithTarget:healer action:@selector(iWasTouched)];
     [self.hunter setUserInteractionEnabled:YES];
     [self.healer setUserInteractionEnabled:YES];
     [tapHunter setNumberOfTapsRequired:1];
@@ -175,6 +175,14 @@
         [self.healer dim:NO];
     }
     self.layout.healer = [Game instance].healer;
+}
+
+- (void)playerWasTouched:(PlayerView *)player
+{
+    if(player.type == [AppConstants instance].HUNTER)
+        [self hunterTapped];
+    else if(player.type == [AppConstants instance].HEALER)
+        [self healerTapped];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

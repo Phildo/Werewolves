@@ -11,7 +11,6 @@
 
 @implementation WerewolfPickerViewController
 
-@synthesize numLeft;
 @synthesize numLeftLabel;
 @synthesize done;
 @synthesize campFireCircle;
@@ -43,6 +42,17 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (int)numLeft
+{
+    return numLeft;
+}
+
+- (void)setNumLeft:(int)newNumLeft
+{
+    numLeft = newNumLeft;
+    self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", numLeft];
+}
+
 - (IBAction)backButtonPressed
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -58,11 +68,32 @@
 
 }
 
+- (void)personWasTouched:(int)person
+{
+    if(((Player *)[[Game instance].players objectAtIndex:person]).type == [AppConstants instance].WEREWOLF)
+    {
+        self.numLeft++;
+        ((Player *)[[Game instance].players objectAtIndex:person]).type = [AppConstants instance].VILLAGER;
+        [self.campFireCircle turnPerson:person into:[AppConstants instance].VILLAGER animated:NO];
+    }
+    else if(((Player *)[[Game instance].players objectAtIndex:person]).type == [AppConstants instance].VILLAGER)
+    {
+        if(self.numLeft > 0)
+        {
+            self.numLeft--;
+            ((Player *)[[Game instance].players objectAtIndex:person]).type = [AppConstants instance].WEREWOLF;
+            [self.campFireCircle turnPerson:person into:[AppConstants instance].WEREWOLF animated:NO];
+        }
+    }
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    numLeftLabel.text = [NSString stringWithFormat:@"%d Left", self.numLeft];
+    self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", self.numLeft];
+    self.campFireCircle.delegate = self;
+    self.done.hidden = YES;
 }
 
 - (void)viewDidLoad

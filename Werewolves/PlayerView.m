@@ -12,6 +12,7 @@
 @implementation PlayerView
 
 @synthesize delegate;
+@synthesize idNum;
 @synthesize type;
 @synthesize state;
 @synthesize faded;
@@ -81,7 +82,6 @@
         [self setAlpha:.5];
     else
         [self setAlpha:1];
-    
 }
 
 - (void)incrementType
@@ -101,6 +101,11 @@
         [self setAlpha:.5];
     else
         [self setAlpha:1];
+}
+
+- (void)iWasTouched
+{
+    [delegate playerWasTouched:self];
 }
 
 /*

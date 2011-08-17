@@ -41,6 +41,16 @@
     [self setNeedsDisplay];
 }
 
+- (void)turnPerson:(int)location into:(int)type animated:(BOOL)animated
+{
+    [((PlayerView *)[self.playerViews objectAtIndex:location]) setAppearanceToType:type state:[AppConstants instance].AWAKE faded:NO];
+}
+
+- (void)playerWasTouched:(PlayerView *)player
+{
+    [delegate personWasTouched:player.idNum];
+}
+                                
 - (void)drawRect:(CGRect)rect
 {
     CGFloat angle = 0;
@@ -58,9 +68,16 @@
         imageCenter.y = (self.midPoint.y + self.radius*sin(angle-(M_PI/2)))-48;
         PlayerView *player = [[PlayerView alloc] initWithFrame:CGRectMake(imageCenter.x, imageCenter.y, 64, 96)];
         player.delegate = self;
+        player.idNum = x;
         player.tag = x;
         [player setAppearanceToType:((Player *)[[Game instance].players objectAtIndex:x]).type state:((Player *)[[Game instance].players objectAtIndex:x]).state faded:NO];
+        UITapGestureRecognizer *tapPlayer = [[UITapGestureRecognizer alloc] initWithTarget:player action:@selector(iWasTouched)];
+        [tapPlayer setNumberOfTapsRequired:1];
+        [tapPlayer setNumberOfTouchesRequired:1];
+        [player addGestureRecognizer:tapPlayer];
+        [player setUserInteractionEnabled:YES];
         [self addSubview:player];
+        [tapPlayer release];
         [player release];
         angle+=angleIncrement;
     }

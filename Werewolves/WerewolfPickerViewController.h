@@ -12,7 +12,7 @@
 #import "CampfireCircleView.h"
 
 
-@interface WerewolfPickerViewController : UIViewController {
+@interface WerewolfPickerViewController : UIViewController <CampfireCircleViewDelegate>{
     int numLeft;
     IBOutlet UILabel *numLeftLabel;
     IBOutlet UIButton *done;

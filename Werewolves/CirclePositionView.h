@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Game.h"
+#import "AppConstants.h"
 
 @interface CirclePositionView : UIView
 {

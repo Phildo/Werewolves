@@ -14,7 +14,8 @@
 #import "Player.h"
 
 
-@interface GameSettingsPickerViewController : UIViewController {
+@interface GameSettingsPickerViewController : UIViewController <PlayerViewDelegate>
+{
     IBOutlet UISlider *playersSlider;
     IBOutlet UISlider *splitSlider;
     IBOutlet PlayerView *werewolf;
@@ -48,5 +49,6 @@
 - (IBAction)splitChanged:(UISlider *)sender;
 - (IBAction)startButtonPressed; 
 - (IBAction)backButtonPressed; 
+- (void)playerWasTouched:(PlayerView *)player;
 
 @end

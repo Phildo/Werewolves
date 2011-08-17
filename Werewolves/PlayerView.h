@@ -9,15 +9,23 @@
 #import <Foundation/Foundation.h>
 #import "AppConstants.h"
 
+@class PlayerView;
+
+@protocol PlayerViewDelegate
+    -(void)playerWasTouched:(PlayerView *)player;
+@end
+
 @interface PlayerView : UIImageView
 {
-    id delegate;
+    id <PlayerViewDelegate> delegate;
+    int idNum;
     int type;
     int state;
     BOOL faded;
 }
 
-@property (assign) id delegate;
+@property (assign) id <PlayerViewDelegate> delegate;
+@property int idNum;
 @property int type;
 @property int state;
 @property BOOL faded;
@@ -25,5 +33,6 @@
 - (void)setAppearanceToType:(int)type state:(int)state faded:(BOOL)faded;
 - (void)dim:(BOOL)dim;
 - (void)incrementType;
+- (void)iWasTouched;
 
 @end
