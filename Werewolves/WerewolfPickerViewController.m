@@ -27,6 +27,7 @@
 - (void)releaseOutlets
 {
     self.numLeftLabel = nil;
+    self.campFireCircle = nil;
 }
 
 - (void)dealloc
@@ -60,7 +61,28 @@
 
 - (IBAction)diceButtonPressed
 {
+    int tempWerewolvesLeft = [Game instance].numWerewolves;
+    int tempPlayersLeft = [Game instance].numPlayers;
+    int prob;
     
+    for(int x = 0; x < [Game instance].numPlayers; x++)
+    {
+        prob = arc4random() % tempPlayersLeft;
+        if(prob < tempWerewolvesLeft)
+        {
+            ((Player *)[[Game instance].players objectAtIndex:x]).type = [AppConstants instance].WEREWOLF;
+            [self.campFireCircle turnPerson:x into:[AppConstants instance].WEREWOLF animated:NO];
+            tempWerewolvesLeft--;
+        }
+        else
+        {
+            ((Player *)[[Game instance].players objectAtIndex:x]).type = [AppConstants instance].VILLAGER;
+            [self.campFireCircle turnPerson:x into:[AppConstants instance].VILLAGER animated:NO];
+        }
+        tempPlayersLeft--;
+    }
+    self.numLeft = 0;
+    self.done.hidden = NO;
 }
 
 - (IBAction)doneButtonPressed
@@ -75,6 +97,7 @@
         self.numLeft++;
         ((Player *)[[Game instance].players objectAtIndex:person]).type = [AppConstants instance].VILLAGER;
         [self.campFireCircle turnPerson:person into:[AppConstants instance].VILLAGER animated:NO];
+        self.done.hidden = YES;
     }
     else if(((Player *)[[Game instance].players objectAtIndex:person]).type == [AppConstants instance].VILLAGER)
     {
@@ -83,6 +106,7 @@
             self.numLeft--;
             ((Player *)[[Game instance].players objectAtIndex:person]).type = [AppConstants instance].WEREWOLF;
             [self.campFireCircle turnPerson:person into:[AppConstants instance].WEREWOLF animated:NO];
+            if(self.numLeft == 0) self.done.hidden = NO;
         }
     }
 }

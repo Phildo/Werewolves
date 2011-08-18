@@ -38,6 +38,8 @@
     tempMid.y = self.bounds.origin.y + self.bounds.size.height/2 + 20;
     self.midPoint = tempMid;
     
+    self.playerViews = [[NSMutableArray alloc] initWithCapacity:[Game instance].numPlayers];
+    
     [self setNeedsDisplay];
 }
 
@@ -76,10 +78,16 @@
         [tapPlayer setNumberOfTouchesRequired:1];
         [player addGestureRecognizer:tapPlayer];
         [player setUserInteractionEnabled:YES];
+        [self.playerViews addObject:player];
         [self addSubview:player];
         [tapPlayer release];
         [player release];
         angle+=angleIncrement;
+    }
+    
+    for(int x = [Game instance].numPlayers; x > [Game instance].numPlayers/2; x--)
+    {
+        [self bringSubviewToFront:[self.subviews objectAtIndex:x]];
     }
 }
 
