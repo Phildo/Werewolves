@@ -19,7 +19,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.numLeft = [Game instance].numWerewolves;
     }
     return self;
 }
@@ -43,19 +42,12 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-- (int)numLeft
-{
-    return numLeft;
-}
-
-- (void)setNumLeft:(int)newNumLeft
-{
-    numLeft = newNumLeft;
-    self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", numLeft];
-}
-
 - (IBAction)backButtonPressed
 {
+    for(int x = 0; x < [Game instance].numPlayers; x++)
+    {
+        ((Player *)[[Game instance].players objectAtIndex:x]).type = [AppConstants instance].VILLAGER;
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -81,32 +73,51 @@
         }
         tempPlayersLeft--;
     }
-    self.numLeft = 0;
+    [Game instance].numWerewolvesLeftToBePicked = 0;
+    self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", [Game instance].numWerewolvesLeftToBePicked];
     self.done.hidden = NO;
 }
 
 - (IBAction)doneButtonPressed
 {
-
+    if([Game instance].hunter)
+    {
+        HunterPickerViewController *hunterPicker = [[HunterPickerViewController alloc] init];
+        [self.navigationController pushViewController:hunterPicker animated:NO];
+        [hunterPicker release];
+    }
+    else if([Game instance].healer)
+    {
+        HealerPickerViewController *healerPicker = [[HealerPickerViewController alloc] init];
+        [self.navigationController pushViewController:healerPicker animated:NO];
+        [healerPicker release];
+    }
+    else
+    {
+        
+    }
+    
 }
 
 - (void)personWasTouched:(int)person
 {
     if(((Player *)[[Game instance].players objectAtIndex:person]).type == [AppConstants instance].WEREWOLF)
     {
-        self.numLeft++;
+        [Game instance].numWerewolvesLeftToBePicked++;
+        self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", [Game instance].numWerewolvesLeftToBePicked];
         ((Player *)[[Game instance].players objectAtIndex:person]).type = [AppConstants instance].VILLAGER;
         [self.campFireCircle turnPerson:person into:[AppConstants instance].VILLAGER animated:NO];
         self.done.hidden = YES;
     }
     else if(((Player *)[[Game instance].players objectAtIndex:person]).type == [AppConstants instance].VILLAGER)
     {
-        if(self.numLeft > 0)
+        if([Game instance].numWerewolvesLeftToBePicked > 0)
         {
-            self.numLeft--;
+            [Game instance].numWerewolvesLeftToBePicked--;
+            self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", [Game instance].numWerewolvesLeftToBePicked];
             ((Player *)[[Game instance].players objectAtIndex:person]).type = [AppConstants instance].WEREWOLF;
             [self.campFireCircle turnPerson:person into:[AppConstants instance].WEREWOLF animated:NO];
-            if(self.numLeft == 0) self.done.hidden = NO;
+            if([Game instance].numWerewolvesLeftToBePicked == 0) self.done.hidden = NO;
         }
     }
 }
@@ -115,9 +126,10 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", self.numLeft];
+    self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", [Game instance].numWerewolvesLeftToBePicked];
     self.campFireCircle.delegate = self;
-    self.done.hidden = YES;
+    if([Game instance].numWerewolvesLeftToBePicked == 0) self.done.hidden = NO;
+    else self.done.hidden = YES;
 }
 
 - (void)viewDidLoad

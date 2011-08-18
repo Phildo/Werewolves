@@ -13,8 +13,11 @@
 
 @synthesize numPlayers;
 @synthesize numWerewolves;
+@synthesize numWerewolvesLeftToBePicked;
 @synthesize hunter;
+@synthesize hunterPicked;
 @synthesize healer;
+@synthesize healerPicked;
 @synthesize day;
 @synthesize daysPassed;
 @synthesize turn;
@@ -35,8 +38,11 @@ static Game* singletonInstance = nil;
     if((self == [super init])){
         self.numPlayers = 10;
         self.numWerewolves = 3;
+        self.numWerewolvesLeftToBePicked = 3;
         self.hunter = NO;
+        self.hunterPicked = NO;
         self.healer = NO;
+        self.healerPicked = NO;
         self.day = YES;
         self.daysPassed = 0;
         self.turn = [AppConstants instance].VILLAGER;

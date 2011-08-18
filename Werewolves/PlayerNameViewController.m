@@ -30,10 +30,7 @@
 - (IBAction) nextButtonPressed
 {
     WerewolfPickerViewController *wolfPicker = [[WerewolfPickerViewController alloc] init];
-    for(int x = 0; x < [Game instance].numPlayers; x++)
-    {
-        ((Player *)[[Game instance].players objectAtIndex:x]).type = [AppConstants instance].VILLAGER;
-    }
+    [Game instance].numWerewolvesLeftToBePicked = [Game instance].numWerewolves;
     [self.navigationController pushViewController:wolfPicker animated:YES];
     [wolfPicker release];
 }
