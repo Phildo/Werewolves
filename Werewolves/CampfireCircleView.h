@@ -26,15 +26,19 @@
     
     CGPoint midPoint;
     CGFloat radius;
+    CGRect initialBounds;
 }
 
 @property (assign) id <CampfireCircleViewDelegate> delegate;
 @property (retain) NSMutableArray *playerViews;
 @property CGPoint midPoint;
 @property CGFloat radius;
+@property CGRect initialBounds;
 
 - (void)setup;
 - (void)turnPerson:(int)location into:(int)type animated:(BOOL)animated;
 - (void)playerWasTouched:(PlayerView *)player;
+- (void)handlePinchGesture:(UIPinchGestureRecognizer *)sender;
+- (void)handlePanGesture:(UIPanGestureRecognizer *)sender;
 
 @end

@@ -15,12 +15,14 @@
 @synthesize playerViews;
 @synthesize midPoint;
 @synthesize radius;
+@synthesize initialBounds;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         [self setup];
+        self.playerViews = [[NSMutableArray alloc] initWithCapacity:[Game instance].numPlayers];
     }
     return self;
 }
@@ -28,6 +30,7 @@
 - (void)awakeFromNib
 {
     [self setup];
+    self.playerViews = [[NSMutableArray alloc] initWithCapacity:[Game instance].numPlayers];
 }
 
 - (void)setup
@@ -38,8 +41,11 @@
     tempMid.y = self.bounds.origin.y + self.bounds.size.height/2 + 20;
     self.midPoint = tempMid;
     
-    self.playerViews = [[NSMutableArray alloc] initWithCapacity:[Game instance].numPlayers];
-    
+    [self.playerViews removeAllObjects];
+    for(UIView *view in self.subviews)
+    {
+        [view removeFromSuperview];
+    }
     [self setNeedsDisplay];
 }
 
@@ -60,9 +66,9 @@
     CGPoint imageCenter;
     
     UIImageView *fire = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fire.png"]];
-    fire.frame = CGRectMake(self.midPoint.x-50, self.midPoint.y-55, 100, 110);
+    fire.frame = CGRectMake(self.midPoint.x-self.bounds.size.width/6.4, self.midPoint.y-self.bounds.size.height/8.6, self.bounds.size.width/3.2, self.bounds.size.height/4.3);
     [self addSubview:fire];
-
+    [fire release];
     
     for(int x = 0; x < [Game instance].numPlayers; x++)
     {
@@ -91,6 +97,29 @@
     }
 }
 
+- (void)handlePanGesture:(UIPanGestureRecognizer *)sender
+{
+    if (sender.state == UIGestureRecognizerStateBegan)
+    {
+        self.initialBounds = self.bounds;
+    }
+        CGPoint vel = [sender translationInView:self];
+        [self setFrame:CGRectMake(self.bounds.origin.x+vel.x, self.bounds.origin.y+vel.y, self.bounds.size.width, self.bounds.size.height)];
+}
+
+- (void)handlePinchGesture:(UIPinchGestureRecognizer *)sender 
+{
+    if (sender.state == UIGestureRecognizerStateBegan)
+    {
+        self.initialBounds = self.bounds;
+    }
+    CGFloat factor = [(UIPinchGestureRecognizer *)sender scale];
+    
+    CGAffineTransform pz = CGAffineTransformScale(CGAffineTransformIdentity, factor, factor);
+    self.bounds = CGRectApplyAffineTransform(initialBounds, pz);
+    
+    [self setup];
+}
 
 - (void)dealloc
 {

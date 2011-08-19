@@ -135,11 +135,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Werewolves/CampfireCircleView.m"
-         timestampString = "335239446.139726"
+         timestampString = "335378291.948656"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "35"
-         endingLineNumber = "35"
+         startingLineNumber = "38"
+         endingLineNumber = "38"
          landmarkName = "-setup"
          landmarkType = "5">
       </FileBreakpoint>
@@ -163,11 +163,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Werewolves/CampfireCircleView.m"
-         timestampString = "335256191.719105"
+         timestampString = "335378522.810179"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "69"
-         endingLineNumber = "69"
+         startingLineNumber = "75"
+         endingLineNumber = "75"
          landmarkName = "-drawRect:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -177,11 +177,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Werewolves/CampfireCircleView.m"
-         timestampString = "335256191.719105"
+         timestampString = "335378522.810179"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "79"
-         endingLineNumber = "79"
+         startingLineNumber = "85"
+         endingLineNumber = "85"
          landmarkName = "-drawRect:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -219,11 +219,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Werewolves/CampfireCircleView.m"
-         timestampString = "335256191.719105"
+         timestampString = "335378522.810179"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "53"
-         endingLineNumber = "53"
+         startingLineNumber = "59"
+         endingLineNumber = "59"
          landmarkName = "-playerWasTouched:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -233,11 +233,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Werewolves/CampfireCircleView.m"
-         timestampString = "335256191.719105"
+         timestampString = "335378522.810179"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "44"
-         endingLineNumber = "44"
+         startingLineNumber = "50"
+         endingLineNumber = "50"
          landmarkName = "-playerTapped:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -247,11 +247,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Werewolves/CampfireCircleView.m"
-         timestampString = "335256191.719105"
+         timestampString = "335378522.810179"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "48"
-         endingLineNumber = "48"
+         startingLineNumber = "54"
+         endingLineNumber = "54"
          landmarkName = "-turnPerson:into:animated:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -295,6 +295,20 @@
          startingLineNumber = "62"
          endingLineNumber = "62"
          landmarkName = "-diceButtonPressed"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Werewolves/CampfireCircleView.m"
+         timestampString = "335424164.092049"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "111"
+         endingLineNumber = "111"
+         landmarkName = "-handlePinchGesture:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

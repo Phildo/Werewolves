@@ -135,7 +135,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    UIPinchGestureRecognizer *pinchZoom = [[UIPinchGestureRecognizer alloc] initWithTarget:self.campFireCircle action:@selector(handlePinchGesture:)];
+    [self.campFireCircle addGestureRecognizer:pinchZoom];
+
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self.campFireCircle action:@selector(handlePanGesture:)];
+    [self.campFireCircle addGestureRecognizer:pan];
+    [pinchZoom release];
+    [pan release];
 }
 
 - (void)viewDidUnload
