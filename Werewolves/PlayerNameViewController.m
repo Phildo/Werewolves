@@ -29,10 +29,9 @@
 
 - (IBAction) nextButtonPressed
 {
-    WerewolfPickerViewController *wolfPicker = [[WerewolfPickerViewController alloc] init];
-    [Game instance].numWerewolvesLeftToBePicked = [Game instance].numWerewolves;
-    [self.navigationController pushViewController:wolfPicker animated:YES];
-    [wolfPicker release];
+    TypePickerViewController *typePicker = [[TypePickerViewController alloc] init];
+    [self.navigationController pushViewController:typePicker animated:YES];
+    [typePicker release];
 }
 
 - (void)didReceiveMemoryWarning

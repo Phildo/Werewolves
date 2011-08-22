@@ -10,10 +10,8 @@
 		4A2879B213F36241007416D5 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2879B113F36241007416D5 /* PlayerView.m */; };
 		4A55AF3013FAD5840069190A /* CampfireCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A55AF2F13FAD5840069190A /* CampfireCircleView.m */; };
 		4A55AF5013FB59AA0069190A /* img_not_found.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A55AF4F13FB59AA0069190A /* img_not_found.png */; };
-		4A6762F813FCBDB100CA6F91 /* HunterPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6762F613FCBDB100CA6F91 /* HunterPickerViewController.m */; };
-		4A6762F913FCBDB100CA6F91 /* HunterPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6762F713FCBDB100CA6F91 /* HunterPickerViewController.xib */; };
-		4A6762FD13FCD48900CA6F91 /* HealerPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6762FB13FCD48900CA6F91 /* HealerPickerViewController.m */; };
-		4A6762FE13FCD48900CA6F91 /* HealerPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6762FC13FCD48900CA6F91 /* HealerPickerViewController.xib */; };
+		4A77EB741401D21D005D7A24 /* TypePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A77EB721401D21D005D7A24 /* TypePickerViewController.m */; };
+		4A77EB751401D21D005D7A24 /* TypePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A77EB731401D21D005D7A24 /* TypePickerViewController.xib */; };
 		4AA1164513F4EEF900364F9F /* healer_sleep.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1163913F4EEF900364F9F /* healer_sleep.png */; };
 		4AA1164613F4EEF900364F9F /* hunter_sleep.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1163A13F4EEF900364F9F /* hunter_sleep.png */; };
 		4AA1164713F4EEF900364F9F /* healer_dead.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1163B13F4EEF900364F9F /* healer_dead.png */; };
@@ -26,8 +24,6 @@
 		4AA1164E13F4EEF900364F9F /* werewolf_dead.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1164213F4EEF900364F9F /* werewolf_dead.png */; };
 		4AA1164F13F4EEF900364F9F /* werewolf_sleep.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1164313F4EEF900364F9F /* werewolf_sleep.png */; };
 		4AA1165013F4EEF900364F9F /* werewolf.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA1164413F4EEF900364F9F /* werewolf.png */; };
-		4AC3E15913FA365300083CC4 /* WerewolfPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC3E15713FA365300083CC4 /* WerewolfPickerViewController.m */; };
-		4AC3E15A13FA365300083CC4 /* WerewolfPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC3E15813FA365300083CC4 /* WerewolfPickerViewController.xib */; };
 		4AC3E15D13FA373D00083CC4 /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC3E15C13FA373D00083CC4 /* fire.png */; };
 		4AC3E15F13FA39A700083CC4 /* personIcon_brown.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC3E15E13FA39A600083CC4 /* personIcon_brown.png */; };
 		4AC3E16113FA39D300083CC4 /* personIcon_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC3E16013FA39D300083CC4 /* personIcon_red.png */; };
@@ -78,12 +74,9 @@
 		4A55AF2E13FAD5840069190A /* CampfireCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampfireCircleView.h; sourceTree = "<group>"; };
 		4A55AF2F13FAD5840069190A /* CampfireCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampfireCircleView.m; sourceTree = "<group>"; };
 		4A55AF4F13FB59AA0069190A /* img_not_found.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_not_found.png; sourceTree = "<group>"; };
-		4A6762F513FCBDB100CA6F91 /* HunterPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HunterPickerViewController.h; sourceTree = "<group>"; };
-		4A6762F613FCBDB100CA6F91 /* HunterPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HunterPickerViewController.m; sourceTree = "<group>"; };
-		4A6762F713FCBDB100CA6F91 /* HunterPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HunterPickerViewController.xib; sourceTree = "<group>"; };
-		4A6762FA13FCD48900CA6F91 /* HealerPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealerPickerViewController.h; sourceTree = "<group>"; };
-		4A6762FB13FCD48900CA6F91 /* HealerPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealerPickerViewController.m; sourceTree = "<group>"; };
-		4A6762FC13FCD48900CA6F91 /* HealerPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HealerPickerViewController.xib; sourceTree = "<group>"; };
+		4A77EB711401D21D005D7A24 /* TypePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypePickerViewController.h; sourceTree = "<group>"; };
+		4A77EB721401D21D005D7A24 /* TypePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypePickerViewController.m; sourceTree = "<group>"; };
+		4A77EB731401D21D005D7A24 /* TypePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TypePickerViewController.xib; sourceTree = "<group>"; };
 		4AA1163913F4EEF900364F9F /* healer_sleep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = healer_sleep.png; sourceTree = "<group>"; };
 		4AA1163A13F4EEF900364F9F /* hunter_sleep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hunter_sleep.png; sourceTree = "<group>"; };
 		4AA1163B13F4EEF900364F9F /* healer_dead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = healer_dead.png; sourceTree = "<group>"; };
@@ -96,9 +89,6 @@
 		4AA1164213F4EEF900364F9F /* werewolf_dead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = werewolf_dead.png; sourceTree = "<group>"; };
 		4AA1164313F4EEF900364F9F /* werewolf_sleep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = werewolf_sleep.png; sourceTree = "<group>"; };
 		4AA1164413F4EEF900364F9F /* werewolf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = werewolf.png; sourceTree = "<group>"; };
-		4AC3E15613FA365300083CC4 /* WerewolfPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WerewolfPickerViewController.h; sourceTree = "<group>"; };
-		4AC3E15713FA365300083CC4 /* WerewolfPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WerewolfPickerViewController.m; sourceTree = "<group>"; };
-		4AC3E15813FA365300083CC4 /* WerewolfPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WerewolfPickerViewController.xib; sourceTree = "<group>"; };
 		4AC3E15C13FA373D00083CC4 /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
 		4AC3E15E13FA39A600083CC4 /* personIcon_brown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personIcon_brown.png; sourceTree = "<group>"; };
 		4AC3E16013FA39D300083CC4 /* personIcon_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personIcon_red.png; sourceTree = "<group>"; };
@@ -319,15 +309,9 @@
 				4AD8149813F098E80040D194 /* PlayerNameViewController.h */,
 				4AD8149913F098E80040D194 /* PlayerNameViewController.m */,
 				4AD8149A13F098E80040D194 /* PlayerNameViewController.xib */,
-				4AC3E15613FA365300083CC4 /* WerewolfPickerViewController.h */,
-				4AC3E15713FA365300083CC4 /* WerewolfPickerViewController.m */,
-				4AC3E15813FA365300083CC4 /* WerewolfPickerViewController.xib */,
-				4A6762F513FCBDB100CA6F91 /* HunterPickerViewController.h */,
-				4A6762F613FCBDB100CA6F91 /* HunterPickerViewController.m */,
-				4A6762F713FCBDB100CA6F91 /* HunterPickerViewController.xib */,
-				4A6762FA13FCD48900CA6F91 /* HealerPickerViewController.h */,
-				4A6762FB13FCD48900CA6F91 /* HealerPickerViewController.m */,
-				4A6762FC13FCD48900CA6F91 /* HealerPickerViewController.xib */,
+				4A77EB711401D21D005D7A24 /* TypePickerViewController.h */,
+				4A77EB721401D21D005D7A24 /* TypePickerViewController.m */,
+				4A77EB731401D21D005D7A24 /* TypePickerViewController.xib */,
 			);
 			name = States;
 			sourceTree = "<group>";
@@ -457,14 +441,12 @@
 				4AA1164E13F4EEF900364F9F /* werewolf_dead.png in Resources */,
 				4AA1164F13F4EEF900364F9F /* werewolf_sleep.png in Resources */,
 				4AA1165013F4EEF900364F9F /* werewolf.png in Resources */,
-				4AC3E15A13FA365300083CC4 /* WerewolfPickerViewController.xib in Resources */,
 				4AC3E15D13FA373D00083CC4 /* fire.png in Resources */,
 				4AC3E15F13FA39A700083CC4 /* personIcon_brown.png in Resources */,
 				4AC3E16113FA39D300083CC4 /* personIcon_red.png in Resources */,
 				4AC3E16313FA39DA00083CC4 /* personIcon_blue.png in Resources */,
 				4A55AF5013FB59AA0069190A /* img_not_found.png in Resources */,
-				4A6762F913FCBDB100CA6F91 /* HunterPickerViewController.xib in Resources */,
-				4A6762FE13FCD48900CA6F91 /* HealerPickerViewController.xib in Resources */,
+				4A77EB751401D21D005D7A24 /* TypePickerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,10 +494,8 @@
 				4AE0A49613EDE63C00B5482A /* CirclePositionView.m in Sources */,
 				4AD8149B13F098E80040D194 /* PlayerNameViewController.m in Sources */,
 				4A2879B213F36241007416D5 /* PlayerView.m in Sources */,
-				4AC3E15913FA365300083CC4 /* WerewolfPickerViewController.m in Sources */,
 				4A55AF3013FAD5840069190A /* CampfireCircleView.m in Sources */,
-				4A6762F813FCBDB100CA6F91 /* HunterPickerViewController.m in Sources */,
-				4A6762FD13FCD48900CA6F91 /* HealerPickerViewController.m in Sources */,
+				4A77EB741401D21D005D7A24 /* TypePickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

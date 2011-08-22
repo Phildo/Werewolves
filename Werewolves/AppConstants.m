@@ -25,6 +25,10 @@
 #define C_PLAYER_BROWN 3
 #define C_PLAYER_BLUE 4
 
+#define C_WEREWOLF_PICKER 0
+#define C_HUNTER_PICKER 1
+#define C_HEALER_PICKER 2
+
 
 @implementation AppConstants
 
@@ -44,6 +48,10 @@
 @synthesize PLAYER_RED;
 @synthesize PLAYER_BROWN;
 @synthesize PLAYER_BLUE;
+
+@synthesize WEREWOLF_PICKER;
+@synthesize HUNTER_PICKER;
+@synthesize HEALER_PICKER;
 
 static AppConstants* singletonInstance = nil;
 
@@ -74,6 +82,10 @@ static AppConstants* singletonInstance = nil;
         PLAYER_RED = C_PLAYER_RED;
         PLAYER_BROWN = C_PLAYER_BROWN;
         PLAYER_BLUE = C_PLAYER_BLUE;
+        
+        WEREWOLF_PICKER = C_WEREWOLF_PICKER;
+        HUNTER_PICKER = C_HUNTER_PICKER;
+        HEALER_PICKER = C_HEALER_PICKER;
     }
     return self;
 }

@@ -11,7 +11,7 @@
 #import "Player.h"
 #import "PlayerView.h"
 #import "CirclePositionView.h"
-#import "WerewolfPickerViewController.h"
+#import "TypePickerViewController.h"
 
 @interface PlayerNameViewController : UIViewController <UIScrollViewDelegate,UITextFieldDelegate>{
     IBOutlet UIScrollView *scrollyPants;

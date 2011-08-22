@@ -26,6 +26,10 @@
     int PLAYER_RED;
     int PLAYER_BROWN;
     int PLAYER_BLUE;
+    
+    int WEREWOLF_PICKER;
+    int HUNTER_PICKER;
+    int HEALER_PICKER;
 }
 
 @property (readonly) int MAX_NUM_PLAYERS;
@@ -44,6 +48,10 @@
 @property (readonly) int PLAYER_RED;
 @property (readonly) int PLAYER_BROWN;
 @property (readonly) int PLAYER_BLUE;
+
+@property (readonly) int WEREWOLF_PICKER;
+@property (readonly) int HUNTER_PICKER;
+@property (readonly) int HEALER_PICKER;
 
 + (AppConstants *) instance;
 
