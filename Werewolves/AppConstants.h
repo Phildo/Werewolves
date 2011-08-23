@@ -17,6 +17,15 @@
     int HUNTER;
     int HEALER;
     
+    int WEREWOLF_PICKER;
+    int HUNTER_PICKER;
+    int HEALER_PICKER;
+    
+    int VILLAGER_TURN;
+    int WEREWOLF_TURN;
+    int HUNTER_TURN;
+    int HEALER_TURN;
+    
     int AWAKE;
     int SLEEP;
     int DEAD;
@@ -26,10 +35,6 @@
     int PLAYER_RED;
     int PLAYER_BROWN;
     int PLAYER_BLUE;
-    
-    int WEREWOLF_PICKER;
-    int HUNTER_PICKER;
-    int HEALER_PICKER;
 }
 
 @property (readonly) int MAX_NUM_PLAYERS;
@@ -38,6 +43,15 @@
 @property (readonly) int WEREWOLF;
 @property (readonly) int HUNTER;
 @property (readonly) int HEALER;
+
+@property (readonly) int WEREWOLF_PICKER;
+@property (readonly) int HUNTER_PICKER;
+@property (readonly) int HEALER_PICKER;
+
+@property (readonly) int VILLAGER_TURN;
+@property (readonly) int WEREWOLF_TURN;
+@property (readonly) int HUNTER_TURN;
+@property (readonly) int HEALER_TURN;
 
 @property (readonly) int AWAKE;
 @property (readonly) int SLEEP;
@@ -48,10 +62,6 @@
 @property (readonly) int PLAYER_RED;
 @property (readonly) int PLAYER_BROWN;
 @property (readonly) int PLAYER_BLUE;
-
-@property (readonly) int WEREWOLF_PICKER;
-@property (readonly) int HUNTER_PICKER;
-@property (readonly) int HEALER_PICKER;
 
 + (AppConstants *) instance;
 

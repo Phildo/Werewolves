@@ -15,6 +15,15 @@
 #define C_HUNTER 2
 #define C_HEALER 3
 
+#define C_WEREWOLF_PICKER 1
+#define C_HUNTER_PICKER 2
+#define C_HEALER_PICKER 3
+
+#define C_VILLAGER_TURN 0
+#define C_WEREWOLF_TURN 1
+#define C_HUNTER_TURN 2
+#define C_HEALER_TURN 3
+
 #define C_AWAKE 0
 #define C_SLEEP 1
 #define C_DEAD 2
@@ -25,11 +34,6 @@
 #define C_PLAYER_BROWN 3
 #define C_PLAYER_BLUE 4
 
-#define C_WEREWOLF_PICKER 0
-#define C_HUNTER_PICKER 1
-#define C_HEALER_PICKER 2
-
-
 @implementation AppConstants
 
 @synthesize MAX_NUM_PLAYERS;
@@ -38,6 +42,15 @@
 @synthesize WEREWOLF;
 @synthesize HUNTER;
 @synthesize HEALER;
+
+@synthesize WEREWOLF_PICKER;
+@synthesize HUNTER_PICKER;
+@synthesize HEALER_PICKER;
+
+@synthesize VILLAGER_TURN;
+@synthesize WEREWOLF_TURN;
+@synthesize HUNTER_TURN;
+@synthesize HEALER_TURN;
 
 @synthesize AWAKE;
 @synthesize SLEEP;
@@ -48,10 +61,6 @@
 @synthesize PLAYER_RED;
 @synthesize PLAYER_BROWN;
 @synthesize PLAYER_BLUE;
-
-@synthesize WEREWOLF_PICKER;
-@synthesize HUNTER_PICKER;
-@synthesize HEALER_PICKER;
 
 static AppConstants* singletonInstance = nil;
 
@@ -73,6 +82,15 @@ static AppConstants* singletonInstance = nil;
         HUNTER = C_HUNTER;
         HEALER = C_HEALER;
         
+        WEREWOLF_PICKER = C_WEREWOLF_PICKER;
+        HUNTER_PICKER = C_HUNTER_PICKER;
+        HEALER_PICKER = C_HEALER_PICKER;
+        
+        VILLAGER_TURN = C_VILLAGER_TURN;
+        WEREWOLF_TURN = C_WEREWOLF_TURN;
+        HUNTER_TURN = C_HUNTER_TURN;
+        HEALER_TURN = C_HEALER_TURN;
+        
         AWAKE = C_AWAKE;
         SLEEP = C_SLEEP;
         DEAD = C_DEAD;
@@ -82,10 +100,6 @@ static AppConstants* singletonInstance = nil;
         PLAYER_RED = C_PLAYER_RED;
         PLAYER_BROWN = C_PLAYER_BROWN;
         PLAYER_BLUE = C_PLAYER_BLUE;
-        
-        WEREWOLF_PICKER = C_WEREWOLF_PICKER;
-        HUNTER_PICKER = C_HUNTER_PICKER;
-        HEALER_PICKER = C_HEALER_PICKER;
     }
     return self;
 }

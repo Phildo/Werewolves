@@ -17,8 +17,9 @@
     BOOL healer;
     BOOL day;
     int daysPassed;
-    int turn;
+    int turnState;
     NSMutableArray *players;
+    NSMutableArray *history;
 }
 
 @property int numPlayers;
@@ -27,8 +28,9 @@
 @property BOOL healer;
 @property BOOL day;
 @property int daysPassed;
-@property int turn;
+@property int turnState;
 @property (retain) NSMutableArray *players;
+@property (retain) NSMutableArray *history;
 
 + (Game *) instance;
 

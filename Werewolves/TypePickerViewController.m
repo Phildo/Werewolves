@@ -64,7 +64,6 @@
                 ((Player *)[[Game instance].players objectAtIndex:x]).type = [AppConstants instance].VILLAGER;
                 [self.campFireCircle turnPerson:x into:[AppConstants instance].VILLAGER animated:NO];
             }
-
         }
         self.titleLabel.text = @"Pick your Werewolves";
         self.numLeft = 0;

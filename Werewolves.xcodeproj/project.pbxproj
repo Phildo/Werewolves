@@ -56,6 +56,15 @@
 		4AE0A49613EDE63C00B5482A /* CirclePositionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0A49513EDE63C00B5482A /* CirclePositionView.m */; };
 		4AF1EB4813F3762000C3F9AD /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AF1EB4613F3762000C3F9AD /* ball.png */; };
 		4AF1EB4F13F3A42100C3F9AD /* personIcon_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AF1EB4E13F3A42100C3F9AD /* personIcon_green.png */; };
+		4AF5C092140364360059A7EB /* GamePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF5C090140364360059A7EB /* GamePlayViewController.m */; };
+		4AF5C093140364360059A7EB /* GamePlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AF5C091140364360059A7EB /* GamePlayViewController.xib */; };
+		4AF5C09714036EF60059A7EB /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF5C09614036EF60059A7EB /* Move.m */; };
+		4AF5C09B1403719C0059A7EB /* AdminSelectPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF5C0991403719C0059A7EB /* AdminSelectPlayerViewController.m */; };
+		4AF5C09C1403719C0059A7EB /* AdminSelectPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AF5C09A1403719C0059A7EB /* AdminSelectPlayerViewController.xib */; };
+		4AF5C0A0140371B00059A7EB /* AdminPlayerEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF5C09E140371B00059A7EB /* AdminPlayerEditorViewController.m */; };
+		4AF5C0A1140371B00059A7EB /* AdminPlayerEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AF5C09F140371B00059A7EB /* AdminPlayerEditorViewController.xib */; };
+		4AF5C0A5140372300059A7EB /* InstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF5C0A3140372300059A7EB /* InstructionsViewController.m */; };
+		4AF5C0A6140372300059A7EB /* InstructionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AF5C0A4140372300059A7EB /* InstructionsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +143,20 @@
 		4AE0A49513EDE63C00B5482A /* CirclePositionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CirclePositionView.m; sourceTree = "<group>"; };
 		4AF1EB4613F3762000C3F9AD /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
 		4AF1EB4E13F3A42100C3F9AD /* personIcon_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personIcon_green.png; sourceTree = "<group>"; };
+		4AF5C08F140364360059A7EB /* GamePlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlayViewController.h; sourceTree = "<group>"; };
+		4AF5C090140364360059A7EB /* GamePlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePlayViewController.m; sourceTree = "<group>"; };
+		4AF5C091140364360059A7EB /* GamePlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GamePlayViewController.xib; sourceTree = "<group>"; };
+		4AF5C09514036EF60059A7EB /* Move.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Move.h; sourceTree = "<group>"; };
+		4AF5C09614036EF60059A7EB /* Move.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Move.m; sourceTree = "<group>"; };
+		4AF5C0981403719C0059A7EB /* AdminSelectPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminSelectPlayerViewController.h; sourceTree = "<group>"; };
+		4AF5C0991403719C0059A7EB /* AdminSelectPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminSelectPlayerViewController.m; sourceTree = "<group>"; };
+		4AF5C09A1403719C0059A7EB /* AdminSelectPlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdminSelectPlayerViewController.xib; sourceTree = "<group>"; };
+		4AF5C09D140371B00059A7EB /* AdminPlayerEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminPlayerEditorViewController.h; sourceTree = "<group>"; };
+		4AF5C09E140371B00059A7EB /* AdminPlayerEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminPlayerEditorViewController.m; sourceTree = "<group>"; };
+		4AF5C09F140371B00059A7EB /* AdminPlayerEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdminPlayerEditorViewController.xib; sourceTree = "<group>"; };
+		4AF5C0A2140372300059A7EB /* InstructionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionsViewController.h; sourceTree = "<group>"; };
+		4AF5C0A3140372300059A7EB /* InstructionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionsViewController.m; sourceTree = "<group>"; };
+		4AF5C0A4140372300059A7EB /* InstructionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InstructionsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +326,9 @@
 				4AE0A47213EDD5BD00B5482A /* IntroScreenViewController.h */,
 				4AE0A47713EDD5BD00B5482A /* IntroScreenViewController.m */,
 				4AE0A47513EDD5BD00B5482A /* IntroScreenViewController.xib */,
+				4AF5C0A2140372300059A7EB /* InstructionsViewController.h */,
+				4AF5C0A3140372300059A7EB /* InstructionsViewController.m */,
+				4AF5C0A4140372300059A7EB /* InstructionsViewController.xib */,
 				4AE0A48F13EDE1E700B5482A /* GameSettingsPickerViewController.h */,
 				4AE0A49013EDE1E700B5482A /* GameSettingsPickerViewController.m */,
 				4AE0A49113EDE1E700B5482A /* GameSettingsPickerViewController.xib */,
@@ -312,6 +338,15 @@
 				4A77EB711401D21D005D7A24 /* TypePickerViewController.h */,
 				4A77EB721401D21D005D7A24 /* TypePickerViewController.m */,
 				4A77EB731401D21D005D7A24 /* TypePickerViewController.xib */,
+				4AF5C08F140364360059A7EB /* GamePlayViewController.h */,
+				4AF5C090140364360059A7EB /* GamePlayViewController.m */,
+				4AF5C091140364360059A7EB /* GamePlayViewController.xib */,
+				4AF5C0981403719C0059A7EB /* AdminSelectPlayerViewController.h */,
+				4AF5C0991403719C0059A7EB /* AdminSelectPlayerViewController.m */,
+				4AF5C09A1403719C0059A7EB /* AdminSelectPlayerViewController.xib */,
+				4AF5C09D140371B00059A7EB /* AdminPlayerEditorViewController.h */,
+				4AF5C09E140371B00059A7EB /* AdminPlayerEditorViewController.m */,
+				4AF5C09F140371B00059A7EB /* AdminPlayerEditorViewController.xib */,
 			);
 			name = States;
 			sourceTree = "<group>";
@@ -332,6 +367,8 @@
 				4AE0A47813EDD5BD00B5482A /* Player.m */,
 				4AE0A48C13EDDEB600B5482A /* Game.h */,
 				4AE0A48D13EDDEB600B5482A /* Game.m */,
+				4AF5C09514036EF60059A7EB /* Move.h */,
+				4AF5C09614036EF60059A7EB /* Move.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -447,6 +484,10 @@
 				4AC3E16313FA39DA00083CC4 /* personIcon_blue.png in Resources */,
 				4A55AF5013FB59AA0069190A /* img_not_found.png in Resources */,
 				4A77EB751401D21D005D7A24 /* TypePickerViewController.xib in Resources */,
+				4AF5C093140364360059A7EB /* GamePlayViewController.xib in Resources */,
+				4AF5C09C1403719C0059A7EB /* AdminSelectPlayerViewController.xib in Resources */,
+				4AF5C0A1140371B00059A7EB /* AdminPlayerEditorViewController.xib in Resources */,
+				4AF5C0A6140372300059A7EB /* InstructionsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +537,11 @@
 				4A2879B213F36241007416D5 /* PlayerView.m in Sources */,
 				4A55AF3013FAD5840069190A /* CampfireCircleView.m in Sources */,
 				4A77EB741401D21D005D7A24 /* TypePickerViewController.m in Sources */,
+				4AF5C092140364360059A7EB /* GamePlayViewController.m in Sources */,
+				4AF5C09714036EF60059A7EB /* Move.m in Sources */,
+				4AF5C09B1403719C0059A7EB /* AdminSelectPlayerViewController.m in Sources */,
+				4AF5C0A0140371B00059A7EB /* AdminPlayerEditorViewController.m in Sources */,
+				4AF5C0A5140372300059A7EB /* InstructionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

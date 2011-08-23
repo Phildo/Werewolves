@@ -17,8 +17,9 @@
 @synthesize healer;
 @synthesize day;
 @synthesize daysPassed;
-@synthesize turn;
+@synthesize turnState;
 @synthesize players;
+@synthesize history;
 
 static Game* singletonInstance = nil;
 
@@ -39,10 +40,18 @@ static Game* singletonInstance = nil;
         self.healer = NO;
         self.day = YES;
         self.daysPassed = 0;
-        self.turn = [AppConstants instance].VILLAGER;
+        self.turnState = [AppConstants instance].VILLAGER_TURN;
         self.players = [[NSMutableArray alloc] init];
+        self.history = [[NSMutableArray alloc] init];
     }
     return self;
+}
+
+- (void)dealloc
+{
+    [players release];
+    [history release];
+    [super release];
 }
 
 @end
