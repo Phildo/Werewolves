@@ -13,11 +13,14 @@
 
 @synthesize action;
 @synthesize player;
+@synthesize day;
 
-- (id) initWithAction:(int)a OnPlayer:(int)p {
+- (id) initWithAction:(int)a ToPlayer:(int)p OnDay:(int)d 
+{
     if((self = [super init])){
         self.action = a;
         self.player = p;
+        self.day = d;
     }
     return self;
 }

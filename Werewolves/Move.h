@@ -12,9 +12,11 @@
 @interface Move : NSObject {
     int action;
     int player;
+    int day;
 }
 
 @property int action;
 @property int player;
+@property int day;
 
 @end

@@ -10,6 +10,7 @@
 #import "Game.h"
 #import "Player.h"
 #import "Move.h"
+#import "DayChangerView.h"
 #import "CampfireCircleView.h"
 
 @interface GamePlayViewController : UIViewController <CampfireCircleViewDelegate>

@@ -65,6 +65,7 @@
 		4AF5C0A1140371B00059A7EB /* AdminPlayerEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AF5C09F140371B00059A7EB /* AdminPlayerEditorViewController.xib */; };
 		4AF5C0A5140372300059A7EB /* InstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF5C0A3140372300059A7EB /* InstructionsViewController.m */; };
 		4AF5C0A6140372300059A7EB /* InstructionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AF5C0A4140372300059A7EB /* InstructionsViewController.xib */; };
+		4AF5C0A9140374FB0059A7EB /* DayChangerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF5C0A8140374FB0059A7EB /* DayChangerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +158,8 @@
 		4AF5C0A2140372300059A7EB /* InstructionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionsViewController.h; sourceTree = "<group>"; };
 		4AF5C0A3140372300059A7EB /* InstructionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionsViewController.m; sourceTree = "<group>"; };
 		4AF5C0A4140372300059A7EB /* InstructionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InstructionsViewController.xib; sourceTree = "<group>"; };
+		4AF5C0A7140374FB0059A7EB /* DayChangerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayChangerView.h; sourceTree = "<group>"; };
+		4AF5C0A8140374FB0059A7EB /* DayChangerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayChangerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +319,8 @@
 				4A2879B113F36241007416D5 /* PlayerView.m */,
 				4A55AF2E13FAD5840069190A /* CampfireCircleView.h */,
 				4A55AF2F13FAD5840069190A /* CampfireCircleView.m */,
+				4AF5C0A7140374FB0059A7EB /* DayChangerView.h */,
+				4AF5C0A8140374FB0059A7EB /* DayChangerView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -542,6 +547,7 @@
 				4AF5C09B1403719C0059A7EB /* AdminSelectPlayerViewController.m in Sources */,
 				4AF5C0A0140371B00059A7EB /* AdminPlayerEditorViewController.m in Sources */,
 				4AF5C0A5140372300059A7EB /* InstructionsViewController.m in Sources */,
+				4AF5C0A9140374FB0059A7EB /* DayChangerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
