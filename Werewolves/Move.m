@@ -15,7 +15,7 @@
 @synthesize player;
 @synthesize day;
 
-- (id) initWithAction:(int)a ToPlayer:(int)p OnDay:(int)d 
+- (id)initWithAction:(int)a ToPlayer:(int)p OnDay:(int)d 
 {
     if((self = [super init])){
         self.action = a;

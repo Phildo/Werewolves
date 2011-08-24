@@ -27,6 +27,7 @@
     CGPoint midPoint;
     CGFloat radius;
     CGRect initialBounds;
+    CGPoint initialPos;
 }
 
 @property (assign) id <CampfireCircleViewDelegate> delegate;
@@ -34,6 +35,7 @@
 @property CGPoint midPoint;
 @property CGFloat radius;
 @property CGRect initialBounds;
+@property CGPoint initialPos;
 
 - (void)setup;
 - (void)turnPerson:(int)location into:(int)type animated:(BOOL)animated;

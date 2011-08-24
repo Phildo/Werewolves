@@ -184,6 +184,13 @@
     self.done.hidden = NO;
 }
 
+- (void)pushNextViewController
+{
+    GamePlayViewController *gamePlay = [[GamePlayViewController alloc] init];
+    [self.navigationController pushViewController:gamePlay animated:YES];
+    [gamePlay release];
+}
+
 - (IBAction)doneButtonPressed
 {
     if(self.state == [AppConstants instance].WEREWOLF_PICKER)
@@ -206,7 +213,7 @@
         }
         else
         {
-            
+            [self pushNextViewController];
         }
     }
     else if(self.state == [AppConstants instance].HUNTER_PICKER)
@@ -221,13 +228,14 @@
         }
         else
         {
-            
+            [self pushNextViewController];
         }
         
     }
     else if(self.state == [AppConstants instance].HEALER_PICKER)
     {
-        NSLog(@"Next VC!");
+        [self pushNextViewController];
+
     }
 }
 

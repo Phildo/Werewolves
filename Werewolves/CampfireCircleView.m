@@ -16,6 +16,7 @@
 @synthesize midPoint;
 @synthesize radius;
 @synthesize initialBounds;
+@synthesize initialPos;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -101,10 +102,11 @@
 {
     if (sender.state == UIGestureRecognizerStateBegan)
     {
-        self.initialBounds = self.bounds;
+        NSLog(@"zoop zop zoobity bop");
+        self.initialPos = CGPointMake(sender.view.center.x,sender.view.center.y);
     }
-        CGPoint vel = [sender translationInView:self];
-        [self setFrame:CGRectMake(self.bounds.origin.x+vel.x, self.bounds.origin.y+vel.y, self.bounds.size.width, self.bounds.size.height)];
+    CGPoint vel = [sender translationInView:self];
+    [self setCenter:CGPointMake(self.initialPos.x + vel.x, self.initialPos.y + vel.y)];
 }
 
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)sender 

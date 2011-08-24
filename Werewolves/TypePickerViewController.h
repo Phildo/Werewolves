@@ -10,6 +10,7 @@
 #import "Game.h"
 #import "Player.h"
 #import "CampfireCircleView.h"
+#import "GamePlayViewController.h"
 
 
 @interface TypePickerViewController : UIViewController <CampfireCircleViewDelegate>{

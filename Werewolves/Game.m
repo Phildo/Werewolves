@@ -51,7 +51,7 @@ static Game* singletonInstance = nil;
 {
     [players release];
     [history release];
-    [super release];
+    [super dealloc];
 }
 
 @end

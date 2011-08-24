@@ -33,6 +33,11 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)personWasTouched:(int)person
+{
+    
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
