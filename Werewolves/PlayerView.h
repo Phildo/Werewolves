@@ -12,7 +12,8 @@
 @class PlayerView;
 
 @protocol PlayerViewDelegate
-    -(void)playerWasTouched:(PlayerView *)player;
+    - (void)playerWasTouched:(PlayerView *)player;
+    - (void)playerWasLongTouched:(PlayerView *)player;
 @end
 
 @interface PlayerView : UIImageView
@@ -34,5 +35,6 @@
 - (void)dim:(BOOL)dim;
 - (void)incrementType;
 - (void)iWasTouched;
+- (void)iWasLongTouched:(UILongPressGestureRecognizer *)sender;
 
 @end

@@ -108,6 +108,12 @@
     [delegate playerWasTouched:self];
 }
 
+- (void)iWasLongTouched:(UILongPressGestureRecognizer *)sender
+{
+    if(sender.state == UIGestureRecognizerStateBegan)
+        [delegate playerWasLongTouched:self];
+}
+
 /*
  // Only override drawRect: if you perform custom drawing.
  // An empty implementation adversely affects performance during animation.

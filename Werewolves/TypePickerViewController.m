@@ -52,6 +52,7 @@
         for(int x = 0; x < [Game instance].numPlayers; x++)
         {
             ((Player *)[[Game instance].players objectAtIndex:x]).type = [AppConstants instance].VILLAGER;
+            ((Player *)[[Game instance].players objectAtIndex:x]).show = [AppConstants instance].VILLAGER;
         }
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -62,6 +63,7 @@
             if(((Player *)[[Game instance].players objectAtIndex:x]).type == [AppConstants instance].HUNTER) 
             {
                 ((Player *)[[Game instance].players objectAtIndex:x]).type = [AppConstants instance].VILLAGER;
+                ((Player *)[[Game instance].players objectAtIndex:x]).show = [AppConstants instance].VILLAGER;
                 [self.campFireCircle turnPerson:x into:[AppConstants instance].VILLAGER animated:NO];
             }
         }
@@ -78,6 +80,7 @@
             if(((Player *)[[Game instance].players objectAtIndex:x]).type == [AppConstants instance].HEALER) 
             {
                 ((Player *)[[Game instance].players objectAtIndex:x]).type = [AppConstants instance].VILLAGER;
+                ((Player *)[[Game instance].players objectAtIndex:x]).show = [AppConstants instance].VILLAGER;
                 [self.campFireCircle turnPerson:x into:[AppConstants instance].VILLAGER animated:NO];
             }
         }
@@ -116,12 +119,14 @@
             if(prob < self.numLeft)
             {
                 ((Player *)[[Game instance].players objectAtIndex:x]).type = [AppConstants instance].WEREWOLF;
+                ((Player *)[[Game instance].players objectAtIndex:x]).show = [AppConstants instance].WEREWOLF;
                 [self.campFireCircle turnPerson:x into:[AppConstants instance].WEREWOLF animated:NO];
                 self.numLeft--;
             }
             else
             {
                 ((Player *)[[Game instance].players objectAtIndex:x]).type = [AppConstants instance].VILLAGER;
+                ((Player *)[[Game instance].players objectAtIndex:x]).show = [AppConstants instance].VILLAGER;
                 [self.campFireCircle turnPerson:x into:[AppConstants instance].VILLAGER animated:NO];
             }
             tempPlayersLeft--;
@@ -140,12 +145,14 @@
                 if(prob < self.numLeft)
                 {
                     ((Player *)[[Game instance].players objectAtIndex:x]).type = [AppConstants instance].HUNTER;
+                    ((Player *)[[Game instance].players objectAtIndex:x]).show = [AppConstants instance].HUNTER;
                     [self.campFireCircle turnPerson:x into:[AppConstants instance].HUNTER animated:NO];
                     self.numLeft--;
                 }
                 else
                 {
                     ((Player *)[[Game instance].players objectAtIndex:x]).type = [AppConstants instance].VILLAGER;
+                    ((Player *)[[Game instance].players objectAtIndex:x]).show = [AppConstants instance].VILLAGER;
                     [self.campFireCircle turnPerson:x into:[AppConstants instance].VILLAGER animated:NO];
                 }
                 tempPlayersLeft--;
@@ -166,12 +173,14 @@
                 if(prob < self.numLeft)
                 {
                     ((Player *)[[Game instance].players objectAtIndex:x]).type = [AppConstants instance].HEALER;
+                    ((Player *)[[Game instance].players objectAtIndex:x]).show = [AppConstants instance].HEALER;
                     [self.campFireCircle turnPerson:x into:[AppConstants instance].HEALER animated:NO];
                     self.numLeft--;
                 }
                 else
                 {
                     ((Player *)[[Game instance].players objectAtIndex:x]).type = [AppConstants instance].VILLAGER;
+                    ((Player *)[[Game instance].players objectAtIndex:x]).show = [AppConstants instance].VILLAGER;
                     [self.campFireCircle turnPerson:x into:[AppConstants instance].VILLAGER animated:NO];
                 }
                 tempPlayersLeft--;
@@ -186,6 +195,10 @@
 
 - (void)pushNextViewController
 {
+    for(int x = 0; x < [Game instance].numPlayers; x++)
+    {
+        ((Player *)[[Game instance].players objectAtIndex:x]).show = [AppConstants instance].VILLAGER;
+    }
     GamePlayViewController *gamePlay = [[GamePlayViewController alloc] init];
     [self.navigationController pushViewController:gamePlay animated:YES];
     [gamePlay release];
@@ -239,13 +252,14 @@
     }
 }
 
--(void) player:(int)person WasTouchedWhilePicking:(int)type
+- (void)player:(int)person WasTouchedWhilePicking:(int)type
 {
     if(((Player *)[[Game instance].players objectAtIndex:person]).type == type)
     {
         self.numLeft++;
         self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", self.numLeft];
         ((Player *)[[Game instance].players objectAtIndex:person]).type = [AppConstants instance].VILLAGER;
+        ((Player *)[[Game instance].players objectAtIndex:person]).show = [AppConstants instance].VILLAGER;
         [self.campFireCircle turnPerson:person into:[AppConstants instance].VILLAGER animated:NO];
         self.done.hidden = YES;
     }
@@ -256,6 +270,7 @@
             self.numLeft--;
             self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", self.numLeft];
             ((Player *)[[Game instance].players objectAtIndex:person]).type = type;
+            ((Player *)[[Game instance].players objectAtIndex:person]).show = type;
             [self.campFireCircle turnPerson:person into:type animated:NO];
             if(self.numLeft == 0) self.done.hidden = NO;
         }
@@ -290,6 +305,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     UIPinchGestureRecognizer *pinchZoom = [[UIPinchGestureRecognizer alloc] initWithTarget:self.campFireCircle action:@selector(handlePinchGesture:)];
     [self.campFireCircle addGestureRecognizer:pinchZoom];
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self.campFireCircle action:@selector(handlePanGesture:)];

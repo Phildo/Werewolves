@@ -18,4 +18,6 @@
     int state; //0- Villagers' Turn; 1- Werewolves' Turn; 2- Hunter's Turn; 3- Healer's Turn; 
 }
 
+@property int state;
+
 @end

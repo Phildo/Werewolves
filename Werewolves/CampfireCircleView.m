@@ -23,7 +23,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setup];
-        self.playerViews = [[NSMutableArray alloc] initWithCapacity:[Game instance].numPlayers];
     }
     return self;
 }
@@ -31,11 +30,12 @@
 - (void)awakeFromNib
 {
     [self setup];
-    self.playerViews = [[NSMutableArray alloc] initWithCapacity:[Game instance].numPlayers];
 }
 
 - (void)setup
 {
+    self.playerViews = [[NSMutableArray alloc] initWithCapacity:[Game instance].numPlayers];
+    
     self.radius = (self.bounds.size.width/2)*.8;
     CGPoint tempMid;
     tempMid.x = self.bounds.origin.x + self.bounds.size.width/2;
@@ -59,6 +59,27 @@
 {
     [delegate personWasTouched:player.idNum];
 }
+
+- (void)dequeueNameView:(NSTimer *)t;
+{
+    [[t userInfo] removeFromSuperview];
+}
+
+- (void)playerWasLongTouched:(PlayerView *)player
+{
+    UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(player.frame.origin.x-5, player.frame.origin.y-20, player.frame.size.width+10, 31)];
+    name.textAlignment = UITextAlignmentCenter;
+    name.opaque = NO;
+    name.backgroundColor = [UIColor clearColor];
+    name.text = ((Player *)[[Game instance].players objectAtIndex:player.idNum]).name;
+    [NSTimer scheduledTimerWithTimeInterval:2.0
+                                     target:self
+                                   selector:@selector(dequeueNameView:)
+                                   userInfo:name
+                                    repeats:NO];
+    [self addSubview:name];
+    [name release];
+}
                                 
 - (void)drawRect:(CGRect)rect
 {
@@ -67,7 +88,9 @@
     CGPoint imageCenter;
     
     UIImageView *fire = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fire.png"]];
-    fire.frame = CGRectMake(self.midPoint.x-self.bounds.size.width/6.4, self.midPoint.y-self.bounds.size.height/8.6, self.bounds.size.width/3.2, self.bounds.size.height/4.3);
+    float widthRatio = 3.2;
+    float heightRatio = 4.3;
+    fire.frame = CGRectMake(self.midPoint.x-self.bounds.size.width/(widthRatio*2), self.midPoint.y-self.bounds.size.height/(heightRatio*2), self.bounds.size.width/widthRatio, self.bounds.size.height/heightRatio);
     [self addSubview:fire];
     [fire release];
     
@@ -79,15 +102,18 @@
         player.delegate = self;
         player.idNum = x;
         player.tag = x;
-        [player setAppearanceToType:((Player *)[[Game instance].players objectAtIndex:x]).type state:((Player *)[[Game instance].players objectAtIndex:x]).state faded:NO];
+        [player setAppearanceToType:((Player *)[[Game instance].players objectAtIndex:x]).show state:((Player *)[[Game instance].players objectAtIndex:x]).state faded:NO];
         UITapGestureRecognizer *tapPlayer = [[UITapGestureRecognizer alloc] initWithTarget:player action:@selector(iWasTouched)];
         [tapPlayer setNumberOfTapsRequired:1];
         [tapPlayer setNumberOfTouchesRequired:1];
+        UILongPressGestureRecognizer *longTouchPlayer = [[UILongPressGestureRecognizer alloc] initWithTarget:player action:@selector(iWasLongTouched:)];
         [player addGestureRecognizer:tapPlayer];
+        [player addGestureRecognizer:longTouchPlayer];
         [player setUserInteractionEnabled:YES];
         [self.playerViews addObject:player];
         [self addSubview:player];
         [tapPlayer release];
+        [longTouchPlayer release];
         [player release];
         angle+=angleIncrement;
     }
@@ -102,8 +128,7 @@
 {
     if (sender.state == UIGestureRecognizerStateBegan)
     {
-        NSLog(@"zoop zop zoobity bop");
-        self.initialPos = CGPointMake(sender.view.center.x,sender.view.center.y);
+        self.initialPos = CGPointMake(self.center.x,self.center.y);
     }
     CGPoint vel = [sender translationInView:self];
     [self setCenter:CGPointMake(self.initialPos.x + vel.x, self.initialPos.y + vel.y)];
@@ -119,6 +144,10 @@
     
     CGAffineTransform pz = CGAffineTransformScale(CGAffineTransformIdentity, factor, factor);
     self.bounds = CGRectApplyAffineTransform(initialBounds, pz);
+    if(self.bounds.size.width > 960)
+        self.bounds = CGRectMake(0, 0, 960, 1380);
+    if(self.bounds.size.width < 320)
+        self.bounds = CGRectMake(0, 0, 320, 460);
     
     [self setup];
 }

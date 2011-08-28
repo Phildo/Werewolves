@@ -185,6 +185,11 @@
         [self healerTapped];
 }
 
+- (void)playerWasLongTouched:(PlayerView *)player
+{
+    NSLog(@"The User is an idiot...");
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations

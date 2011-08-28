@@ -13,6 +13,7 @@
 @synthesize name;
 @synthesize playerId;
 @synthesize type;
+@synthesize show;
 @synthesize state;
 @synthesize dayKilled;
 
@@ -20,6 +21,7 @@
     if((self = [super init])){
         self.name = @"Player";
         self.type = [AppConstants instance].VILLAGER;
+        self.show = [AppConstants instance].VILLAGER;
         self.state = [AppConstants instance].AWAKE;
         self.dayKilled = 0;
     }

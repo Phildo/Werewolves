@@ -163,11 +163,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Werewolves/CampfireCircleView.m"
-         timestampString = "335854910.013592"
+         timestampString = "336191890.34649"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "76"
-         endingLineNumber = "76"
+         startingLineNumber = "99"
+         endingLineNumber = "99"
          landmarkName = "-drawRect:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -177,11 +177,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Werewolves/CampfireCircleView.m"
-         timestampString = "335854910.013592"
+         timestampString = "336191890.34649"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "86"
-         endingLineNumber = "86"
+         startingLineNumber = "111"
+         endingLineNumber = "111"
          landmarkName = "-drawRect:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -303,11 +303,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Werewolves/CampfireCircleView.m"
-         timestampString = "335856950.931542"
+         timestampString = "336191890.34649"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "113"
-         endingLineNumber = "113"
+         startingLineNumber = "138"
+         endingLineNumber = "138"
          landmarkName = "-handlePinchGesture:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -317,11 +317,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Werewolves/CampfireCircleView.m"
-         timestampString = "335856016.434272"
+         timestampString = "336191890.34649"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "106"
-         endingLineNumber = "106"
+         startingLineNumber = "131"
+         endingLineNumber = "131"
          landmarkName = "-handlePanGesture:"
          landmarkType = "5">
       </FileBreakpoint>
