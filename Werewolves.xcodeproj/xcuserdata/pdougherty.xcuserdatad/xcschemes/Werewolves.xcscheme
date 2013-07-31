@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4AE0A42E13EDD57500B5482A"
-               BuildableName = "Werewolves.app"
-               BlueprintName = "Werewolves"
-               ReferencedContainer = "container:Werewolves.xcodeproj">
+               BlueprintIdentifier = "AA0A36E317A89E5600E185AA"
+               BuildableName = "werewolves.app"
+               BlueprintName = "werewolves"
+               ReferencedContainer = "container:werewolves.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,24 +28,14 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4AE0A45713EDD57500B5482A"
-               BuildableName = "WerewolvesTests.octest"
-               BlueprintName = "WerewolvesTests"
-               ReferencedContainer = "container:Werewolves.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4AE0A42E13EDD57500B5482A"
-            BuildableName = "Werewolves.app"
-            BlueprintName = "Werewolves"
-            ReferencedContainer = "container:Werewolves.xcodeproj">
+            BlueprintIdentifier = "AA0A36E317A89E5600E185AA"
+            BuildableName = "werewolves.app"
+            BlueprintName = "werewolves"
+            ReferencedContainer = "container:werewolves.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -61,10 +51,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4AE0A42E13EDD57500B5482A"
-            BuildableName = "Werewolves.app"
-            BlueprintName = "Werewolves"
-            ReferencedContainer = "container:Werewolves.xcodeproj">
+            BlueprintIdentifier = "AA0A36E317A89E5600E185AA"
+            BuildableName = "werewolves.app"
+            BlueprintName = "werewolves"
+            ReferencedContainer = "container:werewolves.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -79,10 +69,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4AE0A42E13EDD57500B5482A"
-            BuildableName = "Werewolves.app"
-            BlueprintName = "Werewolves"
-            ReferencedContainer = "container:Werewolves.xcodeproj">
+            BlueprintIdentifier = "AA0A36E317A89E5600E185AA"
+            BuildableName = "werewolves.app"
+            BlueprintName = "werewolves"
+            ReferencedContainer = "container:werewolves.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

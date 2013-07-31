@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Werewolves.xcscheme</key>
+		<key>werewolves.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4AE0A42E13EDD57500B5482A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4AE0A45713EDD57500B5482A</key>
+		<key>AA0A36E317A89E5600E185AA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
