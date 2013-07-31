@@ -25,10 +25,11 @@
 
 - (void) loadView
 {
+    self.view = [[UIView alloc] initWithFrame:CGRectMake(0.0f,0.0f,320.0f,320.0f)];
     UINavigationController *n = [[UINavigationController alloc] init];
     IntroScreenViewController *isvc = [[IntroScreenViewController alloc] init];
     [n addChildViewController:isvc];
-    self.view = n.view;
+    [self.view addSubview:n.view];
 }
 
 @end

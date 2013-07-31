@@ -7,14 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GameSettingsPickerViewController.h"
 
-
-@interface IntroScreenViewController : UIViewController {
-    
-}
-
-- (IBAction) playButtonPressed;
-- (IBAction) instructionsButtonPressed;
+@interface IntroScreenViewController : UIViewController
 
 @end

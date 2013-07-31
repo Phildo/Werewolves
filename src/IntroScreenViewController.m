@@ -7,15 +7,14 @@
 //
 
 #import "IntroScreenViewController.h"
-
+#import "GameSettingsPickerViewController.h"
 
 @implementation IntroScreenViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if(self = [super initWithNibName:@"IntroScreenViewController" bundle:nil])
+    {
     }
     return self;
 }
