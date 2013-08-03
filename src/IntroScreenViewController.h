@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol IntroScreenViewControllerDelegate
+- (void) introScreenRequestsGamePlay;
+@end
 @interface IntroScreenViewController : UIViewController
-
+- (id) initWithDelegate:(id<IntroScreenViewControllerDelegate>)d;
 @end

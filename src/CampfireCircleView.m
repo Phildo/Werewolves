@@ -5,13 +5,41 @@
 //  Created by Philip Dougherty on 8/16/11.
 //  Copyright 2011 UW Madison. All rights reserved.
 //
+/*
 
 #import "CampfireCircleView.h"
+#import "PlayerView.h"
 
+@interface CampfireCircleView()
+{
+    id <CampfireCircleViewDelegate> __unsafe_unretained delegate;
+        
+    NSMutableArray *playerViews;
+        
+    CGPoint midPoint;
+    CGFloat radius;
+    CGRect initialBounds;
+    CGPoint initialPos;
+}
+
+@property (assign) id <CampfireCircleViewDelegate> delegate;
+@property (retain) NSMutableArray *playerViews;
+@property CGPoint midPoint;
+@property CGFloat radius;
+@property CGRect initialBounds;
+@property CGPoint initialPos;
+
+- (void)setup;
+- (void)turnPerson:(int)location into:(int)type animated:(BOOL)animated;
+- (void)playerWasTouched:(PlayerView *)player;
+- (void)playerWasLongTouched:(PlayerView *)player;
+- (void)handlePinchGesture:(UIPinchGestureRecognizer *)sender;
+- (void)handlePanGesture:(UIPanGestureRecognizer *)sender;
+
+@end
 
 @implementation CampfireCircleView
 
-@synthesize delegate;
 @synthesize playerViews;
 @synthesize midPoint;
 @synthesize radius;
@@ -27,26 +55,14 @@
     return self;
 }
 
-- (void)awakeFromNib
-{
-    [self setup];
-}
-
-- (void)setup
+- (void) setup
 {
     self.playerViews = [[NSMutableArray alloc] initWithCapacity:[Game instance].numPlayers];
     
-    self.radius = (self.bounds.size.width/2)*.8;
-    CGPoint tempMid;
-    tempMid.x = self.bounds.origin.x + self.bounds.size.width/2;
-    tempMid.y = self.bounds.origin.y + self.bounds.size.height/2 + 20;
-    self.midPoint = tempMid;
+    radius = (self.bounds.size.width/2)*.8;
+    midPoint = CGPointMake(self.bounds.origin.x + self.bounds.size.width/2, self.bounds.origin.y + self.bounds.size.height/2 + 20);
     
-    [self.playerViews removeAllObjects];
-    for(UIView *view in self.subviews)
-    {
-        [view removeFromSuperview];
-    }
+    for(UIView *view in self.subviews) [view removeFromSuperview];
     [self setNeedsDisplay];
 }
 
@@ -148,3 +164,4 @@
 }
 
 @end
+*/

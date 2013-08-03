@@ -7,34 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AppConstants.h"
 
 @class PlayerView;
+@class Player;
 
 @protocol PlayerViewDelegate
-    - (void)playerWasTouched:(PlayerView *)player;
-    - (void)playerWasLongTouched:(PlayerView *)player;
+- (void) playerWasTouched:(PlayerView *)player;
+- (void) playerWasLongTouched:(PlayerView *)player;
 @end
 
 @interface PlayerView : UIImageView
-{
-    id <PlayerViewDelegate> __unsafe_unretained delegate;
-    int idNum;
-    int type;
-    int state;
-    BOOL faded;
-}
 
-@property (assign) id <PlayerViewDelegate> delegate;
-@property int idNum;
-@property int type;
-@property int state;
-@property BOOL faded;
-
-- (void)setAppearanceToType:(int)type state:(int)state faded:(BOOL)faded;
-- (void)dim:(BOOL)dim;
-- (void)incrementType;
-- (void)iWasTouched;
-- (void)iWasLongTouched:(UILongPressGestureRecognizer *)sender;
+- (id) initWithFrame:(CGRect)frame player:(Player*)p delegate:(id<PlayerViewDelegate>)d;
+- (void) dim:(BOOL)dim;
 
 @end

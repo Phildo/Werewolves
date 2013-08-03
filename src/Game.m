@@ -7,7 +7,7 @@
 //
 
 #import "Game.h"
-
+#import "AppConstants.h"
 
 @implementation Game
 
@@ -21,18 +21,8 @@
 @synthesize players;
 @synthesize history;
 
-static Game* singletonInstance = nil;
-
-+ (Game *) instance {
-    @synchronized([Game class])
-	{
-		if (!singletonInstance) singletonInstance = [[self alloc] init];
-		return singletonInstance;
-	}
-	return nil;
-}
-
-- (id) init {
+- (id) init
+{
     if((self = [super init]))
     {
         self.numPlayers = 10;
@@ -46,6 +36,11 @@ static Game* singletonInstance = nil;
         self.history = [[NSMutableArray alloc] init];
     }
     return self;
+}
+
+- (int) maxWerewolves
+{
+    return (self.numPlayers/2)-1;
 }
 
 @end

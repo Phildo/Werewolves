@@ -7,27 +7,32 @@
 //
 
 #import "IntroScreenViewController.h"
-#import "GameSettingsPickerViewController.h"
+
+@interface IntroScreenViewController()
+{
+    id<IntroScreenViewControllerDelegate> __unsafe_unretained delegate;
+}
+@end
 
 @implementation IntroScreenViewController
 
-- (id)init
+- (id) initWithDelegate:(id<IntroScreenViewControllerDelegate>)d
 {
     if(self = [super initWithNibName:@"IntroScreenViewController" bundle:nil])
     {
+        delegate = d;
     }
     return self;
 }
 
 - (IBAction) playButtonPressed
 {
-    GameSettingsPickerViewController *settings = [[GameSettingsPickerViewController alloc] init];
-    [self.navigationController pushViewController:settings animated:YES];
+    [delegate introScreenRequestsGamePlay];
 }
 
 - (IBAction) instructionsButtonPressed
 {
-    NSLog(@"Instructions Button Pressed");
+    NSLog(@"Nope");
 }
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ContentViewController.h"
 
-@interface WerewolvesRootViewcontroller : UIViewController
+@interface WerewolvesRootViewcontroller : ContentViewController
 
 @end

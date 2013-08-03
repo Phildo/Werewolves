@@ -7,27 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AppConstants.h"
 
-
-@interface Player : NSObject {
+@interface Player : NSObject
+{
     NSString *name;
-    int playerId;
     int type; //0-Villager; 1-Werewolf; 2-Hunter; 3-Healer;
-    int show; //type appearance (same encoding)
     int state; //0-Awake; 1-Asleep; 2-Dead;
-    
-    int dayKilled;
 }
 
-@property (retain) NSString *name;
-@property int playerId;
-@property int type;
-@property int show;
-@property int state;
-@property int dayKilled;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, assign) int type;
+@property (nonatomic, assign) int state;
 
-- (id) init;
-- (void) dealloc;
+- (id) initWithName:(NSString *)n;
+- (void) incrementType;
+- (void) sleep;
+- (void) wake;
+- (void) kill;
 
 @end

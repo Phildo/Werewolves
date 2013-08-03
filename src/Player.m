@@ -7,25 +7,41 @@
 //
 
 #import "Player.h"
+#import "AppConstants.h"
 
 @implementation Player
 
 @synthesize name;
-@synthesize playerId;
 @synthesize type;
-@synthesize show;
 @synthesize state;
-@synthesize dayKilled;
 
-- (id) init {
-    if((self = [super init])){
-        self.name = @"Player";
-        self.type = C_VILLAGER;
-        self.show = C_VILLAGER;
-        self.state = C_AWAKE;
-        self.dayKilled = 0;
+- (id) initWithName:(NSString *)n
+{
+    if((self = [super init]))
+    {
+        self.name = n ? n : @"Player";
     }
     return self;
+}
+
+- (void) incrementType
+{
+    self.type = (type+1)%4;
+}
+
+- (void) wake
+{
+    self.state = C_AWAKE;
+}
+
+- (void) sleep
+{
+    self.state = C_SLEEP;
+}
+
+- (void) kill
+{
+    self.state = C_DEAD;
 }
 
 @end

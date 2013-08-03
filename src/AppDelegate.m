@@ -15,7 +15,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     WerewolvesRootViewcontroller *wrvc = [[WerewolvesRootViewcontroller alloc] init];
-    [self.window addSubview:wrvc.view];
+    [self.window setRootViewController:wrvc];
     [self.window makeKeyAndVisible];
     return YES;
 }

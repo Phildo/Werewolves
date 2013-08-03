@@ -8,28 +8,34 @@
 
 #import "WerewolvesRootViewcontroller.h"
 #import "IntroScreenViewController.h"
+#import "GameSetupViewController.h"
 
-@interface WerewolvesRootViewcontroller ()
+@interface WerewolvesRootViewcontroller ()<IntroScreenViewControllerDelegate,GameSetupViewControllerDelegate>
+{
+    UIViewController *currentChildViewController;
+}
 
 @end
 
 @implementation WerewolvesRootViewcontroller
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id) init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if(self = [super init])
+    {
     }
     return self;
 }
 
 - (void) loadView
 {
-    self.view = [[UIView alloc] initWithFrame:CGRectMake(0.0f,0.0f,320.0f,320.0f)];
-    UINavigationController *n = [[UINavigationController alloc] init];
-    IntroScreenViewController *isvc = [[IntroScreenViewController alloc] init];
-    [n addChildViewController:isvc];
-    [self.view addSubview:n.view];
+    [super loadView];
+    [self displayContentController:[[IntroScreenViewController alloc] initWithDelegate:self]];
+}
+
+- (void) introScreenRequestsGamePlay
+{
+    [self displayContentController:[[GameSetupViewController alloc] initWithDelegate:self]];
 }
 
 @end

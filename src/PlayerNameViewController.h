@@ -10,7 +10,7 @@
 #import "Game.h"
 #import "Player.h"
 #import "PlayerView.h"
-#import "CirclePositionView.h"
+#import "PlayerPositionView.h"
 #import "TypePickerViewController.h"
 
 @interface PlayerNameViewController : UIViewController <UIScrollViewDelegate,UITextFieldDelegate>{

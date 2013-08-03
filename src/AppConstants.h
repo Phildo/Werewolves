@@ -26,8 +26,3 @@
 #define C_SLEEP 1
 #define C_DEAD 2
 
-#define C_DOT 0
-#define C_PLAYER_GREEN 1
-#define C_PLAYER_RED 2
-#define C_PLAYER_BROWN 3
-#define C_PLAYER_BLUE 4

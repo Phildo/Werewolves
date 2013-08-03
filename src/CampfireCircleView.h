@@ -7,41 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AppConstants.h"
-#import "Player.h"
-#import "Game.h"
-#import "PlayerView.h"
-
-@class CampfireCircleView;
+#import "CircleIconView.h"
 
 @protocol CampfireCircleViewDelegate
-    - (void)personWasTouched:(int)person;
+- (void) personWasTouched:(int)person;
 @end
 
-@interface CampfireCircleView : UIView <PlayerViewDelegate>
-{
-    id <CampfireCircleViewDelegate> __unsafe_unretained delegate;
-        
-    NSMutableArray *playerViews;
-        
-    CGPoint midPoint;
-    CGFloat radius;
-    CGRect initialBounds;
-    CGPoint initialPos;
-}
-
-@property (assign) id <CampfireCircleViewDelegate> delegate;
-@property (retain) NSMutableArray *playerViews;
-@property CGPoint midPoint;
-@property CGFloat radius;
-@property CGRect initialBounds;
-@property CGPoint initialPos;
-
-- (void)setup;
-- (void)turnPerson:(int)location into:(int)type animated:(BOOL)animated;
-- (void)playerWasTouched:(PlayerView *)player;
-- (void)playerWasLongTouched:(PlayerView *)player;
-- (void)handlePinchGesture:(UIPinchGestureRecognizer *)sender;
-- (void)handlePanGesture:(UIPanGestureRecognizer *)sender;
+@interface CampfireCircleView : CircleIconView
 
 @end

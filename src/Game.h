@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AppConstants.h"
 
-
-@interface Game : NSObject {
+@interface Game : NSObject
+{
     int numPlayers;
     int numWerewolves;
     BOOL hunter;
@@ -23,6 +22,7 @@
 }
 
 @property int numPlayers;
+- (int) maxWerewolves;
 @property int numWerewolves;
 @property BOOL hunter;
 @property BOOL healer;
@@ -31,7 +31,5 @@
 @property int turnState;
 @property (retain) NSMutableArray *players;
 @property (retain) NSMutableArray *history;
-
-+ (Game *) instance;
 
 @end
