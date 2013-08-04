@@ -28,6 +28,7 @@
     BOOL splitHasBeenEdited;
     
     Game *game;
+    id<GameSetupViewControllerDelegate> __unsafe_unretained delegate;
 }
 
 @property (nonatomic, strong) IBOutlet UISlider *playersSlider;
@@ -46,7 +47,6 @@
 - (IBAction) numPlayersChanged:(UISlider *)sender;
 - (IBAction) splitChanged:(UISlider *)sender;
 - (IBAction) startButtonTouched;
-- (IBAction) backButtonTouched;
 
 @end
 
@@ -69,33 +69,24 @@
 {
     if(self = [super initWithNibName:@"GameSetupViewController" bundle:nil])
     {
+        delegate = d;
+        self.title = @"Game Setup";
         self.game = [[Game alloc] init];
         splitHasBeenEdited = NO;
     }
     return self;
 }
 
-- (void)viewDidLoad
+- (void) viewDidLoad
 {
     [super viewDidLoad];
-    self.game.numPlayers = 10;
-    self.game.numWerewolves = 3;
-    self.game.hunter = false;
-    self.game.healer = false;
+    self.layoutView.count      = self.game.numPlayers;
     self.layoutView.werewolves = self.game.numWerewolves;
-    self.layoutView.hunter = self.game.hunter;
-    self.layoutView.healer = self.game.healer;
-    self.layoutView.count = self.game.numPlayers;
-    UITapGestureRecognizer *tapHunter = [[UITapGestureRecognizer alloc] initWithTarget:hunterView action:@selector(iWasTouched)];
-    UITapGestureRecognizer *tapHealer = [[UITapGestureRecognizer alloc] initWithTarget:healerView action:@selector(iWasTouched)];
-    [tapHunter setNumberOfTapsRequired:1];
-    [tapHealer setNumberOfTapsRequired:1];
-    [tapHunter setNumberOfTouchesRequired:1];
-    [tapHealer setNumberOfTouchesRequired:1];
-    [self.hunterView setUserInteractionEnabled:YES];
-    [self.healerView setUserInteractionEnabled:YES];
-    [self.hunterView addGestureRecognizer:tapHunter];
-    [self.healerView addGestureRecognizer:tapHealer];
+    self.layoutView.hunter     = self.game.hunter;
+    self.layoutView.healer     = self.game.healer;
+    self.hunterView.alpha = 0.5;
+    self.healerView.alpha = 0.5;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonSystemItemCancel target:self action:@selector(backButtonTouched)];
 }
 
 - (void) updateViews
@@ -120,7 +111,8 @@
 
 - (IBAction) numPlayersChanged:(UISlider *)sender
 {
-    self.game.numPlayers = (int)sender.value;
+    if(self.game.numPlayers == (int)(sender.value+0.5)) return;
+    self.game.numPlayers = (int)(sender.value+0.5);
     
     if(!splitHasBeenEdited)
         self.game.numWerewolves = ((int)(self.playersSlider.value*0.33));
@@ -132,8 +124,9 @@
 
 - (IBAction) splitChanged:(UISlider *)sender
 {
+    if(self.game.numWerewolves == (int)(sender.value+0.5)) return;
+    self.game.numWerewolves = (int)(sender.value+0.5);
     splitHasBeenEdited = YES;
-    self.game.numWerewolves = (int) sender.value;
     
     [self updateViews];
 }
@@ -152,13 +145,15 @@
     self.layoutView.healer = self.game.healer;
 }
 
-- (IBAction) backButtonTouched
+- (void) backButtonTouched
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [delegate gameSetupAborted];
 }
 
 - (IBAction) startButtonTouched
 {
+    [self.navigationController pushViewController:[[UIViewController alloc] init] animated:NO];
+    return;
     NSMutableArray *players = [[NSMutableArray alloc] initWithCapacity:self.game.numPlayers];
     for(int x = 0; x < self.game.numPlayers; x++)
         [players addObject:[[Player alloc] initWithName:[NSString stringWithFormat:@"Player %d", x+1]]];

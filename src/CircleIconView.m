@@ -51,12 +51,13 @@
     
     CGFloat angleIncrement = 2*M_PI/count;
     CGFloat tempRad = radius/2 + ((radius/2)*count/30);
-    CGFloat iconSize = (tempRad/count)*4;
+    CGFloat iconSize = (tempRad/count)*6;
     CGPoint iconCenter;
     UIImageView *iconView;
     for(int i = 0; i < count; i++)
     {
         iconView = [[UIImageView alloc] initWithImage:[self iconForPosition:i]];
+        iconView.contentMode = UIViewContentModeScaleAspectFit;
         iconCenter = CGPointMake(midPoint.x+tempRad*cos((i*angleIncrement)-(M_PI/2)), midPoint.y+tempRad*sin((i*angleIncrement)-(M_PI/2)));
         iconView.frame = CGRectMake(iconCenter.x-(iconSize/2), iconCenter.y-(iconSize/2), iconSize, iconSize);
         [self addSubview:iconView];

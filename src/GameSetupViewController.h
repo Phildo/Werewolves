@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class Game;
 @protocol GameSetupViewControllerDelegate
+- (void) gameSetupConfirmedWithGame:(Game *)g;
+- (void) gameSetupAborted;
 @end
 
 @interface GameSetupViewController : UIViewController
