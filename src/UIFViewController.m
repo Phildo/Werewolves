@@ -31,4 +31,16 @@
     self.view.frame = viewFrame;
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.view.frame = viewFrame;
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.view.frame = viewFrame;
+}
+
 @end

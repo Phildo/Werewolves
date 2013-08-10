@@ -29,8 +29,6 @@
     BOOL splitHasBeenEdited;
     
     Game *game;
-    
-    CGRect viewFrame;
     id<GameSetupViewControllerDelegate> __unsafe_unretained delegate;
 }
 
@@ -68,11 +66,10 @@
 @synthesize maxWerewolvesLabel;
 @synthesize game;
 
-- (id) initWithViewFrame:(CGRect)f Delegate:(id<GameSetupViewControllerDelegate>)d
+- (id) initWithViewFrame:(CGRect)f delegate:(id<GameSetupViewControllerDelegate>)d
 {
-    if(self = [super init])
+    if(self = [super initWithViewFrame:f])
     {
-        viewFrame = f;
         delegate = d;
         self.title = @"Game Setup";
         self.game = [[Game alloc] init];
@@ -85,11 +82,10 @@
 {
     [super loadView];
     
-    #define viewx viewFrame.origin.x
-    #define viewy viewFrame.origin.y
-    #define vieww viewFrame.size.width
-    #define viewh viewFrame.size.height
-    self.view.frame = viewFrame;
+    #define viewx self.view.frame.origin.x
+    #define viewy self.view.frame.origin.y
+    #define vieww self.view.frame.size.width
+    #define viewh self.view.frame.size.height
     self.view.backgroundColor = [UIColor whiteColor];
     
     #define layoutViewx 10
@@ -97,6 +93,7 @@
     #define layoutVieww vieww/3
     #define layoutViewh vieww/3
     self.layoutView = [[PlayerSplitOverviewView alloc] initWithFrame:CGRectMake(layoutViewx, layoutViewy, layoutVieww, layoutViewh)];
+    self.layoutView.backgroundColor = [UIColor whiteColor];
     self.layoutView.count      = self.game.numPlayers;
     self.layoutView.werewolves = self.game.numWerewolves;
     self.layoutView.hunter     = self.game.hunter;
@@ -127,6 +124,7 @@
     self.numPlayersLabel.textAlignment = NSTextAlignmentLeft;
     self.numPlayersLabel.text = @"10 People";
     [self.view addSubview:self.numPlayersLabel];
+    
 }
 
 - (void) viewDidLoad

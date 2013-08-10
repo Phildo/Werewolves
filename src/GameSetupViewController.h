@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIFViewController.h"
 
 @class Game;
 @protocol GameSetupViewControllerDelegate
@@ -14,6 +15,6 @@
 - (void) gameSetupAborted;
 @end
 
-@interface GameSetupViewController : UIViewController
-- (id) initWithViewFrame:(CGRect)f Delegate:(id<GameSetupViewControllerDelegate>)d;
+@interface GameSetupViewController : UIFViewController
+- (id) initWithViewFrame:(CGRect)f delegate:(id<GameSetupViewControllerDelegate>)d;
 @end

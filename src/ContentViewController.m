@@ -21,7 +21,6 @@
     if(currentChildViewController) [self hideContentController:currentChildViewController];
     
     [self addChildViewController:content];
-    content.view.frame = self.view.bounds;
     [self.view addSubview:content.view];
     [content didMoveToParentViewController:self];
     
