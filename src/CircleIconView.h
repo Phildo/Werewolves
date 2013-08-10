@@ -10,9 +10,10 @@
 
 @interface CircleIconView : UIView
 
-- (void) setFrame:(CGRect)frame;
-- (void) setCount:(int)newcount;
-- (UIImage *) iconForPosition:(int)position;
+- (void) setFrame:(CGRect)f;
+- (void) setCount:(int)c;
+- (UIImage *) iconForPosition:(int)p;
+- (float) scaleForPosition:(int)p;
 - (void) refresh;
 
 @end

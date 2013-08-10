@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIFViewController.h"
 
-@interface ContentViewController : UIViewController
+@interface ContentViewController : UIFViewController
 - (void) displayContentController:(UIViewController*)content;
 @end

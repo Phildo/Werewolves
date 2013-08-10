@@ -16,19 +16,6 @@
 
 @implementation ContentViewController
 
-- (void) loadView
-{
-    [super loadView];
-    self.view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
-}
-
-- (void) viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
-    self.view.frame = [UIScreen mainScreen].applicationFrame;
-}
-
 - (void) displayContentController:(UIViewController*)content
 {
     if(currentChildViewController) [self hideContentController:currentChildViewController];

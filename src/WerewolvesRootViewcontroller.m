@@ -11,33 +11,23 @@
 #import "GameSetupViewController.h"
 
 @interface WerewolvesRootViewcontroller ()<IntroScreenViewControllerDelegate,GameSetupViewControllerDelegate>
-{
-    UIViewController *currentChildViewController;
-}
 
 @end
 
 @implementation WerewolvesRootViewcontroller
 
-- (id) init
-{
-    if(self = [super init])
-    {
-    }
-    return self;
-}
-
 - (void) loadView
 {
     [super loadView];
-    [self displayContentController:[[IntroScreenViewController alloc] initWithDelegate:self]];
+    [self displayContentController:[[IntroScreenViewController alloc] initWithViewFrame:self.view.bounds delegate:self]];
 }
 
 - (void) introScreenRequestsGamePlay
 {
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[GameSetupViewController alloc] initWithDelegate:self]];
-    nav.navigationBar.barStyle = UIBarStyleBlack;
-    [self displayContentController:nav];
+    //UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[GameSetupViewController alloc] initWithViewFrame:self.view.bounds Delegate:self]];
+    //nav.navigationBar.barStyle = UIBarStyleBlack;
+    //[self displayContentController:nav];
+    [self displayContentController:[[GameSetupViewController alloc] initWithViewFrame:self.view.bounds Delegate:self]];
 }
 
 - (void) gameSetupConfirmedWithGame:(Game *)g
@@ -47,7 +37,7 @@
 
 - (void) gameSetupAborted
 {
-    [self displayContentController:[[IntroScreenViewController alloc] initWithDelegate:self]];
+    [self displayContentController:[[IntroScreenViewController alloc] initWithViewFrame:self.view.bounds delegate:self]];
 }
 
 @end

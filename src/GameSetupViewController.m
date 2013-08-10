@@ -10,38 +10,41 @@
 #import "PlayerSplitOverviewView.h"
 #import "Game.h"
 #import "Player.h"
+#import "PlayerSetupViewController.h"
 
-@interface GameSetupViewController()
+@interface GameSetupViewController() <PlayerSetupViewControllerDelegate>
 {
-    IBOutlet UISlider *playersSlider;
-    IBOutlet UISlider *splitSlider;
-    IBOutlet UIImageView *werewolfView;
-    IBOutlet UIImageView *villagerView;
-    IBOutlet UIButton *hunterView;
-    IBOutlet UIButton *healerView;
-    IBOutlet PlayerSplitOverviewView *layoutView;
-    IBOutlet UILabel *numPlayersLabel;
-    IBOutlet UILabel *numWerewolvesLabel;
-    IBOutlet UILabel *numVillagersLabel;
-    IBOutlet UILabel *maxWerewolvesLabel;
+    UISlider *playersSlider;
+    UISlider *splitSlider;
+    UIImageView *werewolfView;
+    UIImageView *villagerView;
+    UIButton *hunterView;
+    UIButton *healerView;
+    PlayerSplitOverviewView *layoutView;
+    UILabel *numPlayersLabel;
+    UILabel *numWerewolvesLabel;
+    UILabel *numVillagersLabel;
+    UILabel *maxWerewolvesLabel;
     
     BOOL splitHasBeenEdited;
     
     Game *game;
+    
+    CGRect viewFrame;
     id<GameSetupViewControllerDelegate> __unsafe_unretained delegate;
 }
 
-@property (nonatomic, strong) IBOutlet UISlider *playersSlider;
-@property (nonatomic, strong) IBOutlet UISlider *splitSlider;
-@property (nonatomic, strong) IBOutlet UIImageView *werewolfView;
-@property (nonatomic, strong) IBOutlet UIImageView *villagerView;
-@property (nonatomic, strong) IBOutlet UIButton *hunterView;
-@property (nonatomic, strong) IBOutlet UIButton *healerView;
-@property (nonatomic, strong) IBOutlet PlayerSplitOverviewView *layoutView;
-@property (nonatomic, strong) IBOutlet UILabel *numPlayersLabel;
-@property (nonatomic, strong) IBOutlet UILabel *numWerewolvesLabel;
-@property (nonatomic, strong) IBOutlet UILabel *numVillagersLabel;
-@property (nonatomic, strong) IBOutlet UILabel *maxWerewolvesLabel;
+@property (nonatomic, strong) UISlider *playersSlider;
+@property (nonatomic, strong) UISlider *splitSlider;
+@property (nonatomic, strong) UIImageView *werewolfView;
+@property (nonatomic, strong) UIImageView *villagerView;
+@property (nonatomic, strong) UIButton *hunterView;
+@property (nonatomic, strong) UIButton *healerView;
+@property (nonatomic, strong) PlayerSplitOverviewView *layoutView;
+@property (nonatomic, strong) UILabel *numPlayersLabel;
+@property (nonatomic, strong) UILabel *numWerewolvesLabel;
+@property (nonatomic, strong) UILabel *numVillagersLabel;
+@property (nonatomic, strong) UILabel *maxWerewolvesLabel;
 @property (nonatomic, strong) Game *game;
 
 - (IBAction) numPlayersChanged:(UISlider *)sender;
@@ -65,10 +68,11 @@
 @synthesize maxWerewolvesLabel;
 @synthesize game;
 
-- (id) initWithDelegate:(id)d
+- (id) initWithViewFrame:(CGRect)f Delegate:(id<GameSetupViewControllerDelegate>)d
 {
-    if(self = [super initWithNibName:@"GameSetupViewController" bundle:nil])
+    if(self = [super init])
     {
+        viewFrame = f;
         delegate = d;
         self.title = @"Game Setup";
         self.game = [[Game alloc] init];
@@ -77,13 +81,57 @@
     return self;
 }
 
-- (void) viewDidLoad
+- (void) loadView
 {
-    [super viewDidLoad];
+    [super loadView];
+    
+    #define viewx viewFrame.origin.x
+    #define viewy viewFrame.origin.y
+    #define vieww viewFrame.size.width
+    #define viewh viewFrame.size.height
+    self.view.frame = viewFrame;
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    #define layoutViewx 10
+    #define layoutViewy 10
+    #define layoutVieww vieww/3
+    #define layoutViewh vieww/3
+    self.layoutView = [[PlayerSplitOverviewView alloc] initWithFrame:CGRectMake(layoutViewx, layoutViewy, layoutVieww, layoutViewh)];
     self.layoutView.count      = self.game.numPlayers;
     self.layoutView.werewolves = self.game.numWerewolves;
     self.layoutView.hunter     = self.game.hunter;
     self.layoutView.healer     = self.game.healer;
+    [self.view addSubview:self.layoutView];
+    
+    #define numPlayersPromptx layoutViewx+layoutVieww+10
+    #define numPlayersPrompty 10
+    #define numPlayersPromptw vieww-numPlayersPromptx-10
+    #define numPlayersPrompth 20
+    UILabel *numPlayersPrompt = [[UILabel alloc] initWithFrame:CGRectMake(numPlayersPromptx, numPlayersPrompty, numPlayersPromptw, numPlayersPrompth)];
+    numPlayersPrompt.textAlignment = NSTextAlignmentRight;
+    numPlayersPrompt.text = @"Number of Players:";
+    [self.view addSubview:numPlayersPrompt];
+    
+    #define playersSliderx layoutViewx+layoutVieww+10
+    #define playersSlidery layoutViewy+(layoutViewh/2)-10
+    #define playersSliderw vieww-playersSliderx-10
+    #define playersSliderh 20
+    self.playersSlider = [[UISlider alloc] initWithFrame:CGRectMake(playersSliderx, playersSlidery, playersSliderw, playersSliderh)];
+    [self.view addSubview:self.playersSlider];
+    
+    #define numPlayersLabelx playersSliderx
+    #define numPlayersLabely playersSlidery+10
+    #define numPlayersLabelw playersSliderw
+    #define numPlayersLabelh 20
+    self.numPlayersLabel = [[UILabel alloc] initWithFrame:CGRectMake(numPlayersLabelx, numPlayersLabely, numPlayersLabelw, numPlayersLabelh)];
+    self.numPlayersLabel.textAlignment = NSTextAlignmentLeft;
+    self.numPlayersLabel.text = @"10 People";
+    [self.view addSubview:self.numPlayersLabel];
+}
+
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
     self.hunterView.alpha = 0.5;
     self.healerView.alpha = 0.5;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonSystemItemCancel target:self action:@selector(backButtonTouched)];
@@ -109,7 +157,7 @@
     slider.value = val;
 }
 
-- (IBAction) numPlayersChanged:(UISlider *)sender
+- (void) numPlayersChanged:(UISlider *)sender
 {
     if(self.game.numPlayers == (int)(sender.value+0.5)) return;
     self.game.numPlayers = (int)(sender.value+0.5);
@@ -122,7 +170,7 @@
     [self updateViews];
 }
 
-- (IBAction) splitChanged:(UISlider *)sender
+- (void) splitChanged:(UISlider *)sender
 {
     if(self.game.numWerewolves == (int)(sender.value+0.5)) return;
     self.game.numWerewolves = (int)(sender.value+0.5);
@@ -131,14 +179,14 @@
     [self updateViews];
 }
 
-- (IBAction) hunterTouched
+- (void) hunterTouched
 {
     self.game.hunter = !self.game.hunter;
     self.hunterView.alpha = self.game.hunter ? 1.0 : 0.5;
     self.layoutView.hunter = self.game.hunter;
 }
 
-- (IBAction) healerTouched
+- (void) healerTouched
 {
     self.game.healer = !self.game.healer;
     self.healerView.alpha = self.game.healer ? 1.0 : 0.5;
@@ -150,9 +198,9 @@
     [delegate gameSetupAborted];
 }
 
-- (IBAction) startButtonTouched
+- (void) startButtonTouched
 {
-    [self.navigationController pushViewController:[[UIViewController alloc] init] animated:NO];
+    [self.navigationController pushViewController:[[PlayerSetupViewController alloc] initWithDelegate:self numPlayers:self.game.numPlayers] animated:NO];
     return;
     NSMutableArray *players = [[NSMutableArray alloc] initWithCapacity:self.game.numPlayers];
     for(int x = 0; x < self.game.numPlayers; x++)

@@ -15,5 +15,5 @@
 @end
 
 @interface GameSetupViewController : UIViewController
-- (id)initWithDelegate:(id<GameSetupViewControllerDelegate>)d;
+- (id) initWithViewFrame:(CGRect)f Delegate:(id<GameSetupViewControllerDelegate>)d;
 @end

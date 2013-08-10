@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIFViewController.h"
 
 @protocol IntroScreenViewControllerDelegate
 - (void) introScreenRequestsGamePlay;
 @end
-@interface IntroScreenViewController : UIViewController
-- (id) initWithDelegate:(id<IntroScreenViewControllerDelegate>)d;
+@interface IntroScreenViewController : UIFViewController
+- (id) initWithViewFrame:(CGRect)f delegate:(id<IntroScreenViewControllerDelegate>)d;
 @end

@@ -14,7 +14,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    WerewolvesRootViewcontroller *wrvc = [[WerewolvesRootViewcontroller alloc] init];
+    CGRect appBounds = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-20); //screen - status bar
+    WerewolvesRootViewcontroller *wrvc = [[WerewolvesRootViewcontroller alloc] initWithViewFrame:appBounds];
     [self.window setRootViewController:wrvc];
     [self.window makeKeyAndVisible];
     return YES;

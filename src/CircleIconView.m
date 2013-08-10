@@ -27,22 +27,27 @@
     return self;
 }
 
-- (void) setFrame:(CGRect)frame
+- (void) setFrame:(CGRect)f
 {
-    [super setFrame:frame];
+    [super setFrame:f];
     radius = self.bounds.size.width/2;
     midPoint = CGPointMake(self.bounds.origin.x+radius, self.bounds.origin.y+radius);
 }
 
-- (void) setCount:(int)newCount
+- (void) setCount:(int)c
 {
-    count = newCount;
+    count = c;
     [self refresh];
 }
 
-- (UIImage*) iconForPosition:(int)position
+- (UIImage*) iconForPosition:(int)p
 {
     return [UIImage imageNamed:@"dot.png"];
+}
+
+- (float) scaleForPosition:(int)p
+{
+    return 1.0;
 }
 
 - (void) refresh
@@ -52,14 +57,16 @@
     CGFloat angleIncrement = 2*M_PI/count;
     CGFloat tempRad = radius/2 + ((radius/2)*count/30);
     CGFloat iconSize = (tempRad/count)*6;
+    CGFloat iconSizeScale;
     CGPoint iconCenter;
     UIImageView *iconView;
     for(int i = 0; i < count; i++)
     {
         iconView = [[UIImageView alloc] initWithImage:[self iconForPosition:i]];
+        iconSizeScale = [self scaleForPosition:i];
         iconView.contentMode = UIViewContentModeScaleAspectFit;
         iconCenter = CGPointMake(midPoint.x+tempRad*cos((i*angleIncrement)-(M_PI/2)), midPoint.y+tempRad*sin((i*angleIncrement)-(M_PI/2)));
-        iconView.frame = CGRectMake(iconCenter.x-(iconSize/2), iconCenter.y-(iconSize/2), iconSize, iconSize);
+        iconView.frame = CGRectMake(iconCenter.x-(iconSize*iconSizeScale/2), iconCenter.y-(iconSize*iconSizeScale/2), iconSize*iconSizeScale, iconSize*iconSizeScale);
         [self addSubview:iconView];
     }
 }

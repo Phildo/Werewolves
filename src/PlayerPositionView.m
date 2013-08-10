@@ -25,7 +25,13 @@
 - (UIImage *) iconForPosition:(int)p
 {
     if(position == p) return [UIImage imageNamed:@"personIcon_green.png"];
-    else              return [UIImage imageNamed:@"dot.png"];
+    else              return [UIImage imageNamed:@"ball.png"];
+}
+
+- (float) scaleForPosition:(int)p
+{
+    if(position == p) return 1.2;
+    else              return 0.8;
 }
 
 @end
