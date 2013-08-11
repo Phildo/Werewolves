@@ -24,10 +24,9 @@
 
 - (void) introScreenRequestsGamePlay
 {
-    //UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[GameSetupViewController alloc] initWithViewFrame:self.view.bounds delegate:self]];
-    //nav.navigationBar.barStyle = UIBarStyleBlack;
-    //[self displayContentController:nav];
-    [self displayContentController:[[GameSetupViewController alloc] initWithViewFrame:self.view.bounds delegate:self]];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[GameSetupViewController alloc] initWithViewFrame:self.view.bounds delegate:self]];
+    nav.navigationBar.barStyle = UIBarStyleBlack;
+    [self displayContentController:nav];
 }
 
 - (void) gameSetupConfirmedWithGame:(Game *)g

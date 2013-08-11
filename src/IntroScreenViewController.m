@@ -31,14 +31,14 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIButton *playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    playBtn.frame = CGRectMake(self.view.frame.size.width/2-50, self.view.frame.size.height/2-50, 100, 40);
+    playBtn.frame = CGRectMake(self.view.bounds.size.width/2-50, (self.view.bounds.size.height-20)/2-50, 100, 40);
     [playBtn setTitle:@"play" forState:UIControlStateNormal];
     [playBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [playBtn addTarget:self action:@selector(playButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:playBtn];
     
     UIButton *instBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    instBtn.frame = CGRectMake(self.view.frame.size.width/2-50, self.view.frame.size.height/2+10, 100, 40);
+    instBtn.frame = CGRectMake(self.view.bounds.size.width/2-50, (self.view.bounds.size.height-20)/2+10, 100, 40);
     [instBtn setTitle:@"instructions" forState:UIControlStateNormal];
     [instBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [instBtn addTarget:self action:@selector(instructionsButtonPressed) forControlEvents:UIControlEventTouchUpInside];
