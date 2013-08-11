@@ -5,163 +5,88 @@
 //  Created by Philip Dougherty on 8/16/11.
 //  Copyright 2011 UW Madison. All rights reserved.
 //
-/*
 
 #import "CampfireCircleView.h"
 #import "PlayerView.h"
 
-@interface CampfireCircleView()
+@interface CampfireCircleView() <PlayerViewDelegate>
 {
-    id <CampfireCircleViewDelegate> __unsafe_unretained delegate;
-        
+    NSArray *players;
     NSMutableArray *playerViews;
-        
-    CGPoint midPoint;
-    CGFloat radius;
-    CGRect initialBounds;
-    CGPoint initialPos;
+    
+    //Hold state mid-gesture
+    CGPoint startPt;
+    CGRect startBnd;
+    
+    id<CampfireCircleViewDelegate> __unsafe_unretained delegate;
 }
-
-@property (assign) id <CampfireCircleViewDelegate> delegate;
-@property (retain) NSMutableArray *playerViews;
-@property CGPoint midPoint;
-@property CGFloat radius;
-@property CGRect initialBounds;
-@property CGPoint initialPos;
-
-- (void)setup;
-- (void)turnPerson:(int)location into:(int)type animated:(BOOL)animated;
-- (void)playerWasTouched:(PlayerView *)player;
-- (void)playerWasLongTouched:(PlayerView *)player;
-- (void)handlePinchGesture:(UIPinchGestureRecognizer *)sender;
-- (void)handlePanGesture:(UIPanGestureRecognizer *)sender;
-
+@property (nonatomic, strong) NSArray *players;
+@property (nonatomic, strong) NSMutableArray *playerViews;
 @end
 
 @implementation CampfireCircleView
 
+@synthesize players;
 @synthesize playerViews;
-@synthesize midPoint;
-@synthesize radius;
-@synthesize initialBounds;
-@synthesize initialPos;
 
-- (id)initWithFrame:(CGRect)frame
+- (id) initWithFrame:(CGRect)frame delegate:(id<CampfireCircleViewDelegate>)d players:(NSArray *)p
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self setup];
+    if(self = [super initWithFrame:frame])
+    {
+        self.playerViews = [[NSMutableArray alloc] initWithCapacity:30];
+        [self updatePlayers:p];
+        
+        delegate = d;
     }
     return self;
 }
 
-- (void) setup
+- (void) updatePlayers:(NSArray *)p
 {
-    self.playerViews = [[NSMutableArray alloc] initWithCapacity:[Game instance].numPlayers];
-    
-    radius = (self.bounds.size.width/2)*.8;
-    midPoint = CGPointMake(self.bounds.origin.x + self.bounds.size.width/2, self.bounds.origin.y + self.bounds.size.height/2 + 20);
-    
-    for(UIView *view in self.subviews) [view removeFromSuperview];
-    [self setNeedsDisplay];
+    self.players = p;
+    [self.playerViews removeAllObjects];
+    for(int i = 0; i < [p count]; i++)
+        [self.playerViews addObject:[[PlayerView alloc] initWithFrame:CGRectZero player:[self.players objectAtIndex:i] delegate:self]];
+    [self setCount:[p count]];
 }
 
-- (void)turnPerson:(int)location into:(int)type animated:(BOOL)animated
+- (UIView *) viewForPosition:(int)p
 {
-    [((PlayerView *)[self.playerViews objectAtIndex:location]) setAppearanceToType:type state:C_AWAKE faded:NO];
+    return [self.playerViews objectAtIndex:p];
 }
 
-- (void)playerWasTouched:(PlayerView *)player
+- (void) player:(Player *)p withView:(PlayerView *)pv wasTouched:(UITapGestureRecognizer *)r
 {
-    [delegate personWasTouched:player.idNum];
+    [delegate playerWasTouched:p];
 }
 
-- (void)dequeueNameView:(NSTimer *)t;
+- (void) player:(Player *)p withView:(PlayerView *)pv wasLongTouched:(UILongPressGestureRecognizer *)r
 {
-    [[t userInfo] removeFromSuperview];
+    
 }
 
-- (void)playerWasLongTouched:(PlayerView *)player
+- (void) handlePanGesture:(UIPanGestureRecognizer *)r
 {
-    UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(player.frame.origin.x-5, player.frame.origin.y-20, player.frame.size.width+10, 31)];
-    name.textAlignment = UITextAlignmentCenter;
-    name.opaque = NO;
-    name.backgroundColor = [UIColor clearColor];
-    name.text = ((Player *)[[Game instance].players objectAtIndex:player.idNum]).name;
-    [NSTimer scheduledTimerWithTimeInterval:2.0
-                                     target:self
-                                   selector:@selector(dequeueNameView:)
-                                   userInfo:name
-                                    repeats:NO];
-    [self addSubview:name];
-}
-                                
-- (void)drawRect:(CGRect)rect
-{
-    CGFloat angle = 0;
-    CGFloat angleIncrement = 2*M_PI/[Game instance].numPlayers;
-    CGPoint imageCenter;
+    if(r.state == UIGestureRecognizerStateBegan) startPt = CGPointMake(self.center.x,self.center.y);
     
-    UIImageView *fire = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fire.png"]];
-    float widthRatio = 3.2;
-    float heightRatio = 4.3;
-    fire.frame = CGRectMake(self.midPoint.x-self.bounds.size.width/(widthRatio*2), self.midPoint.y-self.bounds.size.height/(heightRatio*2), self.bounds.size.width/widthRatio, self.bounds.size.height/heightRatio);
-    [self addSubview:fire];
-    
-    for(int x = 0; x < [Game instance].numPlayers; x++)
-    {
-        imageCenter.x = (self.midPoint.x + self.radius*cos(angle-(M_PI/2)))-32;
-        imageCenter.y = (self.midPoint.y + self.radius*sin(angle-(M_PI/2)))-48;
-        PlayerView *player = [[PlayerView alloc] initWithFrame:CGRectMake(imageCenter.x, imageCenter.y, 64, 96)];
-        player.delegate = self;
-        player.idNum = x;
-        player.tag = x;
-        [player setAppearanceToType:((Player *)[[Game instance].players objectAtIndex:x]).show state:((Player *)[[Game instance].players objectAtIndex:x]).state faded:NO];
-        UITapGestureRecognizer *tapPlayer = [[UITapGestureRecognizer alloc] initWithTarget:player action:@selector(iWasTouched)];
-        [tapPlayer setNumberOfTapsRequired:1];
-        [tapPlayer setNumberOfTouchesRequired:1];
-        UILongPressGestureRecognizer *longTouchPlayer = [[UILongPressGestureRecognizer alloc] initWithTarget:player action:@selector(iWasLongTouched:)];
-        [player addGestureRecognizer:tapPlayer];
-        [player addGestureRecognizer:longTouchPlayer];
-        [player setUserInteractionEnabled:YES];
-        [self.playerViews addObject:player];
-        [self addSubview:player];
-        angle+=angleIncrement;
-    }
-    
-    for(int x = [Game instance].numPlayers; x > [Game instance].numPlayers/2; x--)
-    {
-        [self bringSubviewToFront:[self.subviews objectAtIndex:x]];
-    }
+    CGPoint drag = [r translationInView:self];
+    [self setCenter:CGPointMake(startPt.x+drag.x, startPt.y+drag.y)];
 }
 
-- (void)handlePanGesture:(UIPanGestureRecognizer *)sender
+- (void) handlePinchGesture:(UIPinchGestureRecognizer *)r 
 {
-    if (sender.state == UIGestureRecognizerStateBegan)
-    {
-        self.initialPos = CGPointMake(self.center.x,self.center.y);
-    }
-    CGPoint vel = [sender translationInView:self];
-    [self setCenter:CGPointMake(self.initialPos.x + vel.x, self.initialPos.y + vel.y)];
+    if(r.state == UIGestureRecognizerStateBegan) startBnd = self.bounds;
+    
+    CGFloat factor = [(UIPinchGestureRecognizer *)r scale];
+    CGFloat neww = startBnd.size.width*factor;  if(neww > 960) neww = 960;
+    CGFloat newh = startBnd.size.height*factor; if(newh < 320) newh = 320;
+        
+    self.bounds = CGRectMake(startBnd.origin.x-((neww-startBnd.size.width)/2),startBnd.origin.y-((newh-startBnd.size.height)/2),neww,newh);
 }
 
-- (void)handlePinchGesture:(UIPinchGestureRecognizer *)sender 
+- (void) handleDoubleTapGesture:(UITapGestureRecognizer *)r
 {
-    if (sender.state == UIGestureRecognizerStateBegan)
-    {
-        self.initialBounds = self.bounds;
-    }
-    CGFloat factor = [(UIPinchGestureRecognizer *)sender scale];
-    
-    CGAffineTransform pz = CGAffineTransformScale(CGAffineTransformIdentity, factor, factor);
-    self.bounds = CGRectApplyAffineTransform(initialBounds, pz);
-    if(self.bounds.size.width > 960)
-        self.bounds = CGRectMake(0, 0, 960, 1380);
-    if(self.bounds.size.width < 320)
-        self.bounds = CGRectMake(0, 0, 320, 460);
-    
-    [self setup];
+    self.bounds = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
 }
 
 @end
-*/

@@ -305,7 +305,7 @@
 
 - (void) startButtonTouched
 {
-    [self.navigationController pushViewController:[[PlayerSetupViewController alloc] initWithViewFrame:self.view.bounds delegate:self numPlayers:self.game.numPlayers] animated:YES];
+    [self.navigationController pushViewController:[[PlayerSetupViewController alloc] initWithViewFrame:self.view.bounds delegate:self game:self.game] animated:YES];
 }
 
 @end

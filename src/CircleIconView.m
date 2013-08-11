@@ -40,9 +40,9 @@
     [self refresh];
 }
 
-- (UIImage*) iconForPosition:(int)p
+- (UIView *) viewForPosition:(int)p
 {
-    return [UIImage imageNamed:@"dot.png"];
+    return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dot.png"]];
 }
 
 - (float) scaleForPosition:(int)p
@@ -59,10 +59,10 @@
     CGFloat iconSize = (tempRad/count)*6;
     CGFloat iconSizeScale;
     CGPoint iconCenter;
-    UIImageView *iconView;
+    UIView *iconView;
     for(int i = 0; i < count; i++)
     {
-        iconView = [[UIImageView alloc] initWithImage:[self iconForPosition:i]];
+        iconView = [self viewForPosition:i];
         iconSizeScale = [self scaleForPosition:i];
         iconView.contentMode = UIViewContentModeScaleAspectFit;
         iconCenter = CGPointMake(midPoint.x+tempRad*cos((i*angleIncrement)-(M_PI/2)), midPoint.y+tempRad*sin((i*angleIncrement)-(M_PI/2)));

@@ -12,8 +12,8 @@
 @class Player;
 
 @protocol PlayerViewDelegate
-- (void) playerWasTouched:(PlayerView *)player;
-- (void) playerWasLongTouched:(PlayerView *)player;
+- (void) player:(Player *)p withView:(PlayerView *)pv wasTouched:(UITapGestureRecognizer *)r;
+- (void) player:(Player *)p withView:(PlayerView *)pv wasLongTouched:(UILongPressGestureRecognizer *)r;
 @end
 
 @interface PlayerView : UIImageView

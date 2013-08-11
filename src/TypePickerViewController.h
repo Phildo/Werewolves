@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "UIFViewController.h"
 
+@class Game;
+
 @protocol TypePickerViewControllerDelegate
 @end
 
 @interface TypePickerViewController : UIFViewController
-- (id) initWithViewFrame:(CGRect)f delegate:(id<TypePickerViewControllerDelegate>)d nameList:(NSArray *)n;
+- (id) initWithViewFrame:(CGRect)f delegate:(id<TypePickerViewControllerDelegate>)d game:(Game *)g;
 @end

@@ -17,16 +17,20 @@
     
     id <PlayerViewDelegate> __unsafe_unretained delegate;
 }
-
+@property (nonatomic, strong) Player *player;
 @end
 
 @implementation PlayerView
+
+@synthesize player;
 
 - (id)initWithFrame:(CGRect)frame player:(Player*)p delegate:(id<PlayerViewDelegate>)d
 {
     if((self = [super initWithFrame:frame]))
     {
         player = p;
+        [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTouch:)]];
+        [self addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongTouch:)]];
     }
     return self;
 }
@@ -84,15 +88,15 @@
     [self updateView];
 }
 
-- (void) iWasTouched
+- (void) handleTouch:(UITapGestureRecognizer *)r
 {
-    [delegate playerWasTouched:self];
+    [delegate player:self.player withView:self wasTouched:r];
 }
 
-- (void) iWasLongTouched:(UILongPressGestureRecognizer *)sender
+- (void) handleLongTouch:(UILongPressGestureRecognizer *)r
 {
-    if(sender.state == UIGestureRecognizerStateBegan)
-        [delegate playerWasLongTouched:self];
+    if(r.state == UIGestureRecognizerStateBegan)
+        [delegate player:self.player withView:self wasLongTouched:r];
 }
 
 @end

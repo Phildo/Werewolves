@@ -36,12 +36,12 @@
     [self refresh];
 }
     
-- (UIImage *) iconForPosition:(int)position
+- (UIView *) viewForPosition:(int)position
 {
-    if     (werewolves               > position) return [UIImage imageNamed:@"personIcon_red.png"];
-    else if(werewolves+hunter        > position) return [UIImage imageNamed:@"personIcon_brown.png"];
-    else if(werewolves+hunter+healer > position) return [UIImage imageNamed:@"personIcon_blue.png"];
-    else                                         return [UIImage imageNamed:@"personIcon_green.png"];
+    if     (werewolves               > position) return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"personIcon_red.png"]];
+    else if(werewolves+hunter        > position) return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"personIcon_brown.png"]];
+    else if(werewolves+hunter+healer > position) return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"personIcon_blue.png"]];
+    else                                         return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"personIcon_green.png"]];
 }
 
 @end

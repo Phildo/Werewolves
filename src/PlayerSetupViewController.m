@@ -9,32 +9,35 @@
 #import "PlayerSetupViewController.h"
 #import "Game.h"
 #import "Player.h"
-#import "PlayerView.h"
 #import "PlayerPositionView.h"
 #import "TypePickerViewController.h"
 
-@interface PlayerSetupViewController() <UIScrollViewDelegate,UITextFieldDelegate>
+@interface PlayerSetupViewController() <TypePickerViewControllerDelegate,UIScrollViewDelegate,UITextFieldDelegate>
 {
     UIScrollView *scrollView;
     NSMutableArray *playerNameViews;
+    Game *game;
     id<PlayerSetupViewControllerDelegate> __unsafe_unretained delegate;
 }
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSMutableArray *playerNameViews;
+@property (nonatomic, strong) Game *game;
 @end
 
 @implementation PlayerSetupViewController
 
 @synthesize scrollView;
 @synthesize playerNameViews;
+@synthesize game;
 
-- (id) initWithViewFrame:(CGRect)f delegate:(id<PlayerSetupViewControllerDelegate>)d numPlayers:(int)p
+- (id) initWithViewFrame:(CGRect)f delegate:(id<PlayerSetupViewControllerDelegate>)d game:(Game *)g;
 {
     if (self = [super initWithViewFrame:f])
     {
         self.title = @"player setup";
-        self.playerNameViews = [[NSMutableArray alloc] initWithCapacity:p];
-        for(int i = 0; i < p; i++)
+        self.game = g;
+        self.playerNameViews = [[NSMutableArray alloc] initWithCapacity:self.game.numPlayers];
+        for(int i = 0; i < self.game.numPlayers; i++)
         {
             UITextField *playerNameView = [[UITextField alloc] init];
             playerNameView.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -105,9 +108,9 @@
 {
     if([textField.text isEqualToString:[NSString stringWithFormat:@"player %d", textField.tag+1]]) textField.text = @"";
     
-    int keyboardReach = self.scrollView.frame.size.height-300;
-    if(textField.frame.origin.y-self.scrollView.contentOffset.y > keyboardReach)
-        [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y-(self.scrollView.frame.size.height-keyboardReach)) animated:YES];
+    int visibleArea = self.scrollView.frame.size.height-280;
+    if(textField.frame.origin.y-self.scrollView.contentOffset.y > visibleArea)
+        [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y-visibleArea) animated:YES];
 }
 
 - (void) textFieldDidEndEditing:(UITextField *)textField
@@ -125,7 +128,7 @@
 - (void) nextButtonTouched
 {
     [self.view endEditing:YES];
-    TypePickerViewController *typePicker = [[TypePickerViewController alloc] initWithViewFrame:self.view.bounds];
+    TypePickerViewController *typePicker = [[TypePickerViewController alloc] initWithViewFrame:self.view.bounds delegate:self game:self.game];
     [self.navigationController pushViewController:typePicker animated:YES];
 }
 

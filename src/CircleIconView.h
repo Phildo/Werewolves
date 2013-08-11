@@ -12,7 +12,7 @@
 
 - (void) setFrame:(CGRect)f;
 - (void) setCount:(int)c;
-- (UIImage *) iconForPosition:(int)p;
+- (UIView *) viewForPosition:(int)p;
 - (float) scaleForPosition:(int)p;
 - (void) refresh;
 

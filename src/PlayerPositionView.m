@@ -22,10 +22,10 @@
     [self refresh];
 }
 
-- (UIImage *) iconForPosition:(int)p
+- (UIView *) viewForPosition:(int)p
 {
-    if(position == p) return [UIImage imageNamed:@"personIcon_green.png"];
-    else              return [UIImage imageNamed:@"ball.png"];
+    if(position == p) return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"personIcon_green.png"]];
+    else              return [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ball.png"]];
 }
 
 - (float) scaleForPosition:(int)p

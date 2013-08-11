@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "UIFViewController.h"
 
+@class Game;
+
 @protocol PlayerSetupViewControllerDelegate
 @end
 
 @interface PlayerSetupViewController : UIFViewController
-- (id) initWithViewFrame:(CGRect)f delegate:(id<PlayerSetupViewControllerDelegate>)d numPlayers:(int)p;
+- (id) initWithViewFrame:(CGRect)f delegate:(id<PlayerSetupViewControllerDelegate>)d game:(Game *)g;
 @end
