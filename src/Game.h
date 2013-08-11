@@ -21,14 +21,15 @@
     NSMutableArray *history;
 }
 
-@property int numPlayers;
-- (int) maxWerewolves;
-@property int numWerewolves;
-@property BOOL hunter;
-@property BOOL healer;
-@property BOOL day;
-@property int daysPassed;
-@property int turnState;
+@property (nonatomic, assign) int numPlayers;
+@property (nonatomic, readonly) int maxWerewolves;
+@property (nonatomic, assign) int numWerewolves;
+@property (nonatomic, assign) BOOL hunter;
+@property (nonatomic, assign) BOOL healer;
+
+@property (nonatomic, assign) BOOL day;
+@property (nonatomic, assign) int daysPassed;
+@property (nonatomic, assign) int turnState;
 @property (retain) NSMutableArray *players;
 @property (retain) NSMutableArray *history;
 

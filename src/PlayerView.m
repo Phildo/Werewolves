@@ -29,6 +29,7 @@
     if((self = [super initWithFrame:frame]))
     {
         player = p;
+        [self updateView];
         [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTouch:)]];
         [self addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongTouch:)]];
     }

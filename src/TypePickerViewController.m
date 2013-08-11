@@ -18,6 +18,7 @@
     UILabel *numLeftLabel;
     UIButton *doneButton;
     CampfireCircleView *campFireCircle;
+    
     int numLeft;
     int scene; //0- WerewolfPicker; 1- HunterPicker; 2- HealerPicker;
     
@@ -51,6 +52,7 @@
     if(self = [super initWithViewFrame:f])
     {
         self.game = g;
+        self.title = @"picker";
         
         delegate = d;
     }
@@ -60,20 +62,14 @@
 - (void) loadView
 {
     [super loadView];
-    self.campFireCircle = [[CampfireCircleView alloc] initWithFrame:self.view.bounds delegate:self players:self.game.players];
-}
-
-- (void) viewDidLoad
-{
-    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     
-    UIPinchGestureRecognizer *pinchZoom = [[UIPinchGestureRecognizer alloc] initWithTarget:self.campFireCircle action:@selector(handlePinchGesture:)];
-    [self.campFireCircle addGestureRecognizer:pinchZoom];
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self.campFireCircle action:@selector(handlePanGesture:)];
-    [self.campFireCircle addGestureRecognizer:pan];
+    self.campFireCircle = [[CampfireCircleView alloc] initWithFrame:self.view.bounds delegate:self players:self.game.players];
+    [self.view addSubview:self.campFireCircle];
     
     [self setScene:C_WEREWOLF_PICKER];
 }
+ 
 
 - (void) setScene:(int)s
 {
@@ -237,7 +233,7 @@
 }
 */
 
-- (void) doneButton
+- (void) doneButtonPressed
 {
     if(self.scene == C_WEREWOLF_PICKER)
     {
@@ -283,10 +279,7 @@
 
 - (void) playerWasTouched:(Player *)p
 {
-
-}
-- (void) player:(int)person WasTouchedWhilePicking:(int)type
-{
+    /*
     if(((Player *)[self.game.players objectAtIndex:person]).type == type)
     {
         self.numLeft++;
@@ -304,6 +297,7 @@
             if(self.numLeft == 0) self.doneButton.hidden = NO;
         }
     }
+     */
 }
 
 @end

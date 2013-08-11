@@ -16,7 +16,9 @@
     
     //Hold state mid-gesture
     CGPoint startPt;
-    CGRect startBnd;
+    CGFloat startScale;
+    
+    CGRect initialFrame;
     
     id<CampfireCircleViewDelegate> __unsafe_unretained delegate;
 }
@@ -29,12 +31,17 @@
 @synthesize players;
 @synthesize playerViews;
 
-- (id) initWithFrame:(CGRect)frame delegate:(id<CampfireCircleViewDelegate>)d players:(NSArray *)p
+- (id) initWithFrame:(CGRect)f delegate:(id<CampfireCircleViewDelegate>)d players:(NSArray *)p
 {
-    if(self = [super initWithFrame:frame])
+    if(self = [super initWithFrame:f])
     {
+        initialFrame = f;
+        self.clipsToBounds = YES;
         self.playerViews = [[NSMutableArray alloc] initWithCapacity:30];
         [self updatePlayers:p];
+    
+        [self addGestureRecognizer:[[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchGesture:)]];
+        [self addGestureRecognizer:[[UIPanGestureRecognizer   alloc] initWithTarget:self action:@selector(handlePanGesture:)]];
         
         delegate = d;
     }
@@ -67,10 +74,11 @@
 
 - (void) handlePanGesture:(UIPanGestureRecognizer *)r
 {
-    if(r.state == UIGestureRecognizerStateBegan) startPt = CGPointMake(self.center.x,self.center.y);
+    if(r.state == UIGestureRecognizerStateBegan) startPt = CGPointMake(self.bounds.origin.x,self.bounds.origin.y);
     
     CGPoint drag = [r translationInView:self];
-    [self setCenter:CGPointMake(startPt.x+drag.x, startPt.y+drag.y)];
+    self.bounds = CGRectMake(startPt.x-drag.x, startPt.y-drag.y, self.bounds.size.width, self.bounds.size.height);
+    [self constrainBounds];
 }
 
 - (void) handlePinchGesture:(UIPinchGestureRecognizer *)r 
@@ -78,15 +86,31 @@
     if(r.state == UIGestureRecognizerStateBegan) startBnd = self.bounds;
     
     CGFloat factor = [(UIPinchGestureRecognizer *)r scale];
-    CGFloat neww = startBnd.size.width*factor;  if(neww > 960) neww = 960;
-    CGFloat newh = startBnd.size.height*factor; if(newh < 320) newh = 320;
-        
+    CGFloat neww = startBnd.size.width*factor;
+    CGFloat newh = startBnd.size.height*factor;
+    if(initialFrame.size.height <= initialFrame.size.width && newh < initialFrame.size.height)
+    {
+        neww *= initialFrame.size.height/newh;
+        newh *= initialFrame.size.height/newh;
+    }
+    if(initialFrame.size.width <= initialFrame.size.height && neww < initialFrame.size.width)
+    {
+        newh *= initialFrame.size.width/neww;
+        neww *= initialFrame.size.width/neww;
+    }
+    
     self.bounds = CGRectMake(startBnd.origin.x-((neww-startBnd.size.width)/2),startBnd.origin.y-((newh-startBnd.size.height)/2),neww,newh);
+    [self constrainBounds];
 }
 
 - (void) handleDoubleTapGesture:(UITapGestureRecognizer *)r
 {
-    self.bounds = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    self.bounds = CGRectMake(0, 0, initialFrame.size.width, initialFrame.size.height);
+}
+
+- (void) constrainBounds
+{
+    
 }
 
 @end

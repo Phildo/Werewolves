@@ -17,6 +17,6 @@
 @end
 
 @interface CampfireCircleView : CircleIconView
-- (id) initWithFrame:(CGRect)frame delegate:(id<CampfireCircleViewDelegate>)d players:(NSArray *)p;
+- (id) initWithFrame:(CGRect)f delegate:(id<CampfireCircleViewDelegate>)d players:(NSArray *)p;
 - (void) updatePlayers:(NSArray *)p;
 @end

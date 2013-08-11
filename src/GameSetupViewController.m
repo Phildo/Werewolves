@@ -94,7 +94,6 @@
     CGFloat layoutVieww = ((int)(vieww/3));
     CGFloat layoutViewh = ((int)(vieww/3));
     self.layoutView = [[PlayerSplitOverviewView alloc] initWithFrame:CGRectMake(layoutViewx, layoutViewy, layoutVieww, layoutViewh)];
-    self.layoutView.backgroundColor = [UIColor whiteColor];
     self.layoutView.count      = self.game.numPlayers;
     self.layoutView.werewolves = self.game.numWerewolves;
     self.layoutView.hunter     = self.game.hunter;

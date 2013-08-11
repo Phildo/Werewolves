@@ -61,7 +61,7 @@
 {
     [super viewDidLoad];
     
-    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 10+(58*[self.playerNameViews count])+50+300);
+    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 10+(58*[self.playerNameViews count])+50+280);
     int cellHeight = 48;
     int padding = 10;
     int yPos = padding;
@@ -128,6 +128,12 @@
 - (void) nextButtonTouched
 {
     [self.view endEditing:YES];
+    [self.game.players removeAllObjects]; 
+    for(int i = 0; i < [self.playerNameViews count]; i++)
+    {
+        Player *p = [[Player alloc] initWithName:((UITextField *)[self.playerNameViews objectAtIndex:i]).text];
+        [self.game.players addObject:p];
+    }
     TypePickerViewController *typePicker = [[TypePickerViewController alloc] initWithViewFrame:self.view.bounds delegate:self game:self.game];
     [self.navigationController pushViewController:typePicker animated:YES];
 }
