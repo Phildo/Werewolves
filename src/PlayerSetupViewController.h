@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIFViewController.h"
 
 @protocol PlayerSetupViewControllerDelegate
 @end
 
-@interface PlayerSetupViewController : UIViewController
-- (id) initWithDelegate:(id<PlayerSetupViewControllerDelegate>)d numPlayers:(int)p;
+@interface PlayerSetupViewController : UIFViewController
+- (id) initWithViewFrame:(CGRect)f delegate:(id<PlayerSetupViewControllerDelegate>)d numPlayers:(int)p;
 @end

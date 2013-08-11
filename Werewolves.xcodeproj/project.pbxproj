@@ -19,12 +19,10 @@
 		AA0A375A17A8A1AC00E185AA /* PlayerSplitOverviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A373417A8A1AC00E185AA /* PlayerSplitOverviewView.m */; };
 		AA0A375C17A8A1AC00E185AA /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A373817A8A1AC00E185AA /* Game.m */; };
 		AA0A375F17A8A1AC00E185AA /* GameSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A373D17A8A1AC00E185AA /* GameSetupViewController.m */; };
-		AA0A376017A8A1AC00E185AA /* GameSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0A373E17A8A1AC00E185AA /* GameSetupViewController.xib */; };
 		AA0A376317A8A1AC00E185AA /* IntroScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A374317A8A1AC00E185AA /* IntroScreenViewController.m */; };
 		AA0A376517A8A1AC00E185AA /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A374617A8A1AC00E185AA /* Move.m */; };
 		AA0A376617A8A1AC00E185AA /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A374817A8A1AC00E185AA /* Player.m */; };
 		AA0A376717A8A1AC00E185AA /* PlayerSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A374A17A8A1AC00E185AA /* PlayerSetupViewController.m */; };
-		AA0A376817A8A1AC00E185AA /* PlayerSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0A374B17A8A1AC00E185AA /* PlayerSetupViewController.xib */; };
 		AA0A376917A8A1AC00E185AA /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A374D17A8A1AC00E185AA /* PlayerView.m */; };
 		AA0A376A17A8A1AC00E185AA /* TypePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A374F17A8A1AC00E185AA /* TypePickerViewController.m */; };
 		AA0A376B17A8A1AC00E185AA /* TypePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0A375017A8A1AC00E185AA /* TypePickerViewController.xib */; };
@@ -85,7 +83,6 @@
 		AA0A373817A8A1AC00E185AA /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Game.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AA0A373C17A8A1AC00E185AA /* GameSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSetupViewController.h; sourceTree = "<group>"; };
 		AA0A373D17A8A1AC00E185AA /* GameSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GameSetupViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		AA0A373E17A8A1AC00E185AA /* GameSetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameSetupViewController.xib; sourceTree = "<group>"; };
 		AA0A374217A8A1AC00E185AA /* IntroScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroScreenViewController.h; sourceTree = "<group>"; };
 		AA0A374317A8A1AC00E185AA /* IntroScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroScreenViewController.m; sourceTree = "<group>"; };
 		AA0A374517A8A1AC00E185AA /* Move.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Move.h; sourceTree = "<group>"; };
@@ -94,7 +91,6 @@
 		AA0A374817A8A1AC00E185AA /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		AA0A374917A8A1AC00E185AA /* PlayerSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSetupViewController.h; sourceTree = "<group>"; };
 		AA0A374A17A8A1AC00E185AA /* PlayerSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSetupViewController.m; sourceTree = "<group>"; };
-		AA0A374B17A8A1AC00E185AA /* PlayerSetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerSetupViewController.xib; sourceTree = "<group>"; };
 		AA0A374C17A8A1AC00E185AA /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
 		AA0A374D17A8A1AC00E185AA /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
 		AA0A374E17A8A1AC00E185AA /* TypePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypePickerViewController.h; sourceTree = "<group>"; };
@@ -199,10 +195,8 @@
 				AA0A374317A8A1AC00E185AA /* IntroScreenViewController.m */,
 				AA0A373C17A8A1AC00E185AA /* GameSetupViewController.h */,
 				AA0A373D17A8A1AC00E185AA /* GameSetupViewController.m */,
-				AA0A373E17A8A1AC00E185AA /* GameSetupViewController.xib */,
 				AA0A374917A8A1AC00E185AA /* PlayerSetupViewController.h */,
 				AA0A374A17A8A1AC00E185AA /* PlayerSetupViewController.m */,
-				AA0A374B17A8A1AC00E185AA /* PlayerSetupViewController.xib */,
 				AAA5ADDB17ADA979000B174F /* CircleIconView.h */,
 				AAA5ADDC17ADA979000B174F /* CircleIconView.m */,
 				AA0A373317A8A1AC00E185AA /* PlayerSplitOverviewView.h */,
@@ -327,8 +321,6 @@
 				AA0A371A17A8A00E00E185AA /* Default-568h@2x.png in Resources */,
 				AA0A371B17A8A00E00E185AA /* Default.png in Resources */,
 				AA0A371C17A8A00E00E185AA /* Default@2x.png in Resources */,
-				AA0A376017A8A1AC00E185AA /* GameSetupViewController.xib in Resources */,
-				AA0A376817A8A1AC00E185AA /* PlayerSetupViewController.xib in Resources */,
 				AA0A376B17A8A1AC00E185AA /* TypePickerViewController.xib in Resources */,
 				AAA5ADC017ADA45E000B174F /* ball.png in Resources */,
 				AAA5ADC117ADA45E000B174F /* ballFULL.png in Resources */,

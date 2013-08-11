@@ -6,8 +6,6 @@
 //  Copyright 2011 UW Madison. All rights reserved.
 //
 
-#define C_MAX_NUM_PLAYERS 30
-
 #define C_VILLAGER 0
 #define C_WEREWOLF 1
 #define C_HUNTER 2
@@ -26,3 +24,4 @@
 #define C_SLEEP 1
 #define C_DEAD 2
 
+#define C_CHAR_WIDTH 

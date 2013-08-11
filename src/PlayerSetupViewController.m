@@ -15,66 +15,102 @@
 
 @interface PlayerSetupViewController() <UIScrollViewDelegate,UITextFieldDelegate>
 {
-    IBOutlet UIScrollView *scrollView;
-    NSMutableArray *playerNames;
+    UIScrollView *scrollView;
+    NSMutableArray *playerNameViews;
     id<PlayerSetupViewControllerDelegate> __unsafe_unretained delegate;
 }
-@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, strong) NSMutableArray *playerNames;
+@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) NSMutableArray *playerNameViews;
 @end
 
 @implementation PlayerSetupViewController
 
 @synthesize scrollView;
-@synthesize playerNames;
+@synthesize playerNameViews;
 
-- (id) initWithDelegate:(id<PlayerSetupViewControllerDelegate>)d numPlayers:(int)p
+- (id) initWithViewFrame:(CGRect)f delegate:(id<PlayerSetupViewControllerDelegate>)d numPlayers:(int)p
 {
-    if (self = [super initWithNibName:@"PlayerSetupViewController" bundle:nil])
+    if (self = [super initWithViewFrame:f])
     {
-        playerNames = [[NSMutableArray alloc] initWithCapacity:p];
+        self.playerNameViews = [[NSMutableArray alloc] initWithCapacity:p];
         for(int i = 0; i < p; i++)
-            [playerNames addObject:[NSString stringWithFormat:@"Player %d",i+1]];
+        {
+            UITextField *playerNameView = [[UITextField alloc] init];
+            playerNameView.text = [NSString stringWithFormat:@"Player %d",i+1];
+            [self.playerNameViews addObject:playerNameView];
+        }
     }
     return self;
 }
 
+- (void) loadView
+{
+    [super loadView];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:self.scrollView];
+}
+
 - (void) viewDidLoad
 {
-    int yPos = 20;
-    self.scrollView.contentSize = CGSizeMake(320, 20+(51*[self.playerNames count]));
-    for(int i = 0; i < [self.playerNames count]; i++)
+    [super viewDidLoad];
+    
+    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 10+(58*[self.playerNameViews count])+50);
+    int cellHeight = 48;
+    int padding = 10;
+    int yPos = padding;
+    for(int i = 0; i < [self.playerNameViews count]; i++)
     {
-        UIImageView *playerIcon = [[UIImageView alloc] initWithFrame:CGRectMake(15, yPos-10, 32, 48)];
+        CGFloat iconx = padding;
+        CGFloat icony = yPos;
+        CGFloat iconw = 32;
+        CGFloat iconh = cellHeight;
+        UIImageView *playerIcon = [[UIImageView alloc] initWithFrame:CGRectMake(iconx, icony, iconw, iconh)];
         [playerIcon setImage:[UIImage imageNamed:@"villager.png"]];
         [self.scrollView addSubview:playerIcon];
         
-        UITextField *nameField = [[UITextField alloc] initWithFrame:CGRectMake(60, yPos, 200, 31)];
+        CGFloat posiconx = self.view.bounds.size.width-padding-(cellHeight-2);
+        CGFloat posicony = yPos+1;
+        CGFloat posiconw = cellHeight-2;
+        CGFloat posiconh = cellHeight-2;
+        PlayerPositionView *positionView = [[PlayerPositionView alloc] initWithFrame:CGRectMake(posiconx, posicony, posiconw, posiconh)];
+        [positionView setCount:[self.playerNameViews count]];
+        [positionView setPosition:i];
+        [self.scrollView addSubview:positionView];
+        
+        CGFloat textfieldx = iconx+iconw+padding;
+        CGFloat textfieldy = yPos+(int)((cellHeight-31)/2);
+        CGFloat textfieldw = posiconx-padding-textfieldx;
+        CGFloat textfieldh = 31;
+        UITextField *nameField = [self.playerNameViews objectAtIndex:i];
+        nameField.frame = CGRectMake(textfieldx, textfieldy, textfieldw, textfieldh);
         nameField.borderStyle = UITextBorderStyleRoundedRect;
         nameField.clearsOnBeginEditing = YES;
         nameField.tag = i;
         nameField.delegate = self;
-        nameField.text = [NSString stringWithFormat:@"Player %d",i+1];
         [self.scrollView addSubview:nameField];
         
-        PlayerPositionView *positionView = [[PlayerPositionView alloc] initWithFrame:CGRectMake(265, yPos-8, 50, 50)];
-        [positionView setCount:[self.playerNames count]];
-        [positionView setPosition:i];
-        [self.scrollView addSubview:positionView];
-        
-        yPos+=51;
+        yPos+=cellHeight+padding;
     }
+    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    nextButton.frame = CGRectMake(padding, yPos, self.view.bounds.size.width-(2*padding), 40);
+    [nextButton setTitle:@"next" forState:UIControlStateNormal];
+    [nextButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [nextButton addTarget:self action:@selector(nextButtonTouched) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:nextButton];
 }
 
 - (void) textFieldDidBeginEditing:(UITextField *)textField
 {
-    [self.scrollView setContentOffset:CGPointMake(0, textField.center.y - 150) animated:YES];
+    int keyboardReach = self.scrollView.frame.size.height-300;
+    if(textField.frame.origin.y-self.scrollView.contentOffset.y > keyboardReach)
+        [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y-keyboardReach) animated:YES];
 }
 
 - (void) textFieldDidEndEditing:(UITextField *)textField
 {
     if([textField.text isEqualToString:@""]) textField.text = [NSString stringWithFormat:@"Player %d", textField.tag+1];
-    [playerNames replaceObjectAtIndex:textField.tag withObject:textField.text];
+    if(textField.tag+1 != [self.playerNameViews count]) [[self.playerNameViews objectAtIndex:textField.tag+1] becomeFirstResponder];
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
@@ -83,13 +119,9 @@
     return YES;
 }
 
-- (void) backButtonPressed
+- (void) nextButtonTouched
 {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void) nextButtonPressed
-{
+    NSLog(@"OK");
     //TypePickerViewController *typePicker = [[TypePickerViewController alloc] init];
     //[self.navigationController pushViewController:typePicker animated:YES];
 }
