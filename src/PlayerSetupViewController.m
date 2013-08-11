@@ -11,7 +11,7 @@
 #import "Player.h"
 #import "PlayerView.h"
 #import "PlayerPositionView.h"
-//#import "TypePickerViewController.h"
+#import "TypePickerViewController.h"
 
 @interface PlayerSetupViewController() <UIScrollViewDelegate,UITextFieldDelegate>
 {
@@ -125,8 +125,8 @@
 - (void) nextButtonTouched
 {
     [self.view endEditing:YES];
-    //TypePickerViewController *typePicker = [[TypePickerViewController alloc] init];
-    //[self.navigationController pushViewController:typePicker animated:YES];
+    TypePickerViewController *typePicker = [[TypePickerViewController alloc] initWithViewFrame:self.view.bounds];
+    [self.navigationController pushViewController:typePicker animated:YES];
 }
 
 @end

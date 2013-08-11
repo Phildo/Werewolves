@@ -6,9 +6,35 @@
 //  Copyright 2011 UW Madison. All rights reserved.
 //
 
-/*
 #import "TypePickerViewController.h"
+#import "Game.h"
+#import "Player.h"
+#import "CampfireCircleView.h"
+ 
+@interface TypePickerViewController() <CampfireCircleViewDelegate>
+{
+ 
+    UILabel *titleLabel;
+    UILabel *numLeftLabel;
+    UIButton *done;
+    CampfireCircleView *campFireCircle;
+    int numLeft;
+    int state; //0- WerewolfPicker; 1- HunterPicker; 2- HealerPicker;
+}
 
+@property (retain) UILabel *titleLabel;
+@property (retain) UILabel *numLeftLabel;
+@property (retain) UIButton *done;
+@property (retain) CampfireCircleView *campFireCircle;
+@property int numLeft;
+@property int state;
+
+- (void) backButtonPressed;
+- (void) diceButtonPressed;
+- (void) doneButtonPressed;
+
+@end
+ 
 @implementation TypePickerViewController
 
 @synthesize titleLabel;
@@ -18,15 +44,15 @@
 @synthesize numLeft;
 @synthesize state;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id) initWithViewFrame:(CGRect)f delegate:(id<TypePickerViewControllerDelegate>)d nameList:(NSArray *)n
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if(self = [super initWithViewFrame:f])
+    {
     }
     return self;
-}
+} 
 
-- (IBAction)backButtonPressed
+- (void) backButtonPressed
 {
     if(self.state == C_WEREWOLF_PICKER)
     {
@@ -84,7 +110,7 @@
     }
 }
 
-- (IBAction)diceButtonPressed
+- (void)diceButtonPressed
 {
     int prob;
     int tempPlayersLeft;
@@ -182,7 +208,7 @@
     }
 }
 
-- (IBAction)doneButtonPressed
+- (void)doneButtonPressed
 {
     if(self.state == C_WEREWOLF_PICKER)
     {
