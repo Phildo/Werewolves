@@ -13,10 +13,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     WerewolvesRootViewcontroller *wrvc = [[WerewolvesRootViewcontroller alloc] initWithViewFrame:[UIScreen mainScreen].bounds];
     [self.window setRootViewController:wrvc];
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

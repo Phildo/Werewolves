@@ -32,11 +32,14 @@
 {
     if (self = [super initWithViewFrame:f])
     {
+        self.title = @"player setup";
         self.playerNameViews = [[NSMutableArray alloc] initWithCapacity:p];
         for(int i = 0; i < p; i++)
         {
             UITextField *playerNameView = [[UITextField alloc] init];
-            playerNameView.text = [NSString stringWithFormat:@"Player %d",i+1];
+            playerNameView.autocorrectionType = UITextAutocorrectionTypeNo;
+            playerNameView.autocapitalizationType = UITextAutocapitalizationTypeNone;
+            playerNameView.text = [NSString stringWithFormat:@"player %d",i+1];
             [self.playerNameViews addObject:playerNameView];
         }
     }
@@ -55,7 +58,7 @@
 {
     [super viewDidLoad];
     
-    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 10+(58*[self.playerNameViews count])+50);
+    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 10+(58*[self.playerNameViews count])+50+300);
     int cellHeight = 48;
     int padding = 10;
     int yPos = padding;
@@ -82,13 +85,11 @@
         CGFloat textfieldy = yPos+(int)((cellHeight-31)/2);
         CGFloat textfieldw = posiconx-padding-textfieldx;
         CGFloat textfieldh = 31;
-        UITextField *nameField = [self.playerNameViews objectAtIndex:i];
-        nameField.frame = CGRectMake(textfieldx, textfieldy, textfieldw, textfieldh);
-        nameField.borderStyle = UITextBorderStyleRoundedRect;
-        nameField.clearsOnBeginEditing = YES;
-        nameField.tag = i;
-        nameField.delegate = self;
-        [self.scrollView addSubview:nameField];
+        UITextField *playerNameView = [self.playerNameViews objectAtIndex:i];
+        playerNameView.frame = CGRectMake(textfieldx, textfieldy, textfieldw, textfieldh);
+        playerNameView.tag = i;
+        playerNameView.delegate = self;
+        [self.scrollView addSubview:playerNameView];
         
         yPos+=cellHeight+padding;
     }
@@ -102,26 +103,28 @@
 
 - (void) textFieldDidBeginEditing:(UITextField *)textField
 {
+    if([textField.text isEqualToString:[NSString stringWithFormat:@"player %d", textField.tag+1]]) textField.text = @"";
+    
     int keyboardReach = self.scrollView.frame.size.height-300;
     if(textField.frame.origin.y-self.scrollView.contentOffset.y > keyboardReach)
-        [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y-keyboardReach) animated:YES];
+        [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y-(self.scrollView.frame.size.height-keyboardReach)) animated:YES];
 }
 
 - (void) textFieldDidEndEditing:(UITextField *)textField
 {
-    if([textField.text isEqualToString:@""]) textField.text = [NSString stringWithFormat:@"Player %d", textField.tag+1];
-    if(textField.tag+1 != [self.playerNameViews count]) [[self.playerNameViews objectAtIndex:textField.tag+1] becomeFirstResponder];
+    if([textField.text isEqualToString:@""]) textField.text = [NSString stringWithFormat:@"player %d", textField.tag+1];
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    if(textField.tag+1 != [self.playerNameViews count]) [[self.playerNameViews objectAtIndex:textField.tag+1] becomeFirstResponder];
     return YES;
 }
 
 - (void) nextButtonTouched
 {
-    NSLog(@"OK");
+    [self.view endEditing:YES];
     //TypePickerViewController *typePicker = [[TypePickerViewController alloc] init];
     //[self.navigationController pushViewController:typePicker animated:YES];
 }
