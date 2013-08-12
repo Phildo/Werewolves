@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface CircleIconView : UIView
+{
+    CGFloat radius;
+    CGPoint midPoint;
+}
 
-- (void) setFrame:(CGRect)f;
 - (void) setCount:(int)c;
 - (UIView *) viewForPosition:(int)p;
 - (float) scaleForPosition:(int)p;

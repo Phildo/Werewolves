@@ -61,7 +61,7 @@
 {
     [super viewDidLoad];
     
-    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 10+(58*[self.playerNameViews count])+50+280);
+    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 10+(58*[self.playerNameViews count])+50+200);
     int cellHeight = 48;
     int padding = 10;
     int yPos = padding;

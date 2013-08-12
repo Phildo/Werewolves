@@ -11,7 +11,6 @@
 @interface CircleIconView()
 {
     int count;
-    CGFloat radius;
 }
 @end
 
@@ -29,29 +28,10 @@
 - (void) setFrame:(CGRect)f
 {
     [super setFrame:f];
-    [self setBounds:CGRectMake(0, 0, f.size.width, f.size.height)];
-}
-    
-- (void) setBounds:(CGRect)b
-{
-    if(b.size.height > b.size.width)
-    {
-        b.origin.y += (int)((b.size.height-b.size.width)/2);
-        b.size.height = b.size.width;
-    }
-    if(b.size.width > b.size.height)
-    {
-        b.origin.x += (int)((b.size.width-b.size.height)/2);
-        b.size.width = b.size.height;
-    }
-    [super setBounds:b];
-    
-    int newRadius = b.size.width/2;
-    if(radius != newRadius)
-    {
-        radius = newRadius;
-        [self refresh];
-    }
+    if(f.size.height <= f.size.width) radius = f.size.height/2;
+    if(f.size.width <= f.size.height) radius = f.size.width/2;
+    midPoint = CGPointMake(f.size.width/2,f.size.height/2);
+    [self refresh];
 }
 
 - (void) setCount:(int)c
@@ -75,7 +55,7 @@
     for(UIView *icon in self.subviews) [icon removeFromSuperview];
     
     CGFloat angleIncrement = 2*M_PI/count;
-    CGFloat tempRad = radius/2 + ((radius/2)*count/30);
+    CGFloat tempRad = radius/2 + ((radius/2)*count/30)*0.9;
     CGFloat iconSize = (tempRad/count)*6;
     CGFloat iconSizeScale;
     CGPoint iconCenter;
@@ -85,7 +65,7 @@
         iconView = [self viewForPosition:i];
         iconSizeScale = [self scaleForPosition:i];
         iconView.contentMode = UIViewContentModeScaleAspectFit;
-        iconCenter = CGPointMake(radius+tempRad*cos((i*angleIncrement)-(M_PI/2)), radius+tempRad*sin((i*angleIncrement)-(M_PI/2)));
+        iconCenter = CGPointMake(midPoint.x+tempRad*cos((i*angleIncrement)-(M_PI/2)), midPoint.y+tempRad*sin((i*angleIncrement)-(M_PI/2)));
         iconView.frame = CGRectMake(iconCenter.x-(iconSize*iconSizeScale/2), iconCenter.y-(iconSize*iconSizeScale/2), iconSize*iconSizeScale, iconSize*iconSizeScale);
         [self addSubview:iconView];
     }

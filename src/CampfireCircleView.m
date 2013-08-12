@@ -18,8 +18,6 @@
     CGPoint startPt;
     CGFloat startScale;
     
-    CGRect initialFrame;
-    
     id<CampfireCircleViewDelegate> __unsafe_unretained delegate;
 }
 @property (nonatomic, strong) NSArray *players;
@@ -35,7 +33,6 @@
 {
     if(self = [super initWithFrame:f])
     {
-        initialFrame = f;
         self.clipsToBounds = YES;
         self.playerViews = [[NSMutableArray alloc] initWithCapacity:30];
         [self updatePlayers:p];
@@ -74,43 +71,49 @@
 
 - (void) handlePanGesture:(UIPanGestureRecognizer *)r
 {
-    if(r.state == UIGestureRecognizerStateBegan) startPt = CGPointMake(self.bounds.origin.x,self.bounds.origin.y);
+    if(r.state == UIGestureRecognizerStateBegan) startPt = midPoint;
     
     CGPoint drag = [r translationInView:self];
-    self.bounds = CGRectMake(startPt.x-drag.x, startPt.y-drag.y, self.bounds.size.width, self.bounds.size.height);
-    [self constrainBounds];
+    CGPoint newPt = CGPointMake(startPt.x+drag.x,startPt.y+drag.y);
+    
+    midPoint = newPt;
+    [self constrainPos];
+    [self refresh];
 }
 
 - (void) handlePinchGesture:(UIPinchGestureRecognizer *)r 
 {
-    if(r.state == UIGestureRecognizerStateBegan) startBnd = self.bounds;
+    if(r.state == UIGestureRecognizerStateBegan)
+    {
+        startPt = midPoint;
+        startScale = radius;
+    }
     
     CGFloat factor = [(UIPinchGestureRecognizer *)r scale];
-    CGFloat neww = startBnd.size.width*factor;
-    CGFloat newh = startBnd.size.height*factor;
-    if(initialFrame.size.height <= initialFrame.size.width && newh < initialFrame.size.height)
-    {
-        neww *= initialFrame.size.height/newh;
-        newh *= initialFrame.size.height/newh;
-    }
-    if(initialFrame.size.width <= initialFrame.size.height && neww < initialFrame.size.width)
-    {
-        newh *= initialFrame.size.width/neww;
-        neww *= initialFrame.size.width/neww;
-    }
+    CGFloat newScale = startScale*factor;
     
-    self.bounds = CGRectMake(startBnd.origin.x-((neww-startBnd.size.width)/2),startBnd.origin.y-((newh-startBnd.size.height)/2),neww,newh);
-    [self constrainBounds];
+    midPoint = CGPointMake((startPt.x-self.frame.size.width/2)*factor+self.frame.size.width/2, (startPt.y-self.frame.size.height/2)*factor+self.frame.size.height/2);
+    radius = newScale;
+    [self constrainPos];
+    [self refresh];
+}
+
+- (void) constrainPos
+{
+    if(self.frame.size.width <= self.frame.size.height && radius < self.frame.size.width/2)  radius = self.frame.size.width/2;
+    if(self.frame.size.height <= self.frame.size.width && radius < self.frame.size.height/2) radius = self.frame.size.height/2;
+    if(self.frame.size.width <= self.frame.size.height && radius > self.frame.size.width)  radius = self.frame.size.width;
+    if(self.frame.size.height <= self.frame.size.width && radius > self.frame.size.height) radius = self.frame.size.height;
+    
+    if(midPoint.x > self.frame.size.width+radius/2) midPoint.x = self.frame.size.width+radius/2;
+    if(midPoint.x < 0-radius/2)                     midPoint.x = 0-radius/2;
+    if(midPoint.y > self.frame.size.height+radius/2) midPoint.x = self.frame.size.height+radius/2;
+    if(midPoint.y < 0-radius/2)                     midPoint.x = 0-radius/2;
 }
 
 - (void) handleDoubleTapGesture:(UITapGestureRecognizer *)r
 {
-    self.bounds = CGRectMake(0, 0, initialFrame.size.width, initialFrame.size.height);
-}
-
-- (void) constrainBounds
-{
-    
+    self.bounds = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
 }
 
 @end
