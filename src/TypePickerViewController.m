@@ -279,6 +279,7 @@
 
 - (void) playerWasTouched:(Player *)p
 {
+    p.type = C_WEREWOLF;
     /*
     if(((Player *)[self.game.players objectAtIndex:person]).type == type)
     {
@@ -298,6 +299,7 @@
         }
     }
      */
+    [self.campFireCircle refresh];
 }
 
 @end

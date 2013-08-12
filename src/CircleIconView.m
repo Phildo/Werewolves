@@ -16,15 +16,6 @@
 
 @implementation CircleIconView
 
-- (id) initWithFrame:(CGRect)frame
-{
-    if(self = [super initWithFrame:frame])
-    {
-        self.backgroundColor = [UIColor redColor];
-    }
-    return self;
-}
-
 - (void) setFrame:(CGRect)f
 {
     [super setFrame:f];

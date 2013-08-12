@@ -33,7 +33,6 @@
 {
     if(self = [super initWithFrame:f])
     {
-        self.clipsToBounds = YES;
         self.playerViews = [[NSMutableArray alloc] initWithCapacity:30];
         [self updatePlayers:p];
     
@@ -105,10 +104,10 @@
     if(self.frame.size.width <= self.frame.size.height && radius > self.frame.size.width)  radius = self.frame.size.width;
     if(self.frame.size.height <= self.frame.size.width && radius > self.frame.size.height) radius = self.frame.size.height;
     
-    if(midPoint.x > self.frame.size.width+radius/2) midPoint.x = self.frame.size.width+radius/2;
-    if(midPoint.x < 0-radius/2)                     midPoint.x = 0-radius/2;
-    if(midPoint.y > self.frame.size.height+radius/2) midPoint.x = self.frame.size.height+radius/2;
-    if(midPoint.y < 0-radius/2)                     midPoint.x = 0-radius/2;
+    if(midPoint.x > self.frame.size.width+radius/4) midPoint.x = self.frame.size.width+radius/4;
+    if(midPoint.x < 0-radius/4)                     midPoint.x = 0-radius/4;
+    if(midPoint.y > self.frame.size.height+radius/4) midPoint.y = self.frame.size.height+radius/4;
+    if(midPoint.y < 0-radius/4)                     midPoint.y = 0-radius/4;
 }
 
 - (void) handleDoubleTapGesture:(UITapGestureRecognizer *)r

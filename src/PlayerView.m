@@ -29,14 +29,17 @@
     if((self = [super initWithFrame:frame]))
     {
         player = p;
-        [self updateView];
+        self.userInteractionEnabled = YES;
+        [self refresh];
         [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTouch:)]];
         [self addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongTouch:)]];
+        
+        delegate = d;
     }
     return self;
 }
 
-- (void) updateView
+- (void) refresh
 {
     switch(player.type)
     {
@@ -86,7 +89,7 @@
 - (void) dim:(BOOL)dim
 {
     faded = dim;
-    [self updateView];
+    [self refresh];
 }
 
 - (void) handleTouch:(UITapGestureRecognizer *)r
