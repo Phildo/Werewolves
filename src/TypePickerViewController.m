@@ -17,10 +17,11 @@
     UILabel *titleLabel;
     UILabel *numLeftLabel;
     UIButton *doneButton;
+    UIButton *diceButton;
     CampfireCircleView *campFireCircle;
     
     int numLeft;
-    int scene; //0- WerewolfPicker; 1- HunterPicker; 2- HealerPicker;
+    int sceneType; //0- WerewolfPicker; 1- HunterPicker; 2- HealerPicker;
     
     Game *game;
     
@@ -30,9 +31,10 @@
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *numLeftLabel;
 @property (nonatomic, strong) UIButton *doneButton;
+@property (nonatomic, strong) UIButton *diceButton;
 @property (nonatomic, strong) CampfireCircleView *campFireCircle;
 @property (nonatomic, assign) int numLeft;
-@property (nonatomic, assign) int scene;
+@property (nonatomic, assign) int sceneType;
 @property (nonatomic, strong) Game *game;
 
 @end
@@ -42,9 +44,10 @@
 @synthesize titleLabel;
 @synthesize numLeftLabel;
 @synthesize doneButton;
+@synthesize diceButton;
 @synthesize campFireCircle;
 @synthesize numLeft;
-@synthesize scene;
+@synthesize sceneType;
 @synthesize game;
 
 - (id) initWithViewFrame:(CGRect)f delegate:(id<TypePickerViewControllerDelegate>)d game:(Game *)g
@@ -52,7 +55,7 @@
     if(self = [super initWithViewFrame:f])
     {
         self.game = g;
-        self.title = @"picker";
+        self.title = @"role setup";
         
         delegate = d;
     }
@@ -64,242 +67,170 @@
     [super loadView];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.campFireCircle = [[CampfireCircleView alloc] initWithFrame:self.view.bounds delegate:self players:self.game.players];
-    [self.view addSubview:self.campFireCircle];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,76,self.view.bounds.size.width,20)];
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:20];
     
-    [self setScene:C_WEREWOLF_PICKER];
+    self.numLeftLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,self.view.bounds.size.height-30,self.view.bounds.size.width,30)];
+    self.numLeftLabel.textAlignment = NSTextAlignmentCenter;
+    self.numLeftLabel.font = [UIFont fontWithName:@"Helvetica" size:20];
+    
+    self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.doneButton setTitle:@"done" forState:UIControlStateNormal];
+    [self.doneButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.doneButton.frame = CGRectMake(0, self.view.bounds.size.height-44, self.view.bounds.size.width, 44);
+    [self.doneButton addTarget:self action:@selector(doneButtonTouched) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.diceButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.diceButton setTitle:@"dice" forState:UIControlStateNormal];
+    [self.diceButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.diceButton.frame = CGRectMake(10, 96, 40, 20);
+    [self.diceButton addTarget:self action:@selector(diceButtonTouched) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.campFireCircle = [[CampfireCircleView alloc] initWithFrame:self.view.bounds delegate:self players:self.game.players];
+    
+    [self.view addSubview:self.campFireCircle];
+    [self.view addSubview:self.titleLabel];
+    [self.view addSubview:self.diceButton];
+    
+    [self setSceneType:C_WEREWOLF];
 }
  
-
-- (void) setScene:(int)s
+- (void) refreshView
 {
-    scene = s;
-    switch(s)
+    if(sceneType == C_WEREWOLF) self.titleLabel.text = @"choose your werewolves";
+    if(sceneType == C_HUNTER)   self.titleLabel.text = @"choose your hunter";
+    if(sceneType == C_HEALER)   self.titleLabel.text = @"choose your healer";
+    
+    self.numLeftLabel.text = [NSString stringWithFormat:@"(%d remaining)",numLeft];
+    
+    if(numLeft == 0) 
     {
-        case C_WEREWOLF_PICKER:
-            self.titleLabel.text = @"Pick Your Werewolves";
-            self.numLeft = self.game.numWerewolves;
-            self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", self.numLeft];
-            self.doneButton.hidden = YES;
-            break;
-        case C_HUNTER_PICKER:
-            break;
-        case C_HEALER_PICKER:
-            break;
-        default:
-            break;
+        [self.numLeftLabel removeFromSuperview];
+        [self.view addSubview:doneButton];
     }
+    else
+    {
+        [self.doneButton removeFromSuperview];
+        [self.view addSubview:numLeftLabel];
+    }
+        
+    [self.campFireCircle updatePlayers:self.game.players];
+    [self.campFireCircle refresh];
 }
 
-- (void) backButtonPressed
+- (void) setSceneType:(int)s
 {
-    if(self.scene == C_WEREWOLF_PICKER)
+    sceneType = s;
+    
+    int curNum = 0;
+    for(int i = 0; i < self.game.numPlayers; i++)
+        if(((Player *)[self.game.players objectAtIndex:i]).type == s) curNum++;
+    
+    if(s == C_WEREWOLF) self.numLeft = (self.game.numWerewolves) - curNum;
+    if(s == C_HUNTER)   self.numLeft = (game.hunter ? 1 : 0)     - curNum;
+    if(s == C_HEALER)   self.numLeft = (game.healer ? 1 : 0)     - curNum;
+    
+    [self refreshView];
+}
+
+- (void) backButtonTouched
+{
+    if(self.sceneType == C_WEREWOLF)
     {
         for(int x = 0; x < self.game.numPlayers; x++)
-        {
             ((Player *)[self.game.players objectAtIndex:x]).type = C_VILLAGER;
-        }
         [self.navigationController popViewControllerAnimated:YES];
     }
-    else if(self.scene == C_HUNTER_PICKER)
+    else if(self.sceneType == C_HUNTER)
     {
         for(int x = 0; x < self.game.numPlayers; x++)
-        {
             if(((Player *)[self.game.players objectAtIndex:x]).type == C_HUNTER) 
-            {
                 ((Player *)[self.game.players objectAtIndex:x]).type = C_VILLAGER;
-            }
-        }
-        self.titleLabel.text = @"Pick your Werewolves";
-        self.numLeft = 0;
-        self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", self.numLeft];
-        self.doneButton.hidden = NO;
-        self.scene = C_WEREWOLF_PICKER;
+        [self setSceneType:C_WEREWOLF];
     }
-    else if(self.scene == C_HEALER_PICKER)
+    else if(self.sceneType == C_HEALER)
     {
         for(int x = 0; x < self.game.numPlayers; x++)
-        {
             if(((Player *)[self.game.players objectAtIndex:x]).type == C_HEALER) 
-            {
                 ((Player *)[self.game.players objectAtIndex:x]).type = C_VILLAGER;
-            }
-        }
         if(self.game.hunter)
-        {
-            self.titleLabel.text = @"Pick your Werewolves";
-            self.numLeft = 0;
-            self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", self.numLeft];
-            self.doneButton.hidden = NO;
-            self.scene = C_HUNTER_PICKER;
-        }
+            [self setSceneType:C_HUNTER];
         else
-        {
-            self.titleLabel.text = @"Pick your Hunter";
-            self.numLeft = 0;
-            self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", self.numLeft];
-            self.doneButton.hidden = NO;
-            self.scene = C_WEREWOLF_PICKER;
-        }
+            [self setSceneType:C_WEREWOLF];
     }
 }
 
-/*
-- (void)diceButtonPressed
+- (void) doneButtonTouched
 {
-    int prob;
-    int tempPlayersLeft;
-    
-    if(self.scene == C_WEREWOLF_PICKER)
-    {
-        self.numLeft = self.game.numWerewolves;
-        tempPlayersLeft = self.game.numPlayers;
-        
-        for(int x = 0; x < self.game.numPlayers; x++)
-        {
-            prob = rand() % tempPlayersLeft;
-            if(prob < self.numLeft)
-            {
-                ((Player *)[self.game.players objectAtIndex:x]).type = C_WEREWOLF;
-                self.numLeft--;
-            }
-            else
-            {
-                ((Player *)[self.game.players objectAtIndex:x]).type = C_VILLAGER;
-                [self.campFireCircle turnPerson:x into:C_VILLAGER animated:NO];
-            }
-            tempPlayersLeft--;
-        }
-    }
-    else if(self.scene == C_HUNTER_PICKER)
-    {
-        self.numLeft = 1;
-        tempPlayersLeft = self.game.numPlayers - self.game.numWerewolves;
-        
-        for(int x = 0; x < self.game.numPlayers; x++)
-        {
-            if(((Player *)[self.game.players objectAtIndex:x]).type != C_WEREWOLF)
-            {
-                prob = rand() % tempPlayersLeft;
-                if(prob < self.numLeft)
-                {
-                    ((Player *)[self.game.players objectAtIndex:x]).type = C_HUNTER;
-                    ((Player *)[self.game.players objectAtIndex:x]).show = C_HUNTER;
-                    [self.campFireCircle turnPerson:x into:C_HUNTER animated:NO];
-                    self.numLeft--;
-                }
-                else
-                {
-                    ((Player *)[self.game.players objectAtIndex:x]).type = C_VILLAGER;
-                    ((Player *)[self.game.players objectAtIndex:x]).show = C_VILLAGER;
-                    [self.campFireCircle turnPerson:x into:C_VILLAGER animated:NO];
-                }
-                tempPlayersLeft--;
-            }
-        }
-    }
-    else if(self.scene == C_HEALER_PICKER)
-    {
-        self.numLeft = 1;
-        tempPlayersLeft = self.game.numPlayers - self.game.numWerewolves;
-        if(self.game.hunter) tempPlayersLeft--;
-        
-        for(int x = 0; x < self.game.numPlayers; x++)
-        {
-            if(((Player *)[self.game.players objectAtIndex:x]).type != C_WEREWOLF && ((Player *)[self.game.players objectAtIndex:x]).type != C_HUNTER)
-            {
-                prob = rand() % tempPlayersLeft;
-                if(prob < self.numLeft)
-                {
-                    ((Player *)[self.game.players objectAtIndex:x]).type = C_HEALER;
-                    ((Player *)[self.game.players objectAtIndex:x]).show = C_HEALER;
-                    [self.campFireCircle turnPerson:x into:C_HEALER animated:NO];
-                    self.numLeft--;
-                }
-                else
-                {
-                    ((Player *)[self.game.players objectAtIndex:x]).type = C_VILLAGER;
-                    ((Player *)[self.game.players objectAtIndex:x]).show = C_VILLAGER;
-                    [self.campFireCircle turnPerson:x into:C_VILLAGER animated:NO];
-                }
-                tempPlayersLeft--;
-            }
-        }
-    }
-    
-    self.numLeft = 0;
-    self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", self.numLeft];
-    self.doneButton.hidden = NO;
-}
-*/
-
-- (void) doneButtonPressed
-{
-    if(self.scene == C_WEREWOLF_PICKER)
+    if(self.sceneType == C_WEREWOLF)
     {
         if(self.game.hunter)
-        {
-            self.titleLabel.text = @"Pick your Hunter";
-            self.numLeft = 1;
-            self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", self.numLeft];
-            self.doneButton.hidden = YES;
-            self.scene = C_HUNTER_PICKER;
-        }
+            [self setSceneType:C_HUNTER];
         else if(self.game.healer)
-        {  
-            self.titleLabel.text = @"Pick your Healer";
-            self.numLeft = 1;
-            self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", self.numLeft];
-            self.doneButton.hidden = YES;
-            self.scene = C_HEALER_PICKER;
-        }
+            [self setSceneType:C_HEALER];
         else
         {
         }
     }
-    else if(self.scene == C_HUNTER_PICKER)
+    else if(self.sceneType == C_HUNTER)
     {
         if(self.game.healer)
-        {
-            self.titleLabel.text = @"Pick your Healer";
-            self.numLeft = 1;
-            self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", self.numLeft];
-            self.doneButton.hidden = YES;
-            self.scene = C_HEALER_PICKER;
-        }
+            [self setSceneType:C_HEALER];
         else
         {
         }
-        
     }
-    else if(self.scene == C_HEALER_PICKER)
+    else if(self.sceneType == C_HEALER)
     {
     }
+}
+
+- (void) player:(Player *)p wasReleasedBeforePosition:(int)pos
+{
+    [self refreshView];
 }
 
 - (void) playerWasTouched:(Player *)p
 {
-    p.type = C_WEREWOLF;
-    /*
-    if(((Player *)[self.game.players objectAtIndex:person]).type == type)
+    if(numLeft > 0 && p.type != sceneType)
     {
-        self.numLeft++;
-        self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", self.numLeft];
-        ((Player *)[self.game.players objectAtIndex:person]).type = C_VILLAGER;
-        self.doneButton.hidden = YES;
+        numLeft--;
+        p.type = sceneType;
     }
-    else if(((Player *)[self.game.players objectAtIndex:person]).type == C_VILLAGER)
+    else if(p.type == sceneType)
     {
-        if(self.numLeft > 0)
+        numLeft++;
+        p.type = C_VILLAGER;
+    }
+                
+    [self refreshView];
+}
+
+- (void)diceButtonTouched
+{
+    int numEligiblePlayers = 0;
+    for(int i = 0; i < self.game.numPlayers; i++)
+    {
+        if(((Player *)[self.game.players objectAtIndex:i]).type == sceneType)
         {
-            self.numLeft--;
-            self.numLeftLabel.text = [NSString stringWithFormat:@"%d Left", self.numLeft];
-            ((Player *)[self.game.players objectAtIndex:person]).type = type;
-            if(self.numLeft == 0) self.doneButton.hidden = NO;
+            numLeft++;
+            ((Player *)[self.game.players objectAtIndex:i]).type = C_VILLAGER;
+        }
+        if(((Player *)[self.game.players objectAtIndex:i]).type == C_VILLAGER)
+            numEligiblePlayers++;
+    }
+    
+    for(int i = 0; i < self.game.numPlayers; i++)
+    {
+        if(((Player *)[self.game.players objectAtIndex:i]).type == C_VILLAGER)
+        {
+            int prob = arc4random() % (numEligiblePlayers)+1;
+            if(prob <= self.numLeft)
+                [self playerWasTouched:[self.game.players objectAtIndex:i]];
+            numEligiblePlayers--;
         }
     }
-     */
-    [self.campFireCircle refresh];
 }
 
 @end

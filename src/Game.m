@@ -31,7 +31,7 @@
         self.healer = NO;
         self.day = YES;
         self.daysPassed = 0;
-        self.turnState = C_VILLAGER_TURN;
+        self.turnState = C_VILLAGER;
         self.players = [[NSMutableArray alloc] initWithCapacity:30];
         self.history = [[NSMutableArray alloc] initWithCapacity:30];
     }

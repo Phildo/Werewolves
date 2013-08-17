@@ -20,6 +20,8 @@
     if((self = [super init]))
     {
         self.name = n ? n : @"Player";
+        self.type = C_VILLAGER;
+        self.state = C_AWAKE;
     }
     return self;
 }

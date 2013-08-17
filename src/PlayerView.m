@@ -28,7 +28,7 @@
 {
     if((self = [super initWithFrame:frame]))
     {
-        player = p;
+        self.player = p;
         self.userInteractionEnabled = YES;
         [self refresh];
         [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTouch:)]];
@@ -41,10 +41,10 @@
 
 - (void) refresh
 {
-    switch(player.type)
+    switch(self.player.type)
     {
         case C_VILLAGER:
-            switch(player.state)
+            switch(self.player.state)
             {
                 case C_AWAKE: [self setImage:[UIImage imageNamed:@"villager.png"]];       break;
                 case C_SLEEP: [self setImage:[UIImage imageNamed:@"villager_sleep.png"]]; break;
@@ -53,7 +53,7 @@
             }
             break;
         case C_WEREWOLF:
-            switch(player.state)
+            switch(self.player.state)
             {
                 case C_AWAKE: [self setImage:[UIImage imageNamed:@"werewolf.png"]];       break;
                 case C_SLEEP: [self setImage:[UIImage imageNamed:@"werewolf_sleep.png"]]; break;
@@ -62,21 +62,23 @@
             }
             break;
         case C_HUNTER:
-            switch(player.state)
+            switch(self.player.state)
             {
                 case C_AWAKE: [self setImage:[UIImage imageNamed:@"hunter.png"]];         break;
                 case C_SLEEP: [self setImage:[UIImage imageNamed:@"hunter_sleep.png"]];   break;
                 case C_DEAD:  [self setImage:[UIImage imageNamed:@"hunter_dead.png"]];    break;
                 default:      [self setImage:[UIImage imageNamed:@"img_not_found.png"]];  break;
             }
+            break;
         case C_HEALER:
-            switch(player.state)
+            switch(self.player.state)
             {
                 case C_AWAKE: [self setImage:[UIImage imageNamed:@"healer.png"]];         break;
                 case C_SLEEP: [self setImage:[UIImage imageNamed:@"healer_sleep.png"]];   break;
                 case C_DEAD:  [self setImage:[UIImage imageNamed:@"healer_dead.png"]];    break;
                 default:      [self setImage:[UIImage imageNamed:@"img_not_found.png"]];  break;
             }
+            break;
         default:
             [self setImage:[UIImage imageNamed:@"img_not_found.png"]];
             break;
