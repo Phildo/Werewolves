@@ -228,15 +228,27 @@
     self.healerLabel.text = @"healer: disabled";
     self.healerLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:self.healerLabel];
-    
-    CGFloat startButtonx = (viewpadding);
+ 
+    CGFloat backButtonx = (viewpadding);
+    CGFloat backButtony = (viewh-viewpadding-40);
+    CGFloat backButtonw = ((vieww-(2*viewpadding))/2);
+    CGFloat backButtonh = (40);
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backButton.frame = CGRectMake(backButtonx, backButtony, backButtonw, backButtonh);
+    backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [backButton setTitle:@"< back" forState:UIControlStateNormal];
+    [backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(backButtonTouched) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:backButton];
+
+    CGFloat startButtonx = (vieww/2);
     CGFloat startButtony = (viewh-viewpadding-40);
-    CGFloat startButtonw = (vieww-(2*viewpadding));
+    CGFloat startButtonw = ((vieww-(2*viewpadding))/2);
     CGFloat startButtonh = (40);
     UIButton *startButton = [UIButton buttonWithType:UIButtonTypeCustom];
     startButton.frame = CGRectMake(startButtonx, startButtony, startButtonw, startButtonh);
     startButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    [startButton setTitle:@"start >" forState:UIControlStateNormal];
+    [startButton setTitle:@"name players >" forState:UIControlStateNormal];
     [startButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [startButton addTarget:self action:@selector(startButtonTouched) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:startButton];

@@ -15,8 +15,7 @@
 @interface TypeSetupViewController() <CampfireCircleViewDelegate>
 {
     UILabel *titleLabel;
-    UILabel *numLeftLabel;
-    UIButton *doneButton;
+    UIButton *nextButton;
     UIButton *diceButton;
     CampfireCircleView *campFireCircle;
     
@@ -29,8 +28,7 @@
 }
 
 @property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UILabel *numLeftLabel;
-@property (nonatomic, strong) UIButton *doneButton;
+@property (nonatomic, strong) UIButton *nextButton;
 @property (nonatomic, strong) UIButton *diceButton;
 @property (nonatomic, strong) CampfireCircleView *campFireCircle;
 @property (nonatomic, assign) int numLeft;
@@ -42,8 +40,7 @@
 @implementation TypeSetupViewController
 
 @synthesize titleLabel;
-@synthesize numLeftLabel;
-@synthesize doneButton;
+@synthesize nextButton;
 @synthesize diceButton;
 @synthesize campFireCircle;
 @synthesize numLeft;
@@ -67,30 +64,35 @@
     [super loadView];
     self.view.backgroundColor = [UIColor whiteColor];
     
+    self.campFireCircle = [[CampfireCircleView alloc] initWithFrame:self.view.bounds delegate:self players:self.game.players];
+    [self.view addSubview:self.campFireCircle];
+    
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,10,self.view.bounds.size.width,20)];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:20];
+    [self.view addSubview:self.titleLabel];
     
-    self.numLeftLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,self.view.bounds.size.height-30,self.view.bounds.size.width,30)];
-    self.numLeftLabel.textAlignment = NSTextAlignmentCenter;
-    self.numLeftLabel.font = [UIFont fontWithName:@"Helvetica" size:20];
-    
-    self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.doneButton setTitle:@"done" forState:UIControlStateNormal];
-    [self.doneButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    self.doneButton.frame = CGRectMake(0, self.view.bounds.size.height-44, self.view.bounds.size.width, 44);
-    [self.doneButton addTarget:self action:@selector(doneButtonTouched) forControlEvents:UIControlEventTouchUpInside];
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backButton.frame = CGRectMake(10, self.view.bounds.size.height-40, (self.view.bounds.size.width-20)/2, 40);
+    backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [backButton setTitle:@"< back" forState:UIControlStateNormal];
+    [backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(backButtonTouched) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:backButton];
+
+    self.nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.nextButton.frame = CGRectMake(self.view.bounds.size.width/2, self.view.bounds.size.height-40, (self.view.bounds.size.width-20)/2, 40);
+    self.nextButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [self.nextButton setTitle:@"name players >" forState:UIControlStateNormal];
+    [self.nextButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.nextButton addTarget:self action:@selector(nextButtonTouched) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.nextButton];
     
     self.diceButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.diceButton setTitle:@"dice" forState:UIControlStateNormal];
     [self.diceButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     self.diceButton.frame = CGRectMake(10, 30, 40, 20);
     [self.diceButton addTarget:self action:@selector(diceButtonTouched) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.campFireCircle = [[CampfireCircleView alloc] initWithFrame:self.view.bounds delegate:self players:self.game.players];
-    
-    [self.view addSubview:self.campFireCircle];
-    [self.view addSubview:self.titleLabel];
     [self.view addSubview:self.diceButton];
     
     [self setSceneType:C_WEREWOLF];
@@ -102,19 +104,11 @@
     if(sceneType == C_HUNTER)   self.titleLabel.text = @"choose your hunter";
     if(sceneType == C_HEALER)   self.titleLabel.text = @"choose your healer";
     
-    self.numLeftLabel.text = [NSString stringWithFormat:@"(%d remaining)",numLeft];
-    
-    if(numLeft == 0) 
-    {
-        [self.numLeftLabel removeFromSuperview];
-        [self.view addSubview:doneButton];
-    }
+    if(numLeft > 0)
+        [self.nextButton setTitle:[NSString stringWithFormat:@"(%d remaining)",numLeft] forState:UIControlStateNormal];
     else
-    {
-        [self.doneButton removeFromSuperview];
-        [self.view addSubview:numLeftLabel];
-    }
-        
+        [self.nextButton setTitle:@"next >" forState:UIControlStateNormal];
+    
     [self.campFireCircle updatePlayers:self.game.players];
     [self.campFireCircle refresh];
 }
@@ -140,6 +134,7 @@
     {
         for(int x = 0; x < self.game.numPlayers; x++)
             ((Player *)[self.game.players objectAtIndex:x]).type = C_VILLAGER;
+        [delegate typeSetupAborted];
     }
     else if(self.sceneType == C_HUNTER)
     {
@@ -160,8 +155,10 @@
     }
 }
 
-- (void) doneButtonTouched
+- (void) nextButtonTouched
 {
+    if(numLeft > 0) return;
+    
     if(self.sceneType == C_WEREWOLF)
     {
         if(self.game.hunter)
@@ -169,20 +166,17 @@
         else if(self.game.healer)
             [self setSceneType:C_HEALER];
         else
-        {
-        }
+            [delegate typeSetupDecidedWithGame:self.game];
     }
     else if(self.sceneType == C_HUNTER)
     {
         if(self.game.healer)
             [self setSceneType:C_HEALER];
         else
-        {
-        }
+            [delegate typeSetupDecidedWithGame:self.game];
     }
     else if(self.sceneType == C_HEALER)
-    {
-    }
+            [delegate typeSetupDecidedWithGame:self.game];
 }
 
 - (void) player:(Player *)p wasReleasedBeforePosition:(int)pos
@@ -192,7 +186,7 @@
 
 - (void) playerWasTouched:(Player *)p
 {
-    if(numLeft > 0 && p.type != sceneType)
+    if(numLeft > 0 && p.type == C_VILLAGER)
     {
         numLeft--;
         p.type = sceneType;
@@ -206,7 +200,7 @@
     [self refreshView];
 }
 
-- (void)diceButtonTouched
+- (void) diceButtonTouched
 {
     int numEligiblePlayers = 0;
     for(int i = 0; i < self.game.numPlayers; i++)

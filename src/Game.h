@@ -30,7 +30,7 @@
 @property (nonatomic, assign) BOOL day;
 @property (nonatomic, assign) int daysPassed;
 @property (nonatomic, assign) int turnState;
-@property (retain) NSMutableArray *players;
-@property (retain) NSMutableArray *history;
+@property (nonatomic, strong) NSMutableArray *players;
+@property (nonatomic, strong) NSMutableArray *history;
 
 @end

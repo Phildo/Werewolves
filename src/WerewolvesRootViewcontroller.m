@@ -9,6 +9,7 @@
 #import "WerewolvesRootViewcontroller.h"
 #import "IntroScreenViewController.h"
 #import "GameSetupViewController.h"
+#import "GamePlayViewController.h"
 
 @interface WerewolvesRootViewcontroller ()<IntroScreenViewControllerDelegate,GameSetupViewControllerDelegate>
 
@@ -29,7 +30,7 @@
 
 - (void) gameSetupConfirmedWithGame:(Game *)g
 {
-    [self displayContentController:[[UIViewController alloc] init]];
+    [self displayContentController:[[GamePlayViewController alloc] initWithViewFrame:self.view.bounds delegate:self]];
 }
 
 - (void) gameSetupAborted

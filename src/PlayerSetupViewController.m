@@ -96,9 +96,19 @@
         
         yPos+=cellHeight+padding;
     }
+    
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backButton.frame = CGRectMake(padding, yPos, (self.view.bounds.size.width-(2*padding))/2, 40);
+    backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [backButton setTitle:@"< back" forState:UIControlStateNormal];
+    [backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(backButtonTouched) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:backButton];
+    
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    nextButton.frame = CGRectMake(padding, yPos, self.view.bounds.size.width-(2*padding), 40);
-    [nextButton setTitle:@"next" forState:UIControlStateNormal];
+    nextButton.frame = CGRectMake(self.view.bounds.size.width/2, yPos, (self.view.bounds.size.width-(2*padding))/2, 40);
+    nextButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [nextButton setTitle:@"choose roles >" forState:UIControlStateNormal];
     [nextButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [nextButton addTarget:self action:@selector(nextButtonTouched) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:nextButton];

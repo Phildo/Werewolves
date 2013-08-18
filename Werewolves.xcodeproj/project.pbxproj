@@ -57,6 +57,7 @@
 		AAA5ADDD17ADA979000B174F /* CircleIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA5ADDC17ADA979000B174F /* CircleIconView.m */; };
 		AAA5ADE017ADB184000B174F /* PlayerPositionView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA5ADDF17ADB184000B174F /* PlayerPositionView.m */; };
 		AAD811DA17C032C000534914 /* GameSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD811D917C032C000534914 /* GameSetupViewController.m */; };
+		AAD89B2217C151CC009E0CE0 /* GamePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD89B2117C151CC009E0CE0 /* GamePlayViewController.m */; };
 		AAE7750317B6BDE000260913 /* UIFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE7750217B6BDE000260913 /* UIFViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -132,6 +133,8 @@
 		AAA5ADDF17ADB184000B174F /* PlayerPositionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerPositionView.m; sourceTree = "<group>"; };
 		AAD811D817C032C000534914 /* GameSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSetupViewController.h; sourceTree = "<group>"; };
 		AAD811D917C032C000534914 /* GameSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSetupViewController.m; sourceTree = "<group>"; };
+		AAD89B2017C151CC009E0CE0 /* GamePlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlayViewController.h; sourceTree = "<group>"; };
+		AAD89B2117C151CC009E0CE0 /* GamePlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePlayViewController.m; sourceTree = "<group>"; };
 		AAE7750117B6BDE000260913 /* UIFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFViewController.h; sourceTree = "<group>"; };
 		AAE7750217B6BDE000260913 /* UIFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,32 +195,11 @@
 				AAA5ADA317AC6E71000B174F /* ContentViewController.m */,
 				AA0A376E17A8A2F100E185AA /* WerewolvesRootViewcontroller.h */,
 				AA0A376F17A8A2F100E185AA /* WerewolvesRootViewcontroller.m */,
-				AA0A374217A8A1AC00E185AA /* IntroScreenViewController.h */,
-				AA0A374317A8A1AC00E185AA /* IntroScreenViewController.m */,
-				AAD811D817C032C000534914 /* GameSetupViewController.h */,
-				AAD811D917C032C000534914 /* GameSetupViewController.m */,
-				AA0A373C17A8A1AC00E185AA /* SplitSetupViewController.h */,
-				AA0A373D17A8A1AC00E185AA /* SplitSetupViewController.m */,
-				AA0A374917A8A1AC00E185AA /* PlayerSetupViewController.h */,
-				AA0A374A17A8A1AC00E185AA /* PlayerSetupViewController.m */,
-				AA0A374E17A8A1AC00E185AA /* TypeSetupViewController.h */,
-				AA0A374F17A8A1AC00E185AA /* TypeSetupViewController.m */,
-				AAA5ADDB17ADA979000B174F /* CircleIconView.h */,
-				AAA5ADDC17ADA979000B174F /* CircleIconView.m */,
-				AA0A373317A8A1AC00E185AA /* PlayerSplitOverviewView.h */,
-				AA0A373417A8A1AC00E185AA /* PlayerSplitOverviewView.m */,
-				AAA5ADDE17ADB184000B174F /* PlayerPositionView.h */,
-				AAA5ADDF17ADB184000B174F /* PlayerPositionView.m */,
-				AA0A373117A8A1AC00E185AA /* CampfireCircleView.h */,
-				AA0A373217A8A1AC00E185AA /* CampfireCircleView.m */,
-				AA0A373717A8A1AC00E185AA /* Game.h */,
-				AA0A373817A8A1AC00E185AA /* Game.m */,
-				AA0A374517A8A1AC00E185AA /* Move.h */,
-				AA0A374617A8A1AC00E185AA /* Move.m */,
-				AA0A374717A8A1AC00E185AA /* Player.h */,
-				AA0A374817A8A1AC00E185AA /* Player.m */,
-				AA0A374C17A8A1AC00E185AA /* PlayerView.h */,
-				AA0A374D17A8A1AC00E185AA /* PlayerView.m */,
+				AAD89B2517C1527C009E0CE0 /* Intro */,
+				AAD89B2317C151F2009E0CE0 /* Game Setup */,
+				AAD89B2417C15271009E0CE0 /* Game Play */,
+				AAD89B2617C1529B009E0CE0 /* Custom Views */,
+				AAD89B2717C152BA009E0CE0 /* Model */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -267,6 +249,69 @@
 				AA0A372E17A8A1AC00E185AA /* werewolves-Prefix.pch */,
 			);
 			path = app;
+			sourceTree = "<group>";
+		};
+		AAD89B2317C151F2009E0CE0 /* Game Setup */ = {
+			isa = PBXGroup;
+			children = (
+				AAD811D817C032C000534914 /* GameSetupViewController.h */,
+				AAD811D917C032C000534914 /* GameSetupViewController.m */,
+				AA0A373C17A8A1AC00E185AA /* SplitSetupViewController.h */,
+				AA0A373D17A8A1AC00E185AA /* SplitSetupViewController.m */,
+				AA0A374917A8A1AC00E185AA /* PlayerSetupViewController.h */,
+				AA0A374A17A8A1AC00E185AA /* PlayerSetupViewController.m */,
+				AA0A374E17A8A1AC00E185AA /* TypeSetupViewController.h */,
+				AA0A374F17A8A1AC00E185AA /* TypeSetupViewController.m */,
+			);
+			name = "Game Setup";
+			sourceTree = "<group>";
+		};
+		AAD89B2417C15271009E0CE0 /* Game Play */ = {
+			isa = PBXGroup;
+			children = (
+				AAD89B2017C151CC009E0CE0 /* GamePlayViewController.h */,
+				AAD89B2117C151CC009E0CE0 /* GamePlayViewController.m */,
+			);
+			name = "Game Play";
+			sourceTree = "<group>";
+		};
+		AAD89B2517C1527C009E0CE0 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				AA0A374217A8A1AC00E185AA /* IntroScreenViewController.h */,
+				AA0A374317A8A1AC00E185AA /* IntroScreenViewController.m */,
+			);
+			name = Intro;
+			sourceTree = "<group>";
+		};
+		AAD89B2617C1529B009E0CE0 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				AAA5ADDB17ADA979000B174F /* CircleIconView.h */,
+				AAA5ADDC17ADA979000B174F /* CircleIconView.m */,
+				AA0A373317A8A1AC00E185AA /* PlayerSplitOverviewView.h */,
+				AA0A373417A8A1AC00E185AA /* PlayerSplitOverviewView.m */,
+				AAA5ADDE17ADB184000B174F /* PlayerPositionView.h */,
+				AAA5ADDF17ADB184000B174F /* PlayerPositionView.m */,
+				AA0A373117A8A1AC00E185AA /* CampfireCircleView.h */,
+				AA0A373217A8A1AC00E185AA /* CampfireCircleView.m */,
+				AA0A374C17A8A1AC00E185AA /* PlayerView.h */,
+				AA0A374D17A8A1AC00E185AA /* PlayerView.m */,
+			);
+			name = "Custom Views";
+			sourceTree = "<group>";
+		};
+		AAD89B2717C152BA009E0CE0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA0A373717A8A1AC00E185AA /* Game.h */,
+				AA0A373817A8A1AC00E185AA /* Game.m */,
+				AA0A374517A8A1AC00E185AA /* Move.h */,
+				AA0A374617A8A1AC00E185AA /* Move.m */,
+				AA0A374717A8A1AC00E185AA /* Player.h */,
+				AA0A374817A8A1AC00E185AA /* Player.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,6 +410,7 @@
 				AA0A375917A8A1AC00E185AA /* CampfireCircleView.m in Sources */,
 				AA0A375A17A8A1AC00E185AA /* PlayerSplitOverviewView.m in Sources */,
 				AAD811DA17C032C000534914 /* GameSetupViewController.m in Sources */,
+				AAD89B2217C151CC009E0CE0 /* GamePlayViewController.m in Sources */,
 				AA0A375C17A8A1AC00E185AA /* Game.m in Sources */,
 				AA0A375F17A8A1AC00E185AA /* SplitSetupViewController.m in Sources */,
 				AA0A376317A8A1AC00E185AA /* IntroScreenViewController.m in Sources */,

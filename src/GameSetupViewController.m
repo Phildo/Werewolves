@@ -13,11 +13,24 @@
 
 @interface GameSetupViewController() <SplitSetupViewControllerDelegate, PlayerSetupViewControllerDelegate, TypeSetupViewControllerDelegate>
 {
+    SplitSetupViewController *ssvc;
+    PlayerSetupViewController *psvc;
+    TypeSetupViewController *tsvc;
+    
     id<GameSetupViewControllerDelegate> __unsafe_unretained delegate;
 }
+
+@property (nonatomic, strong) SplitSetupViewController *ssvc;
+@property (nonatomic, strong) PlayerSetupViewController *psvc;
+@property (nonatomic, strong) TypeSetupViewController *tsvc;
+
 @end
 
 @implementation GameSetupViewController
+
+@synthesize ssvc;
+@synthesize psvc;
+@synthesize tsvc;
 
 - (id) initWithViewFrame:(CGRect)f delegate:(id<GameSetupViewControllerDelegate>)d
 {
@@ -31,12 +44,14 @@
 - (void) loadView
 {
     [super loadView];
-    [self displayContentController:[[SplitSetupViewController alloc] initWithViewFrame:self.view.bounds delegate:self]];
+    self.ssvc = [[SplitSetupViewController alloc] initWithViewFrame:self.view.bounds delegate:self];
+    [self displayContentController:self.ssvc];
 }
 
 - (void) splitSetupDecidedWithGame:(Game *)g
 {
-    [self displayContentController:[[PlayerSetupViewController alloc] initWithViewFrame:self.view.bounds delegate:self game:g]];
+    self.psvc = [[PlayerSetupViewController alloc] initWithViewFrame:self.view.bounds delegate:self game:g];
+    [self displayContentController:self.psvc];
 }
 
 - (void) splitSetupAborted
@@ -46,20 +61,23 @@
 
 - (void) playerSetupDecidedWithGame:(Game *)g
 {
-    [self displayContentController:[[TypeSetupViewController alloc] initWithViewFrame:self.view.bounds delegate:self game:g]];
+    self.tsvc = [[TypeSetupViewController alloc] initWithViewFrame:self.view.bounds delegate:self game:g];
+    [self displayContentController:self.tsvc];
 }
 
 - (void) playerSetupAborted
 {
-    
+    [self displayContentController:self.ssvc];
 }
 
 - (void) typeSetupDecidedWithGame:(Game *)g
 {
+    [delegate gameSetupConfirmedWithGame:g];
 }
 
 - (void) typeSetupAborted
 {
+    [self displayContentController:self.psvc];
 }
     
 @end
