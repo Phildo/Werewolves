@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "UIFViewController.h"
 
+@class Game;
+
 @protocol SplitSetupViewControllerDelegate
-- (void) splitSetupDecided;
+- (void) splitSetupDecidedWithGame:(Game *)g;
 - (void) splitSetupAborted;
 @end
 

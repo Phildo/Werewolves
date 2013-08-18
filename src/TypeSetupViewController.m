@@ -1,18 +1,18 @@
 //
-//  TypePickerViewController.m
+//  TypeSetupViewController.m
 //  Werewolves
 //
 //  Created by Philip Dougherty on 8/21/11.
 //  Copyright 2011 UW Madison. All rights reserved.
 //
 
-#import "TypePickerViewController.h"
+#import "TypeSetupViewController.h"
 #import "AppConstants.h"
 #import "Game.h"
 #import "Player.h"
 #import "CampfireCircleView.h"
  
-@interface TypePickerViewController() <CampfireCircleViewDelegate>
+@interface TypeSetupViewController() <CampfireCircleViewDelegate>
 {
     UILabel *titleLabel;
     UILabel *numLeftLabel;
@@ -21,11 +21,11 @@
     CampfireCircleView *campFireCircle;
     
     int numLeft;
-    int sceneType; //0- WerewolfPicker; 1- HunterPicker; 2- HealerPicker;
+    int sceneType; //0- werewolf; 1- hunter; 2- healer;
     
     Game *game;
     
-    id<TypePickerViewControllerDelegate> __unsafe_unretained delegate;
+    id<TypeSetupViewControllerDelegate> __unsafe_unretained delegate;
 }
 
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -39,7 +39,7 @@
 
 @end
  
-@implementation TypePickerViewController
+@implementation TypeSetupViewController
 
 @synthesize titleLabel;
 @synthesize numLeftLabel;
@@ -50,7 +50,7 @@
 @synthesize sceneType;
 @synthesize game;
 
-- (id) initWithViewFrame:(CGRect)f delegate:(id<TypePickerViewControllerDelegate>)d game:(Game *)g
+- (id) initWithViewFrame:(CGRect)f delegate:(id<TypeSetupViewControllerDelegate>)d game:(Game *)g
 {
     if(self = [super initWithViewFrame:f])
     {
@@ -67,7 +67,7 @@
     [super loadView];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,76,self.view.bounds.size.width,20)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,10,self.view.bounds.size.width,20)];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:20];
     
@@ -84,7 +84,7 @@
     self.diceButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.diceButton setTitle:@"dice" forState:UIControlStateNormal];
     [self.diceButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    self.diceButton.frame = CGRectMake(10, 96, 40, 20);
+    self.diceButton.frame = CGRectMake(10, 30, 40, 20);
     [self.diceButton addTarget:self action:@selector(diceButtonTouched) forControlEvents:UIControlEventTouchUpInside];
     
     self.campFireCircle = [[CampfireCircleView alloc] initWithFrame:self.view.bounds delegate:self players:self.game.players];
@@ -140,7 +140,6 @@
     {
         for(int x = 0; x < self.game.numPlayers; x++)
             ((Player *)[self.game.players objectAtIndex:x]).type = C_VILLAGER;
-        [self.navigationController popViewControllerAnimated:YES];
     }
     else if(self.sceneType == C_HUNTER)
     {

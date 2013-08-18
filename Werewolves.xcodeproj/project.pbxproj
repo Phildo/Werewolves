@@ -24,7 +24,7 @@
 		AA0A376617A8A1AC00E185AA /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A374817A8A1AC00E185AA /* Player.m */; };
 		AA0A376717A8A1AC00E185AA /* PlayerSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A374A17A8A1AC00E185AA /* PlayerSetupViewController.m */; };
 		AA0A376917A8A1AC00E185AA /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A374D17A8A1AC00E185AA /* PlayerView.m */; };
-		AA0A376A17A8A1AC00E185AA /* TypePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A374F17A8A1AC00E185AA /* TypePickerViewController.m */; };
+		AA0A376A17A8A1AC00E185AA /* TypeSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A374F17A8A1AC00E185AA /* TypeSetupViewController.m */; };
 		AA0A377017A8A2F100E185AA /* WerewolvesRootViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A376F17A8A2F100E185AA /* WerewolvesRootViewcontroller.m */; };
 		AAA5ADA417AC6E71000B174F /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA5ADA317AC6E71000B174F /* ContentViewController.m */; };
 		AAA5ADC017ADA45E000B174F /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA5ADA517ADA45E000B174F /* ball.png */; };
@@ -93,8 +93,8 @@
 		AA0A374A17A8A1AC00E185AA /* PlayerSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSetupViewController.m; sourceTree = "<group>"; };
 		AA0A374C17A8A1AC00E185AA /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
 		AA0A374D17A8A1AC00E185AA /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
-		AA0A374E17A8A1AC00E185AA /* TypePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypePickerViewController.h; sourceTree = "<group>"; };
-		AA0A374F17A8A1AC00E185AA /* TypePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypePickerViewController.m; sourceTree = "<group>"; };
+		AA0A374E17A8A1AC00E185AA /* TypeSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeSetupViewController.h; sourceTree = "<group>"; };
+		AA0A374F17A8A1AC00E185AA /* TypeSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeSetupViewController.m; sourceTree = "<group>"; };
 		AA0A376E17A8A2F100E185AA /* WerewolvesRootViewcontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WerewolvesRootViewcontroller.h; sourceTree = "<group>"; };
 		AA0A376F17A8A2F100E185AA /* WerewolvesRootViewcontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WerewolvesRootViewcontroller.m; sourceTree = "<group>"; };
 		AAA5ADA217AC6E71000B174F /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
@@ -200,8 +200,8 @@
 				AA0A373D17A8A1AC00E185AA /* SplitSetupViewController.m */,
 				AA0A374917A8A1AC00E185AA /* PlayerSetupViewController.h */,
 				AA0A374A17A8A1AC00E185AA /* PlayerSetupViewController.m */,
-				AA0A374E17A8A1AC00E185AA /* TypePickerViewController.h */,
-				AA0A374F17A8A1AC00E185AA /* TypePickerViewController.m */,
+				AA0A374E17A8A1AC00E185AA /* TypeSetupViewController.h */,
+				AA0A374F17A8A1AC00E185AA /* TypeSetupViewController.m */,
 				AAA5ADDB17ADA979000B174F /* CircleIconView.h */,
 				AAA5ADDC17ADA979000B174F /* CircleIconView.m */,
 				AA0A373317A8A1AC00E185AA /* PlayerSplitOverviewView.h */,
@@ -373,7 +373,7 @@
 				AAE7750317B6BDE000260913 /* UIFViewController.m in Sources */,
 				AA0A376717A8A1AC00E185AA /* PlayerSetupViewController.m in Sources */,
 				AA0A376917A8A1AC00E185AA /* PlayerView.m in Sources */,
-				AA0A376A17A8A1AC00E185AA /* TypePickerViewController.m in Sources */,
+				AA0A376A17A8A1AC00E185AA /* TypeSetupViewController.m in Sources */,
 				AA0A377017A8A2F100E185AA /* WerewolvesRootViewcontroller.m in Sources */,
 				AAA5ADA417AC6E71000B174F /* ContentViewController.m in Sources */,
 				AAA5ADDD17ADA979000B174F /* CircleIconView.m in Sources */,

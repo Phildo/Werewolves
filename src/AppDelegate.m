@@ -16,7 +16,11 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    WerewolvesRootViewcontroller *wrvc = [[WerewolvesRootViewcontroller alloc] initWithViewFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];//so status bar is visible
+    CGRect appFrame = [[UIScreen mainScreen] bounds];
+    appFrame.origin.y    += 20;
+    appFrame.size.height -= 20;
+    WerewolvesRootViewcontroller *wrvc = [[WerewolvesRootViewcontroller alloc] initWithViewFrame:appFrame];
     [self.window setRootViewController:wrvc];
     [self.window makeKeyAndVisible];
     

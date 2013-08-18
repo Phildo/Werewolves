@@ -10,9 +10,8 @@
 #import "Game.h"
 #import "Player.h"
 #import "PlayerPositionView.h"
-#import "TypePickerViewController.h"
 
-@interface PlayerSetupViewController() <TypePickerViewControllerDelegate,UIScrollViewDelegate,UITextFieldDelegate>
+@interface PlayerSetupViewController() <UIScrollViewDelegate,UITextFieldDelegate>
 {
     UIScrollView *scrollView;
     NSMutableArray *playerNameViews;
@@ -34,7 +33,6 @@
 {
     if (self = [super initWithViewFrame:f])
     {
-        self.title = @"player setup";
         self.game = g;
         self.playerNameViews = [[NSMutableArray alloc] initWithCapacity:self.game.numPlayers];
         for(int i = 0; i < self.game.numPlayers; i++)
@@ -45,6 +43,8 @@
             playerNameView.text = [NSString stringWithFormat:@"player %d",i+1];
             [self.playerNameViews addObject:playerNameView];
         }
+        
+        delegate = d;
     }
     return self;
 }
@@ -125,6 +125,11 @@
     return YES;
 }
 
+- (void) backButtonTouched
+{
+    [delegate playerSetupAborted];
+}
+
 - (void) nextButtonTouched
 {
     [self.view endEditing:YES];
@@ -134,8 +139,7 @@
         Player *p = [[Player alloc] initWithName:((UITextField *)[self.playerNameViews objectAtIndex:i]).text];
         [self.game.players addObject:p];
     }
-    TypePickerViewController *typePicker = [[TypePickerViewController alloc] initWithViewFrame:self.view.bounds delegate:self game:self.game];
-    [self.navigationController pushViewController:typePicker animated:YES];
+    [delegate playerSetupDecidedWithGame:self.game];
 }
 
 @end

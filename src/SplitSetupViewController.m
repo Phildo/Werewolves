@@ -10,9 +10,8 @@
 #import "PlayerSplitOverviewView.h"
 #import "Game.h"
 #import "Player.h"
-#import "PlayerSetupViewController.h"
 
-@interface SplitSetupViewController() <PlayerSetupViewControllerDelegate>
+@interface SplitSetupViewController()
 {
     UISlider *playersSlider;
     UISlider *splitSlider;
@@ -90,7 +89,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     CGFloat titlePromptx = (0);
-    CGFloat titlePrompty = (20+viewpadding);
+    CGFloat titlePrompty = (viewpadding);
     CGFloat titlePromptw = (vieww);
     CGFloat titlePrompth = (20);
     UILabel *titlePrompt = [[UILabel alloc] initWithFrame:CGRectMake(titlePromptx, titlePrompty, titlePromptw, titlePrompth)];
@@ -243,12 +242,6 @@
     [self.view addSubview:startButton];
 }
 
-- (void) viewDidLoad
-{
-    [super viewDidLoad];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"back" style:UIBarButtonSystemItemCancel target:self action:@selector(backButtonTouched)];
-}
-
 - (void) updateViews
 {
     self.layoutView.count  = self.game.numPlayers;
@@ -309,10 +302,12 @@
 
 - (void) backButtonTouched
 {
+    [delegate splitSetupAborted];
 }
 
 - (void) startButtonTouched
 {
+    [delegate splitSetupDecidedWithGame:self.game];
 }
 
 @end

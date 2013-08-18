@@ -12,6 +12,8 @@
 @class Game;
 
 @protocol PlayerSetupViewControllerDelegate
+- (void) playerSetupDecidedWithGame:(Game *)g;
+- (void) playerSetupAborted;
 @end
 
 @interface PlayerSetupViewController : UIFViewController

@@ -8,8 +8,10 @@
 
 #import "GameSetupViewController.h"
 #import "SplitSetupViewController.h"
+#import "PlayerSetupViewController.h"
+#import "TypeSetupViewController.h"
 
-@interface GameSetupViewController() <SplitSetupViewControllerDelegate>
+@interface GameSetupViewController() <SplitSetupViewControllerDelegate, PlayerSetupViewControllerDelegate, TypeSetupViewControllerDelegate>
 {
     id<GameSetupViewControllerDelegate> __unsafe_unretained delegate;
 }
@@ -32,8 +34,9 @@
     [self displayContentController:[[SplitSetupViewController alloc] initWithViewFrame:self.view.bounds delegate:self]];
 }
 
-- (void) splitSetupDecided
+- (void) splitSetupDecidedWithGame:(Game *)g
 {
+    [self displayContentController:[[PlayerSetupViewController alloc] initWithViewFrame:self.view.bounds delegate:self game:g]];
 }
 
 - (void) splitSetupAborted
@@ -41,4 +44,22 @@
     [delegate gameSetupAborted];
 }
 
+- (void) playerSetupDecidedWithGame:(Game *)g
+{
+    [self displayContentController:[[TypeSetupViewController alloc] initWithViewFrame:self.view.bounds delegate:self game:g]];
+}
+
+- (void) playerSetupAborted
+{
+    
+}
+
+- (void) typeSetupDecidedWithGame:(Game *)g
+{
+}
+
+- (void) typeSetupAborted
+{
+}
+    
 @end
