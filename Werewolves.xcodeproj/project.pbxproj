@@ -58,6 +58,9 @@
 		AAA5ADE017ADB184000B174F /* PlayerPositionView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA5ADDF17ADB184000B174F /* PlayerPositionView.m */; };
 		AAD811DA17C032C000534914 /* GameSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD811D917C032C000534914 /* GameSetupViewController.m */; };
 		AAD89B2217C151CC009E0CE0 /* GamePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD89B2117C151CC009E0CE0 /* GamePlayViewController.m */; };
+		AAD89B2A17C17682009E0CE0 /* HistoryBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD89B2917C17682009E0CE0 /* HistoryBrowserView.m */; };
+		AAD89B2D17C18860009E0CE0 /* HistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD89B2C17C18860009E0CE0 /* HistoryView.m */; };
+		AAD89B3017C191C4009E0CE0 /* TurnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD89B2F17C191C4009E0CE0 /* TurnViewController.m */; };
 		AAE7750317B6BDE000260913 /* UIFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE7750217B6BDE000260913 /* UIFViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -135,6 +138,12 @@
 		AAD811D917C032C000534914 /* GameSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSetupViewController.m; sourceTree = "<group>"; };
 		AAD89B2017C151CC009E0CE0 /* GamePlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlayViewController.h; sourceTree = "<group>"; };
 		AAD89B2117C151CC009E0CE0 /* GamePlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePlayViewController.m; sourceTree = "<group>"; };
+		AAD89B2817C17682009E0CE0 /* HistoryBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryBrowserView.h; sourceTree = "<group>"; };
+		AAD89B2917C17682009E0CE0 /* HistoryBrowserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryBrowserView.m; sourceTree = "<group>"; };
+		AAD89B2B17C18860009E0CE0 /* HistoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryView.h; sourceTree = "<group>"; };
+		AAD89B2C17C18860009E0CE0 /* HistoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryView.m; sourceTree = "<group>"; };
+		AAD89B2E17C191C4009E0CE0 /* TurnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurnViewController.h; sourceTree = "<group>"; };
+		AAD89B2F17C191C4009E0CE0 /* TurnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TurnViewController.m; sourceTree = "<group>"; };
 		AAE7750117B6BDE000260913 /* UIFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFViewController.h; sourceTree = "<group>"; };
 		AAE7750217B6BDE000260913 /* UIFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -198,7 +207,7 @@
 				AAD89B2517C1527C009E0CE0 /* Intro */,
 				AAD89B2317C151F2009E0CE0 /* Game Setup */,
 				AAD89B2417C15271009E0CE0 /* Game Play */,
-				AAD89B2617C1529B009E0CE0 /* Custom Views */,
+				AAD89B2617C1529B009E0CE0 /* Views */,
 				AAD89B2717C152BA009E0CE0 /* Model */,
 			);
 			path = src;
@@ -271,6 +280,8 @@
 			children = (
 				AAD89B2017C151CC009E0CE0 /* GamePlayViewController.h */,
 				AAD89B2117C151CC009E0CE0 /* GamePlayViewController.m */,
+				AAD89B2E17C191C4009E0CE0 /* TurnViewController.h */,
+				AAD89B2F17C191C4009E0CE0 /* TurnViewController.m */,
 			);
 			name = "Game Play";
 			sourceTree = "<group>";
@@ -284,7 +295,7 @@
 			name = Intro;
 			sourceTree = "<group>";
 		};
-		AAD89B2617C1529B009E0CE0 /* Custom Views */ = {
+		AAD89B2617C1529B009E0CE0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				AAA5ADDB17ADA979000B174F /* CircleIconView.h */,
@@ -297,8 +308,12 @@
 				AA0A373217A8A1AC00E185AA /* CampfireCircleView.m */,
 				AA0A374C17A8A1AC00E185AA /* PlayerView.h */,
 				AA0A374D17A8A1AC00E185AA /* PlayerView.m */,
+				AAD89B2817C17682009E0CE0 /* HistoryBrowserView.h */,
+				AAD89B2917C17682009E0CE0 /* HistoryBrowserView.m */,
+				AAD89B2B17C18860009E0CE0 /* HistoryView.h */,
+				AAD89B2C17C18860009E0CE0 /* HistoryView.m */,
 			);
-			name = "Custom Views";
+			name = Views;
 			sourceTree = "<group>";
 		};
 		AAD89B2717C152BA009E0CE0 /* Model */ = {
@@ -405,8 +420,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAD89B2D17C18860009E0CE0 /* HistoryView.m in Sources */,
 				AA0A370F17A89FB100E185AA /* AppDelegate.m in Sources */,
 				AA0A371417A89FB100E185AA /* main.m in Sources */,
+				AAD89B3017C191C4009E0CE0 /* TurnViewController.m in Sources */,
 				AA0A375917A8A1AC00E185AA /* CampfireCircleView.m in Sources */,
 				AA0A375A17A8A1AC00E185AA /* PlayerSplitOverviewView.m in Sources */,
 				AAD811DA17C032C000534914 /* GameSetupViewController.m in Sources */,
@@ -418,6 +435,7 @@
 				AA0A376617A8A1AC00E185AA /* Player.m in Sources */,
 				AAE7750317B6BDE000260913 /* UIFViewController.m in Sources */,
 				AA0A376717A8A1AC00E185AA /* PlayerSetupViewController.m in Sources */,
+				AAD89B2A17C17682009E0CE0 /* HistoryBrowserView.m in Sources */,
 				AA0A376917A8A1AC00E185AA /* PlayerView.m in Sources */,
 				AA0A376A17A8A1AC00E185AA /* TypeSetupViewController.m in Sources */,
 				AA0A377017A8A2F100E185AA /* WerewolvesRootViewcontroller.m in Sources */,

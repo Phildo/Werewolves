@@ -11,7 +11,7 @@
 #import "GameSetupViewController.h"
 #import "GamePlayViewController.h"
 
-@interface WerewolvesRootViewcontroller ()<IntroScreenViewControllerDelegate,GameSetupViewControllerDelegate>
+@interface WerewolvesRootViewcontroller ()<IntroScreenViewControllerDelegate,GameSetupViewControllerDelegate,GamePlayViewControllerDelegate>
 
 @end
 
@@ -30,12 +30,16 @@
 
 - (void) gameSetupConfirmedWithGame:(Game *)g
 {
-    [self displayContentController:[[GamePlayViewController alloc] initWithViewFrame:self.view.bounds delegate:self]];
+    [self displayContentController:[[GamePlayViewController alloc] initWithViewFrame:self.view.bounds delegate:self game:g]];
 }
 
 - (void) gameSetupAborted
 {
     [self displayContentController:[[IntroScreenViewController alloc] initWithViewFrame:self.view.bounds delegate:self]];
+}
+
+- (void) gamePlayViewControllerAborted
+{
 }
 
 @end

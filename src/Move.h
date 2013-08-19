@@ -8,15 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+@class Player;
 
-@interface Move : NSObject {
-    int action;
-    int player;
-    int day;
+@interface Move : NSObject
+{
+    Player *player;
+    int type;
 }
 
-@property int action;
-@property int player;
-@property int day;
+@property (nonatomic, strong) Player *player;
+@property (nonatomic, assign) int type;
+
+- (id) initWithType:(int)t player:(Player *)p;
 
 @end

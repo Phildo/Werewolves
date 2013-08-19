@@ -15,9 +15,7 @@
 @synthesize numWerewolves;
 @synthesize hunter;
 @synthesize healer;
-@synthesize day;
-@synthesize daysPassed;
-@synthesize turnState;
+@synthesize state;
 @synthesize players;
 @synthesize history;
 
@@ -29,9 +27,7 @@
         self.numWerewolves = 3;
         self.hunter = NO;
         self.healer = NO;
-        self.day = YES;
-        self.daysPassed = 0;
-        self.turnState = C_VILLAGER;
+        self.state = C_NONE;
         self.players = [[NSMutableArray alloc] initWithCapacity:30];
         self.history = [[NSMutableArray alloc] initWithCapacity:30];
     }
@@ -41,6 +37,27 @@
 - (int) maxWerewolves
 {
     return (self.numPlayers/2)-1;
+}
+
+- (int) nextState
+{
+    switch(self.state)
+    {
+        case C_VILLAGER:
+            if(self.hunter) return C_HUNTER;
+        case C_HUNTER:
+            if(self.healer) return C_HEALER;
+        case C_HEALER:
+            return C_WEREWOLF;
+            break;
+        case C_WEREWOLF:
+            return C_VILLAGER;
+            break;
+        default:
+            return C_WEREWOLF;
+            break;
+    }
+    return C_WEREWOLF;
 }
 
 @end

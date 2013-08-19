@@ -8,6 +8,12 @@
 
 #import "ContentViewController.h"
 
+@class Game;
+
+@protocol GamePlayViewControllerDelegate
+- (void) gamePlayViewControllerAborted;
+@end
+
 @interface GamePlayViewController : ContentViewController
-- (id) initWithViewFrame:(CGRect)f delegate:(id)d;
+- (id) initWithViewFrame:(CGRect)f delegate:(id<GamePlayViewControllerDelegate>)d game:(Game *)g;
 @end

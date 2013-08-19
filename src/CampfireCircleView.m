@@ -33,7 +33,7 @@
 {
     if(self = [super initWithFrame:f])
     {
-        self.playerViews = [[NSMutableArray alloc] initWithCapacity:30];
+        self.playerViews = [[NSMutableArray alloc] initWithCapacity:[p count]];
         [self updatePlayers:p];
     
         [self addGestureRecognizer:[[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchGesture:)]];

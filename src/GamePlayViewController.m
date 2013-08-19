@@ -7,11 +7,35 @@
 //
 
 #import "GamePlayViewController.h"
+#import "TurnViewController.h"
+#import "Game.h"
 
-@interface GamePlayViewController ()
+@interface GamePlayViewController()<TurnViewControllerDelegate>
+{
+    Game *game;
+    id<GamePlayViewControllerDelegate> __unsafe_unretained delegate;
+}
+@property (nonatomic, strong) Game *game;
 
 @end
 
 @implementation GamePlayViewController
+
+@synthesize game;
+
+- (id) initWithViewFrame:(CGRect)f delegate:(id<GamePlayViewControllerDelegate>)d game:(Game *)g
+{
+    if(self = [super initWithViewFrame:f])
+    {
+        delegate = d;
+    }
+    return self;
+}
+
+- (void) loadView
+{
+    [super loadView];
+    [self displayContentController:[[TurnViewController alloc] initWithViewFrame:self.view.bounds delegate:self game:self.game]];
+}
 
 @end

@@ -8,19 +8,17 @@
 
 #import "Move.h"
 
-
 @implementation Move
 
-@synthesize action;
 @synthesize player;
-@synthesize day;
+@synthesize type;
 
-- (id)initWithAction:(int)a ToPlayer:(int)p OnDay:(int)d 
+- (id) initWithType:(int)t player:(Player *)p
 {
-    if((self = [super init])){
-        self.action = a;
+    if((self = [super init]))
+    {
         self.player = p;
-        self.day = d;
+        self.type = t;
     }
     return self;
 }

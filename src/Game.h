@@ -14,9 +14,7 @@
     int numWerewolves;
     BOOL hunter;
     BOOL healer;
-    BOOL day;
-    int daysPassed;
-    int turnState;
+    int state;
     NSMutableArray *players;
     NSMutableArray *history;
 }
@@ -27,9 +25,9 @@
 @property (nonatomic, assign) BOOL hunter;
 @property (nonatomic, assign) BOOL healer;
 
-@property (nonatomic, assign) BOOL day;
-@property (nonatomic, assign) int daysPassed;
-@property (nonatomic, assign) int turnState;
+@property (nonatomic, assign) int state;
+@property (nonatomic, readonly) int nextState;
+
 @property (nonatomic, strong) NSMutableArray *players;
 @property (nonatomic, strong) NSMutableArray *history;
 
