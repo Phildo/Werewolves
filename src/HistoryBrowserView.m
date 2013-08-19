@@ -29,6 +29,7 @@
     if(self = [super initWithFrame:frame])
     {
         self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+        [self addSubview:self.scrollView];
         
         [self updateHistory:h];
         delegate = d;
@@ -42,13 +43,14 @@
     while([[self.scrollView subviews] count] > 0)
         [[[self.scrollView subviews] objectAtIndex:0] removeFromSuperview];
     for(int i = 0; i < [h count]; i++)
-        [self.scrollView addSubview:[[HistoryView alloc] initWithFrame:CGRectMake(i*40,0,40,self.bounds.size.height) move:[h objectAtIndex:i] delegate:self]];
-    self.scrollView.contentSize = CGSizeMake([h count]*40, self.bounds.size.height);
-    [self.scrollView setContentOffset:CGPointMake([h count]*40-self.bounds.size.width,0)];
+        [self.scrollView addSubview:[[HistoryView alloc] initWithFrame:CGRectMake(i*80,0,80,self.bounds.size.height) move:[h objectAtIndex:i] delegate:self]];
+    self.scrollView.contentSize = CGSizeMake([h count]*80, self.bounds.size.height);
+    [self.scrollView setContentOffset:CGPointMake([h count]*80-self.bounds.size.width,0)];
 }
 
 - (void) move:(Move *)m withView:(HistoryView *)h wasTouched:(UITapGestureRecognizer *)g
 {
+    [delegate moveWasTouched:m];
 }
 
 @end

@@ -27,6 +27,7 @@
 {
     if(self = [super initWithViewFrame:f])
     {
+        self.game = g;
         delegate = d;
     }
     return self;

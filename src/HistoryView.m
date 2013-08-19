@@ -40,7 +40,9 @@
         self.move = m;
         
         self.typeImage = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,f.size.width,f.size.height-20)];
+        [self addSubview:self.typeImage];
         self.playerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,f.size.height-20,f.size.width,20)];
+        [self addSubview:self.playerLabel];
         
         [self refresh];
         delegate = d;

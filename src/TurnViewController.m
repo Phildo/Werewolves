@@ -52,8 +52,9 @@
     if(self = [super initWithViewFrame:f])
     {
         self.game = g;
-        [self.game.history addObject:[[Move alloc] initWithType:C_VILLAGER player:nil]];
+        self.game.state = C_VILLAGER;
         self.selectedPerson = [[Player alloc] init]; //Start on "finished" villager turn, putting them right into night upon confirmation
+        [self.game.history addObject:[[Move alloc] initWithType:self.game.state player:nil]];
         delegate = d;
     }
     return self;
@@ -64,7 +65,7 @@
     [super loadView];
     self.campfireCircle = [[CampfireCircleView alloc] initWithFrame:self.view.bounds delegate:self players:self.game.players];
     [self.view addSubview:self.campfireCircle];
-    self.historyBrowser = [[HistoryBrowserView alloc] initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,40) delegate:self history:self.game.history];
+    self.historyBrowser = [[HistoryBrowserView alloc] initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,80) delegate:self history:self.game.history];
     [self.view addSubview:self.historyBrowser];
     
     self.prompt = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2-40, self.view.bounds.size.height/2-40, 80, 80)];
@@ -72,6 +73,8 @@
     self.prompt.lineBreakMode = NSLineBreakByCharWrapping;
     self.prompt.font = [UIFont fontWithName:@"Helvetica" size:30];
     self.prompt.text = @"Begin!";
+    self.prompt.userInteractionEnabled = YES;
+    self.prompt.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:0.5];
     [self.prompt addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(promptTouched:)]];
     [self.view addSubview:self.prompt];
 }
@@ -83,6 +86,16 @@
 
 - (void) nextTurn
 {
+    switch(self.game.state)
+    {
+        case C_VILLAGER:
+        case C_WEREWOLF:
+            self.selectedPerson.state = C_DEAD; break;
+        case C_HUNTER: break; //do nothing
+        case C_HEALER: self.selectedPerson.state = C_SLEEP; break;
+    }
+    self.selectedPerson = nil;
+
     self.game.state = self.game.nextState;
     
     for(int i = 0; i < [self.game.players count]; i++)
@@ -107,6 +120,11 @@
 
 - (void) player:(Player *)p wasReleasedBeforePosition:(int)pos
 {
+}
+
+- (void) moveWasTouched:(Move *)m
+{
+    
 }
 
 @end

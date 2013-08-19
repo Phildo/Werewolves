@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class Move;
 @protocol HistoryBrowserViewDelegate
+- (void) moveWasTouched:(Move *)m;
 @end
 
 @interface HistoryBrowserView : UIView
