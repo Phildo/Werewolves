@@ -225,12 +225,12 @@
     {
         Move *hm = [self.game.history objectAtIndex:i];
         if(hm == m) { self.game.state = hm.type; break; }
-        switch(m.type)
+        switch(hm.type)
         {
-            case C_VILLAGER: m.player.state = C_DEAD;  break;
-            case C_WEREWOLF: m.player.state = C_DEAD;  break;
+            case C_VILLAGER: hm.player.state = C_DEAD;  break;
+            case C_WEREWOLF: hm.player.state = C_DEAD;  break;
             case C_HUNTER:   /* nothing */             break;
-            case C_HEALER:   m.player.state = C_AWAKE; break;
+            case C_HEALER:   hm.player.state = C_AWAKE; break;
         }
     }
     
