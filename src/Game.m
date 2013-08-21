@@ -43,19 +43,10 @@
 {
     switch(self.state)
     {
-        case C_VILLAGER:
-            if(self.hunter) return C_HUNTER;
-        case C_HUNTER:
-            if(self.healer) return C_HEALER;
-        case C_HEALER:
-            return C_WEREWOLF;
-            break;
-        case C_WEREWOLF:
-            return C_VILLAGER;
-            break;
-        default:
-            return C_WEREWOLF;
-            break;
+        case C_VILLAGER: return C_WEREWOLF;
+        case C_WEREWOLF: if(self.hunter) return C_HUNTER;
+        case C_HUNTER:   if(self.healer) return C_HEALER;
+        case C_HEALER:   return C_VILLAGER;
     }
     return C_WEREWOLF;
 }

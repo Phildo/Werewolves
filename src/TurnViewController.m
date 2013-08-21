@@ -68,7 +68,7 @@
     self.historyBrowser = [[HistoryBrowserView alloc] initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,80) delegate:self history:self.game.history];
     [self.view addSubview:self.historyBrowser];
     
-    self.prompt = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2-40, self.view.bounds.size.height/2-40, 80, 80)];
+    self.prompt = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2-80, self.view.bounds.size.height/2-20, 160, 40)];
     self.prompt.textAlignment = NSTextAlignmentCenter;
     self.prompt.lineBreakMode = NSLineBreakByCharWrapping;
     self.prompt.font = [UIFont fontWithName:@"Helvetica" size:30];
@@ -98,24 +98,78 @@
 
     self.game.state = self.game.nextState;
     
+    //Put everyone to sleep except current types
     for(int i = 0; i < [self.game.players count]; i++)
     {
-        if(((Player *)[self.game.players objectAtIndex:i]).state != C_DEAD)
-        {
-            ((Player *)[self.game.players objectAtIndex:i]).state = C_SLEEP;
-            if(((Player *)[self.game.players objectAtIndex:i]).type == self.game.state)
-                ((Player *)[self.game.players objectAtIndex:i]).type = C_AWAKE;
-        }
+        Player *p = ((Player *)[self.game.players objectAtIndex:i]);
+        if(p.state != C_DEAD) p.state = (p.type == self.game.state || self.game.state == C_VILLAGER) ? C_AWAKE : C_SLEEP;
     }
     
     [self.game.history addObject:[[Move alloc] initWithType:self.game.state player:nil]];
     
+    [self updatePrompt];
     [self.historyBrowser updateHistory:self.game.history];
     [self.campfireCircle updatePlayers:self.game.players];
 }
 
+- (void) updatePrompt
+{
+    self.prompt.userInteractionEnabled = (self.selectedPerson != nil);
+    switch(self.game.state)
+    {
+        case C_VILLAGER: self.prompt.text = (self.selectedPerson ? @"Confirm Kill"   : @"Find Werewolf");    break;
+        case C_WEREWOLF: self.prompt.text = (self.selectedPerson ? @"Confirm Kill"   : @"Select Victim");    break;
+        case C_HUNTER:   self.prompt.text = (self.selectedPerson ? @"Confirm Sleuth" : @"Question Suspect"); break;
+        case C_HEALER:   self.prompt.text = (self.selectedPerson ? @"Confirm Heal"   : @"Protect Villager"); break;
+    }
+}
+
+- (BOOL) isValidSelection:(Player *)p
+{
+    if(self.selectedPerson) return NO;
+        
+    if(p.state == C_DEAD && self.game.state == C_HEALER)
+        return [self wasLastKilledByWerewolves:p];
+    
+    return p.state != C_DEAD;
+}
+
+- (BOOL) wasLastKilledByWerewolves:(Player *)p
+{
+    Move *m;                 m = [self.game.history objectAtIndex:[self.game.history count] - 1]; //this turn
+    if(m.type != C_WEREWOLF) m = [self.game.history objectAtIndex:[self.game.history count] - 2]; //last turn
+    if(m.type != C_WEREWOLF) m = [self.game.history objectAtIndex:[self.game.history count] - 3]; //1 turn ago
+    if(m.type != C_WEREWOLF) m = [self.game.history objectAtIndex:[self.game.history count] - 4]; //2 turns ago
+    return m.player == p;
+}
+
 - (void) playerWasTouched:(Player *)p
 {
+    if(self.selectedPerson == p) //undo selection
+    {
+        switch(self.game.state)
+        {
+            case C_VILLAGER: p.state = C_AWAKE; break;
+            case C_WEREWOLF: p.state = (p.type == C_WEREWOLF) ? C_AWAKE : C_SLEEP; break;
+            case C_HUNTER:   /* nothing */ break;
+            case C_HEALER:   p.state = [self wasLastKilledByWerewolves:p] ? C_DEAD : (p.type == C_HEALER ? C_AWAKE : C_DEAD); break; //lol god that's ugly...
+        }
+        self.selectedPerson = nil;
+    }
+    else if([self isValidSelection:p]) //make selection
+    {
+        switch(self.game.state)
+        {
+            case C_VILLAGER: p.state = C_DEAD;  break;
+            case C_WEREWOLF: p.state = C_DEAD;  break;
+            case C_HUNTER:   /* nothing */      break;
+            case C_HEALER:   p.state = C_SLEEP; break;
+        }
+        self.selectedPerson = p;
+    }   
+    
+    [self updatePrompt];
+    [self.campfireCircle updatePlayers:self.game.players];
 }
 
 - (void) player:(Player *)p wasReleasedBeforePosition:(int)pos
@@ -124,7 +178,6 @@
 
 - (void) moveWasTouched:(Move *)m
 {
-    
 }
 
 @end
