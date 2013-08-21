@@ -44,6 +44,8 @@
         self.playerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,f.size.height-20,f.size.width,20)];
         [self addSubview:self.playerLabel];
         
+        [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(iWasTouched:)]];
+        
         [self refresh];
         delegate = d;
     }
@@ -61,6 +63,11 @@
         default:         [self.typeImage setImage:[UIImage imageNamed:@""]];             break;
     }
     if(self.move.player) self.playerLabel.text = self.move.player.name;
+}
+
+- (void) iWasTouched:(UITapGestureRecognizer *)r
+{
+    [delegate move:self.move withView:self wasTouched:r];
 }
 
 @end

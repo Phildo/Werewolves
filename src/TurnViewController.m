@@ -79,9 +79,46 @@
     [self.view addSubview:self.prompt];
 }
 
-- (void) promptTouched:(UITapGestureRecognizer *)r
+- (void) promptTouched:(UITapGestureRecognizer *)r //note- should only be possible (view userInteractionEnabled) if player selected (or start of game)
 {
-    if(self.selectedPerson) [self nextTurn];
+    if([self checkWin]) return;
+    [self checkStatisticalWin];
+    [self nextTurn];
+}
+
+- (BOOL) checkWin
+{
+    int villagersLeft = 0;
+    int werewolvesLeft = 0;
+    int huntersLeft = 0;
+    int healersLeft = 0;
+    for(int i = 0; i < [self.game.players count]; i++)
+    {
+        Player *p = [self.game.players objectAtIndex:i];
+        if(p.type == C_VILLAGER && p.state != C_DEAD) villagersLeft++;
+        if(p.type == C_WEREWOLF && p.state != C_DEAD) werewolvesLeft++;
+        if(p.type == C_HUNTER   && p.state != C_DEAD) huntersLeft++;
+        if(p.type == C_HEALER   && p.state != C_DEAD) healersLeft++;
+    }
+    
+    if(werewolvesLeft == 0)                                 { [self displayWin:C_VILLAGER]; return YES; }
+    else if(villagersLeft + huntersLeft + healersLeft == 0) { [self displayWin:C_WEREWOLF]; return YES; }
+    return NO;
+}
+
+- (int) checkStatisticalWin //returns team that is guaranteed to win if exists
+{
+    return C_NONE;
+}
+
+- (void) displayWin:(int)type
+{
+    if(type == C_WEREWOLF)      self.prompt.text = @"Werewolves Win!";
+    else if(type == C_VILLAGER) self.prompt.text = @"Villagers Win!";
+    
+    UILabel *playAgain = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2-80,self.view.bounds.size.width/2+80,160,40)];
+    playAgain.text = @"Play again?";
+    [self.view addSubview:playAgain];
 }
 
 - (void) nextTurn
@@ -94,6 +131,7 @@
         case C_HUNTER: break; //do nothing
         case C_HEALER: self.selectedPerson.state = C_SLEEP; break;
     }
+    ((Move *)[self.game.history objectAtIndex:[self.game.history count]-1]).player = self.selectedPerson;
     self.selectedPerson = nil;
 
     self.game.state = self.game.nextState;
@@ -101,7 +139,7 @@
     //Put everyone to sleep except current types
     for(int i = 0; i < [self.game.players count]; i++)
     {
-        Player *p = ((Player *)[self.game.players objectAtIndex:i]);
+        Player *p = [self.game.players objectAtIndex:i];
         if(p.state != C_DEAD) p.state = (p.type == self.game.state || self.game.state == C_VILLAGER) ? C_AWAKE : C_SLEEP;
     }
     
@@ -152,7 +190,7 @@
             case C_VILLAGER: p.state = C_AWAKE; break;
             case C_WEREWOLF: p.state = (p.type == C_WEREWOLF) ? C_AWAKE : C_SLEEP; break;
             case C_HUNTER:   /* nothing */ break;
-            case C_HEALER:   p.state = [self wasLastKilledByWerewolves:p] ? C_DEAD : (p.type == C_HEALER ? C_AWAKE : C_DEAD); break; //lol god that's ugly...
+            case C_HEALER:   p.state = [self wasLastKilledByWerewolves:p] ? C_DEAD : (p.type == C_HEALER ? C_AWAKE : C_SLEEP); break; //lol god that's ugly...
         }
         self.selectedPerson = nil;
     }
@@ -178,6 +216,27 @@
 
 - (void) moveWasTouched:(Move *)m
 {
+    if(self.selectedPerson) [self playerWasTouched:self.selectedPerson];
+    
+    for(int i = 0; i < [self.game.players count]; i++)
+        ((Player *)[self.game.players objectAtIndex:i]).state = C_AWAKE;
+    
+    for(int i = 0; i < [self.game.history count]; i++)
+    {
+        Move *hm = [self.game.history objectAtIndex:i];
+        if(hm == m) { self.game.state = hm.type; break; }
+        switch(m.type)
+        {
+            case C_VILLAGER: m.player.state = C_DEAD;  break;
+            case C_WEREWOLF: m.player.state = C_DEAD;  break;
+            case C_HUNTER:   /* nothing */             break;
+            case C_HEALER:   m.player.state = C_AWAKE; break;
+        }
+    }
+    
+    [self updatePrompt];
+    [self.historyBrowser updateHistory:self.game.history];
+    [self.campfireCircle updatePlayers:self.game.players];
 }
 
 @end
