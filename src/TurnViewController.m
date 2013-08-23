@@ -18,6 +18,7 @@
 {
     Game *game;
     Player *selectedPerson;
+    int placeInHistory;
     
     HistoryBrowserView *historyBrowser;
     CampfireCircleView *campfireCircle;
@@ -30,6 +31,7 @@
 }
 @property (nonatomic, strong) Game *game;
 @property (nonatomic, strong) Player *selectedPerson;
+@property (nonatomic, assign) int placeInHistory;
 @property (nonatomic, strong) HistoryBrowserView *historyBrowser;
 @property (nonatomic, strong) CampfireCircleView *campfireCircle;
 @property (nonatomic, strong) UILabel *prompt;
@@ -41,6 +43,7 @@
 
 @synthesize game;
 @synthesize selectedPerson;
+@synthesize placeInHistory;
 @synthesize historyBrowser;
 @synthesize campfireCircle;
 @synthesize prompt;
@@ -53,8 +56,11 @@
     {
         self.game = g;
         self.game.state = C_VILLAGER;
-        self.selectedPerson = [[Player alloc] init]; //Start on "finished" villager turn, putting them right into night upon confirmation
+        self.selectedPerson = [[Player alloc] initWithName:@""]; //Start on "finished" villager turn, putting them right into night upon confirmation
+        self.placeInHistory = 0;
+        
         [self.game.history addObject:[[Move alloc] initWithType:self.game.state player:nil]];
+        
         delegate = d;
     }
     return self;
@@ -70,7 +76,7 @@
     
     self.prompt = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2-80, self.view.bounds.size.height/2-20, 160, 40)];
     self.prompt.textAlignment = NSTextAlignmentCenter;
-    self.prompt.lineBreakMode = NSLineBreakByCharWrapping;
+    self.prompt.lineBreakMode = NSLineBreakByWordWrapping;
     self.prompt.font = [UIFont fontWithName:@"Helvetica" size:30];
     self.prompt.text = @"Begin!";
     self.prompt.userInteractionEnabled = YES;
@@ -131,7 +137,7 @@
         case C_HUNTER: break; //do nothing
         case C_HEALER: self.selectedPerson.state = C_SLEEP; break;
     }
-    ((Move *)[self.game.history objectAtIndex:[self.game.history count]-1]).player = self.selectedPerson;
+    ((Move *)[self.game.history objectAtIndex:self.placeInHistory]).player = self.selectedPerson;
     self.selectedPerson = nil;
 
     self.game.state = self.game.nextState;
@@ -143,6 +149,9 @@
         if(p.state != C_DEAD) p.state = (p.type == self.game.state || self.game.state == C_VILLAGER) ? C_AWAKE : C_SLEEP;
     }
     
+    self.placeInHistory++;
+    while(self.placeInHistory < [self.game.history count])
+        [self.game.history removeObject:[self.game.history objectAtIndex:self.placeInHistory]];
     [self.game.history addObject:[[Move alloc] initWithType:self.game.state player:nil]];
     
     [self updatePrompt];
@@ -224,7 +233,13 @@
     for(int i = 0; i < [self.game.history count]; i++)
     {
         Move *hm = [self.game.history objectAtIndex:i];
-        if(hm == m) { self.game.state = hm.type; break; }
+        if(hm == m)
+        {
+            self.game.state = hm.type;
+            self.placeInHistory = i;
+            if(i == 0) self.selectedPerson = [[Player alloc] initWithName:@""];
+            break;
+        }
         switch(hm.type)
         {
             case C_VILLAGER: hm.player.state = C_DEAD;  break;
