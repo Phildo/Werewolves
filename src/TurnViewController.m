@@ -17,6 +17,7 @@
 @interface TurnViewController() <HistoryBrowserViewDelegate, CampfireCircleViewDelegate>
 {
     Game *game;
+    
     Player *selectedPerson;
     int placeInHistory;
     
@@ -85,49 +86,16 @@
     [self.view addSubview:self.prompt];
 }
 
-- (void) promptTouched:(UITapGestureRecognizer *)r //note- should only be possible (view userInteractionEnabled) if player selected (or start of game)
+- (void) attemptNextTurn
 {
-    if([self checkWin]) return;
-    [self checkStatisticalWin];
-    [self nextTurn];
-}
-
-- (BOOL) checkWin
-{
-    int villagersLeft = 0;
-    int werewolvesLeft = 0;
-    int huntersLeft = 0;
-    int healersLeft = 0;
-    for(int i = 0; i < [self.game.players count]; i++)
+    if(![self displayWin:[self whoWon]])
     {
-        Player *p = [self.game.players objectAtIndex:i];
-        if(p.type == C_VILLAGER && p.state != C_DEAD) villagersLeft++;
-        if(p.type == C_WEREWOLF && p.state != C_DEAD) werewolvesLeft++;
-        if(p.type == C_HUNTER   && p.state != C_DEAD) huntersLeft++;
-        if(p.type == C_HEALER   && p.state != C_DEAD) healersLeft++;
+        [self displayStatisticalWin:[self whoStatisticallyWon]];
+        [self beginNextTurn];
     }
-    
-    if(werewolvesLeft == 0)                                 { [self displayWin:C_VILLAGER]; return YES; }
-    else if(villagersLeft + huntersLeft + healersLeft == 0) { [self displayWin:C_WEREWOLF]; return YES; }
-    return NO;
 }
 
-- (int) checkStatisticalWin //returns team that is guaranteed to win if exists
-{
-    return C_NONE;
-}
-
-- (void) displayWin:(int)type
-{
-    if(type == C_WEREWOLF)      self.prompt.text = @"Werewolves Win!";
-    else if(type == C_VILLAGER) self.prompt.text = @"Villagers Win!";
-    
-    UILabel *playAgain = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2-80,self.view.bounds.size.width/2+80,160,40)];
-    playAgain.text = @"Play again?";
-    [self.view addSubview:playAgain];
-}
-
-- (void) nextTurn
+- (void) beginNextTurn
 {
     switch(self.game.state)
     {
@@ -159,18 +127,6 @@
     [self.campfireCircle updatePlayers:self.game.players];
 }
 
-- (void) updatePrompt
-{
-    self.prompt.userInteractionEnabled = (self.selectedPerson != nil);
-    switch(self.game.state)
-    {
-        case C_VILLAGER: self.prompt.text = (self.selectedPerson ? @"Confirm Kill"   : @"Find Werewolf");    break;
-        case C_WEREWOLF: self.prompt.text = (self.selectedPerson ? @"Confirm Kill"   : @"Select Victim");    break;
-        case C_HUNTER:   self.prompt.text = (self.selectedPerson ? @"Confirm Sleuth" : @"Question Suspect"); break;
-        case C_HEALER:   self.prompt.text = (self.selectedPerson ? @"Confirm Heal"   : @"Protect Villager"); break;
-    }
-}
-
 - (BOOL) isValidSelection:(Player *)p
 {
     if(self.selectedPerson) return NO;
@@ -190,7 +146,7 @@
     return m.player == p;
 }
 
-- (void) playerWasTouched:(Player *)p
+- (void) attemptSelectPlayer:(Player *)p
 {
     if(self.selectedPerson == p) //undo selection
     {
@@ -219,11 +175,7 @@
     [self.campfireCircle updatePlayers:self.game.players];
 }
 
-- (void) player:(Player *)p wasReleasedBeforePosition:(int)pos
-{
-}
-
-- (void) moveWasTouched:(Move *)m
+- (void) rewindToMove:(Move *)m
 {
     if(self.selectedPerson) [self playerWasTouched:self.selectedPerson];
     
@@ -252,6 +204,79 @@
     [self updatePrompt];
     [self.historyBrowser updateHistory:self.game.history];
     [self.campfireCircle updatePlayers:self.game.players];
+}
+
+- (int) whoWon
+{
+    int villagersLeft = 0;
+    int werewolvesLeft = 0;
+    int huntersLeft = 0;
+    int healersLeft = 0;
+    for(int i = 0; i < [self.game.players count]; i++)
+    {
+        Player *p = [self.game.players objectAtIndex:i];
+        if(p.type == C_VILLAGER && p.state != C_DEAD) villagersLeft++;
+        if(p.type == C_WEREWOLF && p.state != C_DEAD) werewolvesLeft++;
+        if(p.type == C_HUNTER   && p.state != C_DEAD) huntersLeft++;
+        if(p.type == C_HEALER   && p.state != C_DEAD) healersLeft++;
+    }
+    
+    if(werewolvesLeft == 0)                                 return C_VILLAGER;
+    else if(villagersLeft + huntersLeft + healersLeft == 0) return C_WEREWOLF;
+    return C_NONE;
+}
+
+- (int) whoStatisticallyWon //returns team that is guaranteed to win if such exists
+{
+    return C_NONE;
+}
+
+- (BOOL) displayWin:(int)type
+{
+    if     (type == C_WEREWOLF) self.prompt.text = @"Werewolves Win!";
+    else if(type == C_VILLAGER) self.prompt.text = @"Villagers Win!";
+    else return NO;
+    
+    UILabel *playAgain = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2-80,self.view.bounds.size.width/2+80,160,40)];
+    playAgain.text = @"Play again?";
+    [self.view addSubview:playAgain];
+    return YES;
+}
+
+- (BOOL) displayStatisticalWin:(int)type
+{
+    return NO;
+}
+
+- (void) updatePrompt
+{
+    self.prompt.userInteractionEnabled = (self.selectedPerson != nil);
+    switch(self.game.state)
+    {
+        case C_VILLAGER: self.prompt.text = (self.selectedPerson ? @"Confirm Kill"   : @"Find Werewolf");    break;
+        case C_WEREWOLF: self.prompt.text = (self.selectedPerson ? @"Confirm Kill"   : @"Select Victim");    break;
+        case C_HUNTER:   self.prompt.text = (self.selectedPerson ? @"Confirm Sleuth" : @"Question Suspect"); break;
+        case C_HEALER:   self.prompt.text = (self.selectedPerson ? @"Confirm Heal"   : @"Protect Villager"); break;
+    }
+}
+
+- (void) playerWasTouched:(Player *)p
+{
+    [self attemptSelectPlayer:p];
+}
+
+- (void) player:(Player *)p wasReleasedBeforePosition:(int)pos
+{
+}
+
+- (void) moveWasTouched:(Move *)m
+{
+    [self rewindToMove:m];
+}
+
+- (void) promptTouched:(UITapGestureRecognizer *)r //note- should only be possible (view userInteractionEnabled) if player selected (or start of game)
+{
+    [self attemptNextTurn];
 }
 
 @end
